@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:greencities.uz)",
       "WebFetch(domain:www.iqair.com)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(curl:*)"
     ]
   }
 }
