@@ -1,17 +1,27 @@
-# NCCC Uzbekistan Website (GitHub Pages)
+# NCCC Uzbekistan Website
 
-Static, modern, responsive landing website for the National Center for Climate Change of Uzbekistan.
+Static website with:
+- internet-based content for the National Climate Change Center
+- latest climate and atmosphere-related decisions/news section
+- admin-only publication module for Word/text + images + print
 
-## Deploy on GitHub Pages
-1. Create a repository (e.g., `nccc-uz-website`)
-2. Add `index.html` to the repository root
-3. Go to **Settings → Pages**
-4. Source: **Deploy from a branch**
-5. Branch: **main**, Folder: **/(root)**
-6. Save — your site will be published at `https://<username>.github.io/<repo>/`
+## Data location
+- Main content file: `assets/data/site-content.json`
+- Runtime source: `index.html` fetches this JSON and renders:
+  - center overview
+  - decisions timeline
+  - news cards
+  - source links
 
-## Customize
-- Replace email/phone/address in the Contact section
-- Replace placeholders in Projects and Data sections
-- Optionally add logo at `assets/logo.svg` and update header
-- For forms: connect Formspree or a small backend later
+## Admin module
+- Login: `uzncc`
+- Password: `bunyodkor7a`
+- Features:
+  - upload `.docx` (or `.txt`) content
+  - attach multiple images
+  - save publication to browser localStorage
+  - print publication (admin only)
+
+Notes:
+- `.doc` files are not directly parsed in browser; convert to `.docx`.
+- This is a static demo. For production, move authentication and publication storage to backend.
