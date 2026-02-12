@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0B1220" />
+  <title>NCCC Uzbekistan — National Center for Climate Change</title>
+  <meta name="description" content="National Center for Climate Change of the Republic of Uzbekistan under the Committee on Ecology and Climate Change." />
+
+  <!-- Open Graph (замени на свой домен/картинку при необходимости) -->
+  <meta property="og:title" content="NCCC Uzbekistan — National Center for Climate Change" />
+  <meta property="og:description" content="Policy, climate data, projects, and international cooperation." />
+  <meta property="og:type" content="website" />
+  <!-- <meta property="og:image" content="https://YOUR_DOMAIN/assets/og-cover.png" /> -->
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Минимальные кастом-стили (Tailwind + чуть-чуть эффекта) */
+    .glass { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    .grid-glow:before{
+      content:""; position:absolute; inset:0;
+      background:
+        radial-gradient(600px circle at 20% 10%, rgba(34,197,94,.18), transparent 50%),
+        radial-gradient(700px circle at 80% 30%, rgba(59,130,246,.18), transparent 55%),
+        radial-gradient(800px circle at 50% 90%, rgba(14,165,233,.12), transparent 60%);
+      pointer-events:none;
+    }
+    .noise:after{
+      content:""; position:absolute; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+      opacity:.12; mix-blend-mode:overlay; pointer-events:none;
+    }
+    .reveal { opacity:0; transform: translateY(14px); transition: all .6s cubic-bezier(.2,.8,.2,1); }
+    .reveal.show { opacity:1; transform: translateY(0); }
+  </style>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Inter','Arial']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-slate-950 text-slate-100 dark:bg-slate-950 selection:bg-emerald-300/30 selection:text-white">
+  <!-- Top progress bar -->
+  <div id="progress" class="fixed top-0 left-0 h-[2px] bg-emerald-400 z-[100] w-0"></div>
+
+  <!-- Header -->
+  <header id="header" class="fixed top-0 inset-x-0 z-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mt-3 rounded-2xl border border-white/10 bg-slate-950/40 glass shadow-lg shadow-black/20">
+        <div class="flex items-center justify-between px-4 py-3">
+          <a href="#home" class="flex items-center gap-3">
+            <!-- Логотип: можно заменить на assets/logo.svg -->
+            <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-emerald-400/30 to-sky-400/30 border border-white/10 flex items-center justify-center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="opacity-90">
+                <path d="M12 2C8 6 5 9.5 5 14a7 7 0 0 0 14 0c0-4.5-3-8-7-12Z" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M9.2 14.1c.6 2.1 2 3.4 4.1 3.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="leading-tight">
+              <div class="font-semibold tracking-tight">NCCC Uzbekistan</div>
+              <div class="text-xs text-slate-300/80" data-i18n="header.subtitle">National Center for Climate Change</div>
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-6 text-sm text-slate-200/90">
+            <a class="hover:text-white" href="#about" data-i18n="nav.about">О Центре</a>
+            <a class="hover:text-white" href="#work" data-i18n="nav.work">Направления</a>
+            <a class="hover:text-white" href="#projects" data-i18n="nav.projects">Проекты</a>
+            <a class="hover:text-white" href="#data" data-i18n="nav.data">Данные</a>
+            <a class="hover:text-white" href="#news" data-i18n="nav.news">Новости</a>
+            <a class="hover:text-white" href="#contact" data-i18n="nav.contact">Контакты</a>
+          </nav>
+
+          <div class="flex items-center gap-2">
+            <!-- Language switch -->
+            <div class="hidden sm:flex items-center gap-1 rounded-xl border border-white/10 bg-white/5 p-1">
+              <button class="px-2 py-1 rounded-lg text-xs hover:bg-white/10" data-lang="ru">RU</button>
+              <button class="px-2 py-1 rounded-lg text-xs hover:bg-white/10" data-lang="en">EN</button>
+              <button class="px-2 py-1 rounded-lg text-xs hover:bg-white/10" data-lang="uz">UZ</button>
+            </div>
+
+            <!-- Dark mode toggle -->
+            <button id="themeBtn" class="rounded-xl border border-white/10 bg-white/5 p-2 hover:bg-white/10" aria-label="Toggle theme">
+              <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M21 13.2A8.5 8.5 0 1 1 10.8 3a6.5 6.5 0 0 0 10.2 10.2Z" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </button>
+
+            <!-- Mobile menu -->
+            <button id="menuBtn" class="md:hidden rounded-xl border border-white/10 bg-white/5 p-2 hover:bg-white/10" aria-label="Menu">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile nav -->
+        <div id="mobileNav" class="md:hidden hidden border-t border-white/10 px-4 py-3">
+          <div class="grid grid-cols-2 gap-2 text-sm">
+            <a class="rounded-xl bg-white/5 px-3 py-2 hover:bg-white/10" href="#about" data-i18n="nav.about">О Центре</a>
+            <a class="rounded-xl bg-white/5 px-3 py-2 hover:bg-white/10" href="#work" data-i18n="nav.work">Направления</a>
+            <a class="rounded-xl bg-white/5 px-3 py-2 hover:bg-white/10" href="#projects" data-i18n="nav.projects">Проекты</a>
+            <a class="rounded-xl bg-white/5 px-3 py-2 hover:bg-white/10" href="#data" data-i18n="nav.data">Данные</a>
+            <a class="rounded-xl bg-white/5 px-3 py-2 hover:bg-white/10" href="#news" data-i18n="nav.news">Новости</a>
+            <a class="rounded-xl bg-white/5 px-3 py-2 hover:bg-white/10" href="#contact" data-i18n="nav.contact">Контакты</a>
+
+            <div class="col-span-2 mt-2 flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-2">
+              <div class="text-xs text-slate-300" data-i18n="nav.lang">Язык</div>
+              <div class="flex gap-1">
+                <button class="px-2 py-1 rounded-lg text-xs hover:bg-white/10" data-lang="ru">RU</button>
+                <button class="px-2 py-1 rounded-lg text-xs hover:bg-white/10" data-lang="en">EN</button>
+                <button class="px-2 py-1 rounded-lg text-xs hover:bg-white/10" data-lang="uz">UZ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="relative pt-28">
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 grid-glow noise"></div>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-18">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 reveal">
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200/90">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+              <span data-i18n="hero.badge">Under the Committee on Ecology and Climate Change of the Republic of Uzbekistan</span>
+            </div>
+
+            <h1 class="mt-4 text-4xl sm:text-5xl font-semibold tracking-tight">
+              <span data-i18n="hero.title">National Center for Climate Change</span>
+              <span class="block text-slate-300/90 text-2xl sm:text-3xl mt-2" data-i18n="hero.subtitle">
+                Policy • Science • Climate Data • International Cooperation
+              </span>
+            </h1>
+
+            <p class="mt-5 text-slate-200/80 leading-relaxed max-w-2xl" data-i18n="hero.lead">
+              We support Uzbekistan’s climate agenda through evidence-based policy, MRV and analytics, project pipelines, and capacity building — delivering measurable results across sectors.
+            </p>
+
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="#projects" class="rounded-2xl bg-emerald-500/90 hover:bg-emerald-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/20" data-i18n="hero.cta1">
+                Explore Projects
+              </a>
+              <a href="#data" class="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 px-5 py-3 text-sm font-semibold" data-i18n="hero.cta2">
+                Climate Data & Dashboards
+              </a>
+              <a href="#contact" class="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 px-5 py-3 text-sm font-semibold" data-i18n="hero.cta3">
+                Contact
+              </a>
+            </div>
+
+            <!-- Quick stats -->
+            <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="text-xs text-slate-300" data-i18n="stats.s1">Active initiatives</div>
+                <div class="mt-1 text-2xl font-semibold" data-counter="24">0</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="text-xs text-slate-300" data-i18n="stats.s2">Partners</div>
+                <div class="mt-1 text-2xl font-semibold" data-counter="50">0</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="text-xs text-slate-300" data-i18n="stats.s3">Dashboards</div>
+                <div class="mt-1 text-2xl font-semibold" data-counter="8">0</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="text-xs text-slate-300" data-i18n="stats.s4">Capacity sessions</div>
+                <div class="mt-1 text-2xl font-semibold" data-counter="120">0</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right visual -->
+          <div class="lg:col-span-5 reveal">
+            <div class="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-6 shadow-2xl shadow-black/30">
+              <div class="flex items-center justify-between">
+                <div class="text-sm font-semibold" data-i18n="panel.title">What we deliver</div>
+                <div class="text-xs text-slate-300" data-i18n="panel.note">Updated regularly</div>
+              </div>
+
+              <div class="mt-5 grid gap-3">
+                <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+                  <div class="flex items-start gap-3">
+                    <div class="mt-1 h-9 w-9 rounded-xl bg-emerald-400/20 border border-emerald-300/20 flex items-center justify-center">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 19V5m0 14h16M8 15l3-3 3 2 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="font-semibold" data-i18n="panel.i1t">MRV & analytics</div>
+                      <div class="text-sm text-slate-300/90" data-i18n="panel.i1d">GHG inventories, transparency, sector metrics, dashboards.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+                  <div class="flex items-start gap-3">
+                    <div class="mt-1 h-9 w-9 rounded-xl bg-sky-400/20 border border-sky-300/20 flex items-center justify-center">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 3v6m0 12v-6M3 12h6m12 0h-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="font-semibold" data-i18n="panel.i2t">Climate project pipeline</div>
+                      <div class="text-sm text-slate-300/90" data-i18n="panel.i2d">Concept notes, readiness, investment plans, coordination.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+                  <div class="flex items-start gap-3">
+                    <div class="mt-1 h-9 w-9 rounded-xl bg-indigo-400/20 border border-indigo-300/20 flex items-center justify-center">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <path d="M7 7h10M7 12h10M7 17h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="font-semibold" data-i18n="panel.i3t">Policy & capacity</div>
+                      <div class="text-sm text-slate-300/90" data-i18n="panel.i3d">NDC support, sector roadmaps, training & guidelines.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="text-xs text-slate-300" data-i18n="panel.footer">For official requests:</div>
+                <div class="mt-1 text-sm font-semibold">
+                  <span data-i18n="panel.emailLabel">Email</span>:
+                  <a class="underline decoration-white/20 hover:decoration-white" href="mailto:info@nccc.uz">info@nccc.uz</a>
+                </div>
+              </div>
+
+              <!-- Floating ring -->
+              <div class="pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full border border-white/10 bg-gradient-to-br from-emerald-400/10 to-sky-400/10 blur-[0px]"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom divider -->
+      <div class="h-10 bg-gradient-to-b from-transparent to-slate-950"></div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-5 reveal">
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" data-i18n="about.title">About the Center</h2>
+          <p class="mt-4 text-slate-200/80 leading-relaxed" data-i18n="about.p1">
+            The National Center for Climate Change supports Uzbekistan’s transition to a resilient, low-emission development pathway.
+          </p>
+          <p class="mt-3 text-slate-200/70 leading-relaxed" data-i18n="about.p2">
+            We coordinate cross-sector efforts, develop evidence and analytics, and work with national and international partners to deliver measurable outcomes.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs" data-i18n="tags.t1">NDC implementation</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs" data-i18n="tags.t2">MRV / BTR</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs" data-i18n="tags.t3">Early warning</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs" data-i18n="tags.t4">Climate finance</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs" data-i18n="tags.t5">Air • water • land</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 reveal">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+              <div class="text-sm font-semibold" data-i18n="about.card1.t">Mission</div>
+              <div class="mt-2 text-slate-200/80 text-sm leading-relaxed" data-i18n="about.card1.d">
+                Evidence-based climate policy support and delivery of national priorities through data, coordination, and implementation capacity.
+              </div>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+              <div class="text-sm font-semibold" data-i18n="about.card2.t">Focus</div>
+              <div class="mt-2 text-slate-200/80 text-sm leading-relaxed" data-i18n="about.card2.d">
+                Mitigation, adaptation, loss & damage, and mainstreaming climate across sectors and investments.
+              </div>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+              <div class="text-sm font-semibold" data-i18n="about.card3.t">Approach</div>
+              <div class="mt-2 text-slate-200/80 text-sm leading-relaxed" data-i18n="about.card3.d">
+                Practical toolkits, dashboards, project pipelines, and institutional strengthening with partners.
+              </div>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+              <div class="text-sm font-semibold" data-i18n="about.card4.t">Results</div>
+              <div class="mt-2 text-slate-200/80 text-sm leading-relaxed" data-i18n="about.card4.d">
+                Transparent metrics, reproducible methods, and quality assurance to track progress over time.
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 rounded-3xl border border-white/10 bg-gradient-to-br from-emerald-500/10 to-sky-500/10 p-6">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <div class="text-sm font-semibold" data-i18n="about.banner.t">Need official information or partnership?</div>
+                <div class="text-sm text-slate-200/75" data-i18n="about.banner.d">We respond to requests and coordinate with ministries, agencies, and development partners.</div>
+              </div>
+              <a href="#contact" class="rounded-2xl bg-white/10 hover:bg-white/15 px-4 py-2 text-sm font-semibold border border-white/10" data-i18n="about.banner.cta">Get in touch</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Work / Directions -->
+    <section id="work" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div class="reveal">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" data-i18n="work.title">Key directions</h2>
+        <p class="mt-3 text-slate-200/75 max-w-3xl" data-i18n="work.lead">
+          A clear portfolio structure for public communication and partner coordination.
+        </p>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+          <div class="text-sm font-semibold" data-i18n="work.c1.t">Climate policy & NDC</div>
+          <ul class="mt-3 text-sm text-slate-200/75 space-y-2 list-disc pl-5">
+            <li data-i18n="work.c1.i1">Sector roadmaps and enabling conditions</li>
+            <li data-i18n="work.c1.i2">Coordination and reporting support</li>
+            <li data-i18n="work.c1.i3">Guidance notes and methodologies</li>
+          </ul>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+          <div class="text-sm font-semibold" data-i18n="work.c2.t">MRV / Transparency</div>
+          <ul class="mt-3 text-sm text-slate-200/75 space-y-2 list-disc pl-5">
+            <li data-i18n="work.c2.i1">GHG inventory and QA/QC</li>
+            <li data-i18n="work.c2.i2">BTR analytics and datasets</li>
+            <li data-i18n="work.c2.i3">Digital tools and dashboards</li>
+          </ul>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+          <div class="text-sm font-semibold" data-i18n="work.c3.t">Climate risks & adaptation</div>
+          <ul class="mt-3 text-sm text-slate-200/75 space-y-2 list-disc pl-5">
+            <li data-i18n="work.c3.i1">Risk screening and resilience planning</li>
+            <li data-i18n="work.c3.i2">Early warning and forecast-to-action</li>
+            <li data-i18n="work.c3.i3">Community and sector pilots</li>
+          </ul>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+          <div class="text-sm font-semibold" data-i18n="work.c4.t">Air quality & health</div>
+          <ul class="mt-3 text-sm text-slate-200/75 space-y-2 list-disc pl-5">
+            <li data-i18n="work.c4.i1">Monitoring modernization and calibration</li>
+            <li data-i18n="work.c4.i2">Exposure analytics and public communication</li>
+            <li data-i18n="work.c4.i3">Emergency preparedness measures</li>
+          </ul>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+          <div class="text-sm font-semibold" data-i18n="work.c5.t">Nature-based solutions</div>
+          <ul class="mt-3 text-sm text-slate-200/75 space-y-2 list-disc pl-5">
+            <li data-i18n="work.c5.i1">Land restoration & shelterbelts</li>
+            <li data-i18n="work.c5.i2">Water-smart agriculture and AFOLU</li>
+            <li data-i18n="work.c5.i3">Biodiversity and ecosystem services</li>
+          </ul>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+          <div class="text-sm font-semibold" data-i18n="work.c6.t">Climate finance & partnerships</div>
+          <ul class="mt-3 text-sm text-slate-200/75 space-y-2 list-disc pl-5">
+            <li data-i18n="work.c6.i1">Readiness and pipeline development</li>
+            <li data-i18n="work.c6.i2">Donor coordination and reporting</li>
+            <li data-i18n="work.c6.i3">Capacity building and standards</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div class="reveal flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" data-i18n="projects.title">Projects & initiatives</h2>
+          <p class="mt-3 text-slate-200/75 max-w-3xl" data-i18n="projects.lead">
+            Highlight flagships here. Replace placeholders with official names, budgets, regions, and partners.
+          </p>
+        </div>
+        <a href="#contact" class="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 px-4 py-2 text-sm font-semibold" data-i18n="projects.cta">
+          Propose cooperation
+        </a>
+      </div>
+
+      <div class="mt-8 grid lg:grid-cols-3 gap-4">
+        <article class="reveal rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+          <div class="text-xs text-emerald-200/90" data-i18n="projects.p1.tag">Flagship</div>
+          <h3 class="mt-2 font-semibold" data-i18n="projects.p1.t">National MRV modernization</h3>
+          <p class="mt-2 text-sm text-slate-200/75" data-i18n="projects.p1.d">
+            Data workflows, QA/QC, sector templates, and analytics for transparent reporting.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-200/70">
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" data-i18n="projects.meta.mrv">MRV</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" data-i18n="projects.meta.digital">Digital</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" data-i18n="projects.meta.national">National</span>
+          </div>
+        </article>
+
+        <article class="reveal rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+          <div class="text-xs text-sky-200/90" data-i18n="projects.p2.tag">Program</div>
+          <h3 class="mt-2 font-semibold" data-i18n="projects.p2.t">Air quality & health protection</h3>
+          <p class="mt-2 text-sm text-slate-200/75" data-i18n="projects.p2.d">
+            Monitoring upgrades, forecasting, public alerts, and preparedness measures.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-200/70">
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" data-i18n="projects.meta.aq">Air quality</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" data-i18n="projects.meta.health">Health</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" data-i18n="projects.meta.ews">EWS</span>
+          </div>
+        </article>
+
+        <article class="reveal rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition">
+          <div class="text-xs text-indigo-200/90" data-i18n="projects.p3.tag">Pilot</div>
+          <h3 class="mt-2 font-semibold" data-i18n="projects.p3.t">Land restoration & shelterbelts</h3>
+          <p class="mt-2 text-sm text-slate-200/75" data-i18n="projects.p3.d">
+            Hotspot plans, green belts, stabilization works, and stewardship models.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-200/70">
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" data-i18n="projects.meta.land">Land</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" data-i18n="projects.meta.nbs">NbS</span>
+            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1" data-i18n="projects.meta.regional">Regional</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-4 reveal rounded-3xl border border-white/10 bg-white/5 p-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div class="text-sm font-semibold" data-i18n="projects.note.t">Tip</div>
+            <div class="text-sm text-slate-200/75" data-i18n="projects.note.d">
+              Later you can split this into separate pages: /projects, /publications, /team, /procurement.
+            </div>
+          </div>
+          <a class="text-sm font-semibold underline decoration-white/20 hover:decoration-white" href="#news" data-i18n="projects.note.cta">See updates</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data -->
+    <section id="data" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div class="reveal">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" data-i18n="data.title">Climate data & dashboards</h2>
+        <p class="mt-3 text-slate-200/75 max-w-3xl" data-i18n="data.lead">
+          Placeholders for dashboards (Power BI, Metabase, Looker Studio) or embedded iframes later.
+        </p>
+      </div>
+
+      <div class="mt-8 grid lg:grid-cols-2 gap-4">
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="flex items-center justify-between gap-4">
+            <div class="font-semibold" data-i18n="data.d1.t">National indicators</div>
+            <span class="text-xs text-slate-300" data-i18n="data.placeholder">Placeholder</span>
+          </div>
+          <div class="mt-4 rounded-2xl border border-white/10 bg-slate-950/40 p-5">
+            <div class="text-sm text-slate-200/70" data-i18n="data.d1.d">
+              Key metrics: emissions, energy intensity, renewables, water stress, land restoration, air quality.
+            </div>
+            <div class="mt-4 h-28 rounded-xl border border-white/10 bg-gradient-to-br from-emerald-500/10 to-sky-500/10"></div>
+          </div>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="flex items-center justify-between gap-4">
+            <div class="font-semibold" data-i18n="data.d2.t">Maps & spatial layers</div>
+            <span class="text-xs text-slate-300" data-i18n="data.placeholder">Placeholder</span>
+          </div>
+          <div class="mt-4 rounded-2xl border border-white/10 bg-slate-950/40 p-5">
+            <div class="text-sm text-slate-200/70" data-i18n="data.d2.d">
+              Use interactive layers (Leaflet/Mapbox) for hazards, drought, dust storms, and project sites.
+            </div>
+            <div class="mt-4 h-28 rounded-xl border border-white/10 bg-gradient-to-br from-indigo-500/10 to-sky-500/10"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News -->
+    <section id="news" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div class="reveal flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" data-i18n="news.title">News & updates</h2>
+          <p class="mt-3 text-slate-200/75 max-w-3xl" data-i18n="news.lead">
+            Lightweight “CMS-like” list with search & tag filter. Later you can connect GitHub JSON, headless CMS, or Django.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <input id="newsSearch" class="w-56 rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-500/40"
+                 type="search" placeholder="Search…" />
+          <select id="newsTag" class="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-500/40">
+            <option value="all" data-i18n="news.tagAll">All</option>
+            <option value="policy" data-i18n="news.tagPolicy">Policy</option>
+            <option value="data" data-i18n="news.tagData">Data</option>
+            <option value="projects" data-i18n="news.tagProjects">Projects</option>
+            <option value="events" data-i18n="news.tagEvents">Events</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="newsList" class="mt-8 grid lg:grid-cols-3 gap-4"></div>
+
+      <div class="mt-6 reveal rounded-3xl border border-white/10 bg-white/5 p-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div class="text-sm font-semibold" data-i18n="news.sub.t">Subscribe</div>
+            <div class="text-sm text-slate-200/75" data-i18n="news.sub.d">
+              Add a mailing list later (Mailchimp/Buttondown) or publish RSS.
+            </div>
+          </div>
+          <a class="rounded-2xl bg-white/10 hover:bg-white/15 px-4 py-2 text-sm font-semibold border border-white/10" href="#contact" data-i18n="news.sub.cta">Request info</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div class="reveal">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight" data-i18n="contact.title">Contact</h2>
+        <p class="mt-3 text-slate-200/75 max-w-3xl" data-i18n="contact.lead">
+          Replace placeholders with official address, phone, and department emails.
+        </p>
+      </div>
+
+      <div class="mt-8 grid lg:grid-cols-12 gap-4">
+        <div class="reveal lg:col-span-7 rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="text-sm font-semibold" data-i18n="contact.formTitle">Quick message</div>
+          <p class="mt-2 text-sm text-slate-200/75" data-i18n="contact.formNote">
+            On GitHub Pages, server-side forms don’t work by default. Use mailto for stage 1, or connect Formspree later.
+          </p>
+
+          <form class="mt-4 grid gap-3" onsubmit="return sendMailto(event)">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <input id="fName" class="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-emerald-500/40"
+                     type="text" placeholder="Name" required />
+              <input id="fEmail" class="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-emerald-500/40"
+                     type="email" placeholder="Email" required />
+            </div>
+            <input id="fSubject" class="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-emerald-500/40"
+                   type="text" placeholder="Subject" required />
+            <textarea id="fMsg" class="min-h-[120px] rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-emerald-500/40"
+                      placeholder="Message" required></textarea>
+            <button class="rounded-2xl bg-emerald-500/90 hover:bg-emerald-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/20"
+                    type="submit" data-i18n="contact.send">Send</button>
+            <div class="text-xs text-slate-300/80" data-i18n="contact.privacy">
+              By sending, you agree that your message will be processed to respond to your request.
+            </div>
+          </form>
+        </div>
+
+        <div class="reveal lg:col-span-5 rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="text-sm font-semibold" data-i18n="contact.details">Details</div>
+
+          <div class="mt-4 space-y-3 text-sm text-slate-200/80">
+            <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+              <div class="text-xs text-slate-300" data-i18n="contact.email">Email</div>
+              <div class="mt-1 font-semibold">
+                <a class="underline decoration-white/20 hover:decoration-white" href="mailto:info@nccc.uz">info@nccc.uz</a>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+              <div class="text-xs text-slate-300" data-i18n="contact.phone">Phone</div>
+              <div class="mt-1 font-semibold">+998 (00) 000-00-00</div>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+              <div class="text-xs text-slate-300" data-i18n="contact.addr">Address</div>
+              <div class="mt-1">
+                <span data-i18n="contact.addrValue">Tashkent, Uzbekistan (replace with official address)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-500/10 to-sky-500/10 p-4 text-sm text-slate-200/80">
+            <div class="font-semibold" data-i18n="contact.hoursT">Working hours</div>
+            <div class="mt-1" data-i18n="contact.hoursD">Mon–Fri, 09:00–18:00 (Tashkent time)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-slate-950/60">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="text-sm text-slate-300/80">
+            © <span id="year"></span> <span class="font-semibold text-slate-200">NCCC Uzbekistan</span>
+            <span class="hidden sm:inline"> — </span>
+            <span class="block sm:inline" data-i18n="footer.line">Under the Committee on Ecology and Climate Change of the Republic of Uzbekistan</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm">
+            <a class="text-slate-300/80 hover:text-white" href="#home" data-i18n="footer.top">Back to top</a>
+            <span class="text-slate-600">•</span>
+            <a class="text-slate-300/80 hover:text-white" href="#" onclick="alert('Add your Privacy Policy page later'); return false;" data-i18n="footer.privacy">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // -----------------------------
+    //  UI: menu, progress, reveal
+    // -----------------------------
+    const mobileNav = document.getElementById('mobileNav');
+    document.getElementById('menuBtn')?.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+    });
+
+    // Scroll progress
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+      progress.style.width = (scrolled * 100).toFixed(2) + '%';
+    }, { passive:true });
+
+    // Reveal animations
+    const revealEls = [...document.querySelectorAll('.reveal')];
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) e.target.classList.add('show');
+      }
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+
+    // -----------------------------
+    //  Theme
+    // -----------------------------
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'light') root.classList.remove('dark');
+    else root.classList.add('dark'); // default dark
+
+    themeBtn?.addEventListener('click', () => {
+      const isDark = root.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // -----------------------------
+    //  Counters
+    // -----------------------------
+    function animateCounter(el, target) {
+      const start = 0;
+      const dur = 900;
+      const t0 = performance.now();
+      function tick(now) {
+        const p = Math.min(1, (now - t0) / dur);
+        const val = Math.round(start + (target - start) * (1 - Math.pow(1 - p, 3)));
+        el.textContent = val.toString();
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    const counters = [...document.querySelectorAll('[data-counter]')];
+    const counterIO = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting && !e.target.dataset.done) {
+          e.target.dataset.done = '1';
+          animateCounter(e.target, Number(e.target.getAttribute('data-counter')));
+        }
+      }
+    }, { threshold: 0.6 });
+    counters.forEach(c => counterIO.observe(c));
+
+    // -----------------------------
+    //  News (mini CMS)
+    // -----------------------------
+    const newsItems = [
+      { date: "2026-02-01", tag: "policy", title: {ru:"Обновление по NDC 3.0: приоритеты на 2026", en:"NDC 3.0 update: 2026 priorities", uz:"NDC 3.0: 2026-yil ustuvor yo‘nalishlari"},
+        text: {ru:"Краткий обзор шагов по межведомственной координации и подготовке планирования реализации.", en:"Short note on coordination steps and implementation planning.", uz:"Idoralararo muvofiqlashtirish va ijro rejalari bo‘yicha qisqa sharh."} },
+      { date: "2026-01-18", tag: "data", title: {ru:"Публикация набора индикаторов: воздух/вода/земля", en:"Indicator set published: air/water/land", uz:"Indikatorlar to‘plami: havo/suv/yer"},
+        text: {ru:"Добавлены методологии и определения показателей для последующего мониторинга.", en:"Methodologies and indicator definitions added for monitoring.", uz:"Keyingi monitoring uchun metodologiyalar va ta’riflar qo‘shildi."} },
+      { date: "2026-01-06", tag: "projects", title: {ru:"Запуск пилота по восстановлению земель и защитным лесополосам", en:"Pilot launched: land restoration & shelterbelts", uz:"Pilot: yerlarni tiklash va himoya o‘rmon yo‘laklari"},
+        text: {ru:"Старт работ по микропланам, питомникам и мониторингу приживаемости.", en:"Kick-off for micro-plans, nurseries and survival monitoring.", uz:"Mikroreja, ko‘chatxonalar va yashab qolish monitoringi boshlandi."} },
+      { date: "2025-12-15", tag: "events", title: {ru:"Круглый стол: климатические риски и раннее предупреждение", en:"Roundtable: climate risks & early warning", uz:"Davra suhbati: iqlim xatarlari va erta ogohlantirish"},
+        text: {ru:"Обсуждение forecast-to-action и межведомственных SOP.", en:"Discussion on forecast-to-action and inter-agency SOPs.", uz:"Forecast-to-action va idoralararo SOP muhokamasi."} }
+    ];
+
+    const newsList = document.getElementById('newsList');
+    const newsSearch = document.getElementById('newsSearch');
+    const newsTag = document.getElementById('newsTag');
+
+    function fmtDate(d, lang) {
+      const dt = new Date(d + "T00:00:00");
+      return dt.toLocaleDateString(lang === 'ru' ? 'ru-RU' : (lang === 'uz' ? 'uz-UZ' : 'en-US'), { year:'numeric', month:'short', day:'2-digit' });
+    }
+
+    function renderNews() {
+      const q = (newsSearch?.value || "").trim().toLowerCase();
+      const tag = newsTag?.value || "all";
+      const lang = state.lang;
+
+      const filtered = newsItems
+        .filter(n => tag === "all" ? true : n.tag === tag)
+        .filter(n => {
+          const t = (n.title[lang] + " " + n.text[lang]).toLowerCase();
+          return q ? t.includes(q) : true;
+        })
+        .sort((a,b) => b.date.localeCompare(a.date));
+
+      newsList.innerHTML = filtered.map(n => `
+        <article class="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition reveal show">
+          <div class="flex items-center justify-between gap-3">
+            <div class="text-xs text-slate-300">${fmtDate(n.date, lang)}</div>
+            <span class="text-xs rounded-full border border-white/10 bg-white/5 px-3 py-1">${tagLabel(n.tag, lang)}</span>
+          </div>
+          <h3 class="mt-3 font-semibold">${escapeHtml(n.title[lang])}</h3>
+          <p class="mt-2 text-sm text-slate-200/75 leading-relaxed">${escapeHtml(n.text[lang])}</p>
+          <div class="mt-4 text-sm">
+            <a href="#contact" class="underline decoration-white/20 hover:decoration-white">${i18n(state.lang, "news.readmore")}</a>
+          </div>
+        </article>
+      `).join("") || `<div class="text-slate-300">${i18n(state.lang, "news.empty")}</div>`;
+    }
+
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
+    function tagLabel(tag, lang){
+      const map = {
+        policy: {ru:"Политика", en:"Policy", uz:"Siyosat"},
+        data: {ru:"Данные", en:"Data", uz:"Ma’lumotlar"},
+        projects: {ru:"Проекты", en:"Projects", uz:"Loyihalar"},
+        events: {ru:"События", en:"Events", uz:"Tadbirlar"}
+      };
+      return map[tag]?.[lang] || tag;
+    }
+
+    newsSearch?.addEventListener('input', renderNews);
+    newsTag?.addEventListener('change', renderNews);
+
+    // -----------------------------
+    //  i18n
+    // -----------------------------
+    const state = { lang: localStorage.getItem('lang') || 'ru' };
+
+    const dict = {
+      ru: {
+        "header.subtitle":"National Center for Climate Change",
+        "nav.about":"О Центре","nav.work":"Направления","nav.projects":"Проекты","nav.data":"Данные","nav.news":"Новости","nav.contact":"Контакты","nav.lang":"Язык",
+        "hero.badge":"При Комитете по экологии и изменению климата Республики Узбекистан",
+        "hero.title":"Национальный центр по изменению климата",
+        "hero.subtitle":"Политика • Наука • Климатические данные • Международное сотрудничество",
+        "hero.lead":"Мы поддерживаем климатическую повестку Узбекистана через политику на основе доказательств, MRV/аналитику, проектный портфель и укрепление потенциала.",
+        "hero.cta1":"Смотреть проекты","hero.cta2":"Данные и дашборды","hero.cta3":"Связаться",
+        "stats.s1":"Инициативы","stats.s2":"Партнёры","stats.s3":"Дашборды","stats.s4":"Тренинги",
+        "panel.title":"Что мы делаем","panel.note":"Обновляется регулярно",
+        "panel.i1t":"MRV и аналитика","panel.i1d":"Инвентаризации ПГ, прозрачность, метрики и дашборды.",
+        "panel.i2t":"Проектный портфель","panel.i2d":"Концепции, readiness, планы инвестиций и координация.",
+        "panel.i3t":"Политика и потенциал","panel.i3d":"Поддержка NDC, дорожные карты, обучение и методики.",
+        "panel.footer":"Для официальных запросов:","panel.emailLabel":"Email",
+        "about.title":"О Центре",
+        "about.p1":"Национальный центр по изменению климата поддерживает переход Узбекистана к устойчивому низкоуглеродному развитию.",
+        "about.p2":"Мы координируем межсекторные усилия, разрабатываем аналитику и работаем с партнёрами для достижения измеримых результатов.",
+        "tags.t1":"Реализация NDC","tags.t2":"MRV / BTR","tags.t3":"Раннее предупреждение","tags.t4":"Климатическое финансирование","tags.t5":"Воздух • вода • земля",
+        "about.card1.t":"Миссия","about.card1.d":"Поддержка климатической политики и приоритетов через данные, координацию и практическую реализацию.",
+        "about.card2.t":"Фокус","about.card2.d":"Снижение выбросов, адаптация, loss & damage и мейнстриминг климата в инвестициях.",
+        "about.card3.t":"Подход","about.card3.d":"Инструменты, дашборды, проектный портфель и институциональное укрепление.",
+        "about.card4.t":"Результат","about.card4.d":"Прозрачные метрики и контроль качества для отслеживания прогресса.",
+        "about.banner.t":"Нужна информация или партнёрство?","about.banner.d":"Отвечаем на запросы и координируем работу с ведомствами и партнёрами.","about.banner.cta":"Написать",
+        "work.title":"Ключевые направления","work.lead":"Структура портфеля для публичной коммуникации и координации.",
+        "work.c1.t":"Климатическая политика и NDC","work.c1.i1":"Секторальные дорожные карты","work.c1.i2":"Координация и отчётность","work.c1.i3":"Методики и гайды",
+        "work.c2.t":"MRV / Прозрачность","work.c2.i1":"Инвентарь ПГ и QA/QC","work.c2.i2":"BTR аналитика и данные","work.c2.i3":"Цифровые инструменты",
+        "work.c3.t":"Риски и адаптация","work.c3.i1":"Скрининг рисков и планы устойчивости","work.c3.i2":"Раннее предупреждение и F2A","work.c3.i3":"Пилоты",
+        "work.c4.t":"Качество воздуха и здоровье","work.c4.i1":"Модернизация мониторинга","work.c4.i2":"Экспозиция и коммуникация","work.c4.i3":"Готовность",
+        "work.c5.t":"Природо-ориентированные решения","work.c5.i1":"Восстановление земель","work.c5.i2":"Водосберегающее АФОЛУ","work.c5.i3":"Биоразнообразие",
+        "work.c6.t":"Финансирование и партнёрства","work.c6.i1":"Readiness и pipeline","work.c6.i2":"Координация доноров","work.c6.i3":"Стандарты и обучение",
+        "projects.title":"Проекты и инициативы","projects.lead":"Замените плейсхолдеры на официальные названия, бюджеты, регионы и партнёров.","projects.cta":"Предложить сотрудничество",
+        "projects.p1.tag":"Флагман","projects.p1.t":"Модернизация MRV","projects.p1.d":"Потоки данных, QA/QC, шаблоны по секторам и аналитика.",
+        "projects.p2.tag":"Программа","projects.p2.t":"Воздух и защита здоровья","projects.p2.d":"Мониторинг, прогнозирование, оповещение и меры готовности.",
+        "projects.p3.tag":"Пилот","projects.p3.t":"Восстановление земель и лесополосы","projects.p3.d":"Микропланы, зелёные пояса и модели сопровождения.",
+        "projects.meta.mrv":"MRV","projects.meta.digital":"Цифровизация","projects.meta.national":"Национальный",
+        "projects.meta.aq":"Воздух","projects.meta.health":"Здоровье","projects.meta.ews":"EWS",
+        "projects.meta.land":"Земля","projects.meta.nbs":"NbS","projects.meta.regional":"Регионы",
+        "projects.note.t":"Подсказка","projects.note.d":"Позже легко разнести по страницам: /projects, /publications, /team, /procurement.","projects.note.cta":"Смотреть обновления",
+        "data.title":"Климатические данные и дашборды","data.lead":"Плейсхолдеры для дашбордов или iframe позже.","data.placeholder":"Плейсхолдер",
+        "data.d1.t":"Национальные индикаторы","data.d1.d":"Ключевые метрики: выбросы, энергоёмкость, ВИЭ, водный стресс, земли, воздух.",
+        "data.d2.t":"Карты и пространственные слои","data.d2.d":"Интерактивные слои для рисков, засух, пыльных бурь и площадок проектов.",
+        "news.title":"Новости и обновления","news.lead":"Лёгкий список с поиском и фильтром. Потом подключим CMS или Django.","news.tagAll":"Все","news.tagPolicy":"Политика","news.tagData":"Данные","news.tagProjects":"Проекты","news.tagEvents":"События",
+        "news.readmore":"Подробнее / запросить информацию","news.empty":"Ничего не найдено.",
+        "news.sub.t":"Подписка","news.sub.d":"Позже можно добавить рассылку или RSS.","news.sub.cta":"Запросить",
+        "contact.title":"Контакты","contact.lead":"Замените плейсхолдеры на официальные адреса и телефоны.",
+        "contact.formTitle":"Быстрое сообщение","contact.formNote":"На GitHub Pages нет серверной части по умолчанию. На 1 этапе используйте mailto, позже подключим Formspree.",
+        "contact.send":"Отправить",
+        "contact.privacy":"Отправляя, вы соглашаетесь на обработку сообщения для ответа на запрос.",
+        "contact.details":"Реквизиты",
+        "contact.email":"Email","contact.phone":"Телефон","contact.addr":"Адрес","contact.addrValue":"Ташкент, Узбекистан (заменить на официальный адрес)",
+        "contact.hoursT":"Рабочие часы","contact.hoursD":"Пн–Пт, 09:00–18:00 (Ташкент)",
+        "footer.line":"При Комитете по экологии и изменению климата Республики Узбекистан",
+        "footer.top":"Наверх","footer.privacy":"Политика"
+      },
+
+      en: {
+        "header.subtitle":"National Center for Climate Change",
+        "nav.about":"About","nav.work":"Directions","nav.projects":"Projects","nav.data":"Data","nav.news":"News","nav.contact":"Contact","nav.lang":"Language",
+        "hero.badge":"Under the Committee on Ecology and Climate Change of the Republic of Uzbekistan",
+        "hero.title":"National Center for Climate Change",
+        "hero.subtitle":"Policy • Science • Climate Data • International Cooperation",
+        "hero.lead":"We support Uzbekistan’s climate agenda through evidence-based policy, MRV and analytics, project pipelines, and capacity building.",
+        "hero.cta1":"Explore Projects","hero.cta2":"Climate Data & Dashboards","hero.cta3":"Contact",
+        "stats.s1":"Initiatives","stats.s2":"Partners","stats.s3":"Dashboards","stats.s4":"Capacity sessions",
+        "panel.title":"What we deliver","panel.note":"Updated regularly",
+        "panel.i1t":"MRV & analytics","panel.i1d":"GHG inventory, transparency, metrics, dashboards.",
+        "panel.i2t":"Project pipeline","panel.i2d":"Concept notes, readiness, investment planning, coordination.",
+        "panel.i3t":"Policy & capacity","panel.i3d":"NDC support, roadmaps, training and methods.",
+        "panel.footer":"For official requests:","panel.emailLabel":"Email",
+        "about.title":"About the Center",
+        "about.p1":"The National Center for Climate Change supports Uzbekistan’s resilient, low-emission development pathway.",
+        "about.p2":"We coordinate cross-sector action, develop analytics, and work with partners to deliver measurable results.",
+        "tags.t1":"NDC implementation","tags.t2":"MRV / BTR","tags.t3":"Early warning","tags.t4":"Climate finance","tags.t5":"Air • water • land",
+        "about.card1.t":"Mission","about.card1.d":"Evidence-based policy support and delivery through data, coordination and implementation capacity.",
+        "about.card2.t":"Focus","about.card2.d":"Mitigation, adaptation, loss & damage, and climate mainstreaming in investments.",
+        "about.card3.t":"Approach","about.card3.d":"Toolkits, dashboards, pipelines and institutional strengthening.",
+        "about.card4.t":"Results","about.card4.d":"Transparent metrics and quality assurance to track progress over time.",
+        "about.banner.t":"Need official information or partnership?","about.banner.d":"We respond to requests and coordinate with agencies and partners.","about.banner.cta":"Get in touch",
+        "work.title":"Key directions","work.lead":"Portfolio structure for public communication and partner coordination.",
+        "work.c1.t":"Climate policy & NDC","work.c1.i1":"Sector roadmaps","work.c1.i2":"Coordination and reporting","work.c1.i3":"Guidance and methods",
+        "work.c2.t":"MRV / Transparency","work.c2.i1":"GHG inventory and QA/QC","work.c2.i2":"BTR analytics and data","work.c2.i3":"Digital tools",
+        "work.c3.t":"Risks & adaptation","work.c3.i1":"Risk screening and resilience plans","work.c3.i2":"Early warning and F2A","work.c3.i3":"Pilots",
+        "work.c4.t":"Air quality & health","work.c4.i1":"Monitoring modernization","work.c4.i2":"Exposure and communication","work.c4.i3":"Preparedness",
+        "work.c5.t":"Nature-based solutions","work.c5.i1":"Land restoration","work.c5.i2":"Water-smart AFOLU","work.c5.i3":"Biodiversity",
+        "work.c6.t":"Finance & partnerships","work.c6.i1":"Readiness and pipeline","work.c6.i2":"Donor coordination","work.c6.i3":"Standards and training",
+        "projects.title":"Projects & initiatives","projects.lead":"Replace placeholders with official names, budgets, regions, and partners.","projects.cta":"Propose cooperation",
+        "projects.p1.tag":"Flagship","projects.p1.t":"National MRV modernization","projects.p1.d":"Data workflows, QA/QC, sector templates and analytics.",
+        "projects.p2.tag":"Program","projects.p2.t":"Air quality & health protection","projects.p2.d":"Monitoring, forecasting, alerts and preparedness measures.",
+        "projects.p3.tag":"Pilot","projects.p3.t":"Land restoration & shelterbelts","projects.p3.d":"Micro-plans, green belts and stewardship models.",
+        "projects.meta.mrv":"MRV","projects.meta.digital":"Digital","projects.meta.national":"National",
+        "projects.meta.aq":"Air quality","projects.meta.health":"Health","projects.meta.ews":"EWS",
+        "projects.meta.land":"Land","projects.meta.nbs":"NbS","projects.meta.regional":"Regional",
+        "projects.note.t":"Tip","projects.note.d":"Later split into pages: /projects, /publications, /team, /procurement.","projects.note.cta":"See updates",
+        "data.title":"Climate data & dashboards","data.lead":"Placeholders for dashboards or iframes later.","data.placeholder":"Placeholder",
+        "data.d1.t":"National indicators","data.d1.d":"Key metrics: emissions, energy intensity, renewables, water stress, land, air quality.",
+        "data.d2.t":"Maps & spatial layers","data.d2.d":"Interactive layers for hazards, drought, dust storms and project sites.",
+        "news.title":"News & updates","news.lead":"Lightweight list with search and tag filter. Later connect CMS or Django.","news.tagAll":"All","news.tagPolicy":"Policy","news.tagData":"Data","news.tagProjects":"Projects","news.tagEvents":"Events",
+        "news.readmore":"Read more / request info","news.empty":"No results.",
+        "news.sub.t":"Subscribe","news.sub.d":"Add mailing list or RSS later.","news.sub.cta":"Request info",
+        "contact.title":"Contact","contact.lead":"Replace placeholders with official address and phone numbers.",
+        "contact.formTitle":"Quick message","contact.formNote":"GitHub Pages has no backend forms by default. Stage 1 uses mailto; later connect Formspree.",
+        "contact.send":"Send",
+        "contact.privacy":"By sending, you agree your message will be processed to respond to your request.",
+        "contact.details":"Details",
+        "contact.email":"Email","contact.phone":"Phone","contact.addr":"Address","contact.addrValue":"Tashkent, Uzbekistan (replace with official address)",
+        "contact.hoursT":"Working hours","contact.hoursD":"Mon–Fri, 09:00–18:00 (Tashkent time)",
+        "footer.line":"Under the Committee on Ecology and Climate Change of the Republic of Uzbekistan",
+        "footer.top":"Back to top","footer.privacy":"Privacy"
+      },
+
+      uz: {
+        "header.subtitle":"Iqlim o‘zgarishi bo‘yicha Milliy markaz",
+        "nav.about":"Markaz haqida","nav.work":"Yo‘nalishlar","nav.projects":"Loyihalar","nav.data":"Ma’lumotlar","nav.news":"Yangiliklar","nav.contact":"Aloqa","nav.lang":"Til",
+        "hero.badge":"O‘zbekiston Respublikasi Ekologiya va iqlim o‘zgarishi qo‘mitasi huzurida",
+        "hero.title":"Iqlim o‘zgarishi bo‘yicha Milliy markaz",
+        "hero.subtitle":"Siyosat • Ilm • Iqlim ma’lumotlari • Xalqaro hamkorlik",
+        "hero.lead":"Biz O‘zbekiston iqlim kun tartibini dalillarga asoslangan siyosat, MRV/analitika, loyiha portfeli va salohiyatni oshirish orqali qo‘llab-quvvatlaymiz.",
+        "hero.cta1":"Loyihalarni ko‘rish","hero.cta2":"Ma’lumotlar va dushbordlar","hero.cta3":"Bog‘lanish",
+        "stats.s1":"Tashabbuslar","stats.s2":"Hamkorlar","stats.s3":"Dushbordlar","stats.s4":"Treninglar",
+        "panel.title":"Biz nimalarni yetkazamiz","panel.note":"Doimiy yangilanadi",
+        "panel.i1t":"MRV va analitika","panel.i1d":"IG inventari, shaffoflik, ko‘rsatkichlar, dushbordlar.",
+        "panel.i2t":"Loyiha portfeli","panel.i2d":"Konseptlar, readiness, investitsion reja, muvofiqlashtirish.",
+        "panel.i3t":"Siyosat va salohiyat","panel.i3d":"NDC, yo‘l xaritalari, trening va metodlar.",
+        "panel.footer":"Rasmiy so‘rovlar uchun:","panel.emailLabel":"Email",
+        "about.title":"Markaz haqida",
+        "about.p1":"Markaz O‘zbekistonning barqaror va past uglerodli rivojlanish yo‘liga o‘tishini qo‘llab-quvvatlaydi.",
+        "about.p2":"Biz tarmoqlararo hamkorlikni muvofiqlashtiramiz, analitika ishlab chiqamiz va hamkorlar bilan natijadorlikka erishamiz.",
+        "tags.t1":"NDC ijrosi","tags.t2":"MRV / BTR","tags.t3":"Erta ogohlantirish","tags.t4":"Iqlim moliyasi","tags.t5":"Havo • suv • yer",
+        "about.card1.t":"Missiya","about.card1.d":"Ma’lumot va koordinatsiya orqali iqlim siyosatini amaliy natijaga aylantirish.",
+        "about.card2.t":"Fokus","about.card2.d":"Mitigatsiya, moslashuv, loss & damage va investitsiyalarda iqlim.",
+        "about.card3.t":"Yondashuv","about.card3.d":"Asboblar, dushbordlar, loyiha portfeli va institutlarni kuchaytirish.",
+        "about.card4.t":"Natija","about.card4.d":"Shaffof metrikalar va sifat nazorati bilan progressni kuzatish.",
+        "about.banner.t":"Rasmiy ma’lumot yoki hamkorlik kerakmi?","about.banner.d":"So‘rovlarga javob beramiz va idoralar/hamkorlar bilan muvofiqlashtiramiz.","about.banner.cta":"Yozish",
+        "work.title":"Asosiy yo‘nalishlar","work.lead":"Ommaviy kommunikatsiya va hamkorlar bilan ishlash uchun portfel tuzilmasi.",
+        "work.c1.t":"Iqlim siyosati va NDC","work.c1.i1":"Tarmoqlar yo‘l xaritalari","work.c1.i2":"Muvofiqlashtirish va hisobot","work.c1.i3":"Metodika va qo‘llanmalar",
+        "work.c2.t":"MRV / Shaffoflik","work.c2.i1":"IG inventari va QA/QC","work.c2.i2":"BTR analitika va data","work.c2.i3":"Raqamli vositalar",
+        "work.c3.t":"Xatarlar va moslashuv","work.c3.i1":"Xatar skriningi va chidamlilik rejalari","work.c3.i2":"Erta ogohlantirish va F2A","work.c3.i3":"Pilotlar",
+        "work.c4.t":"Havo sifati va sog‘liq","work.c4.i1":"Monitoring modernizatsiyasi","work.c4.i2":"Ekspozitsiya va kommunikatsiya","work.c4.i3":"Tayyorgarlik",
+        "work.c5.t":"Tabiatga asoslangan yechimlar","work.c5.i1":"Yerlarni tiklash","work.c5.i2":"Suv tejamkor AFOLU","work.c5.i3":"Bioxilma-xillik",
+        "work.c6.t":"Moliyalashtirish va hamkorlik","work.c6.i1":"Readiness va pipeline","work.c6.i2":"Donorlar bilan koordinatsiya","work.c6.i3":"Standartlar va trening",
+        "projects.title":"Loyihalar va tashabbuslar","projects.lead":"Pleysholderlarni rasmiy nom, byudjet, hudud va hamkorlar bilan almashtiring.","projects.cta":"Hamkorlik taklifi",
+        "projects.p1.tag":"Flagship","projects.p1.t":"MRV modernizatsiyasi","projects.p1.d":"Data oqimlari, QA/QC, tarmoq shablonlari va analitika.",
+        "projects.p2.tag":"Dastur","projects.p2.t":"Havo sifati va sog‘liqni himoya","projects.p2.d":"Monitoring, prognoz, ogohlantirish va tayyorgarlik chorasi.",
+        "projects.p3.tag":"Pilot","projects.p3.t":"Yer tiklash va ihota o‘rmon yo‘laklari","projects.p3.d":"Mikroreja, yashil belbog‘lar va stewardship modeli.",
+        "projects.meta.mrv":"MRV","projects.meta.digital":"Raqamli","projects.meta.national":"Milliy",
+        "projects.meta.aq":"Havo","projects.meta.health":"Sog‘liq","projects.meta.ews":"EWS",
+        "projects.meta.land":"Yer","projects.meta.nbs":"NbS","projects.meta.regional":"Hududiy",
+        "projects.note.t":"Maslahat","projects.note.d":"Keyin sahifalarga ajratish oson: /projects, /publications, /team, /procurement.","projects.note.cta":"Yangiliklar",
+        "data.title":"Iqlim ma’lumotlari va dushbordlar","data.lead":"Dushbord yoki iframe uchun pleysholderlar.","data.placeholder":"Pleysholder",
+        "data.d1.t":"Milliy ko‘rsatkichlar","data.d1.d":"Asosiy metrikalar: emissiya, energiya intensivligi, qayta tiklanuvchi, suv stressi, yer, havo.",
+        "data.d2.t":"Xaritalar va qatlamlar","data.d2.d":"Xatarlar, qurg‘oqchilik, chang bo‘ronlari va loyiha joylari uchun interaktiv qatlamlar.",
+        "news.title":"Yangiliklar","news.lead":"Qidiruv va filtrli yengil ro‘yxat. Keyin CMS yoki Django ulanadi.","news.tagAll":"Barchasi","news.tagPolicy":"Siyosat","news.tagData":"Ma’lumotlar","news.tagProjects":"Loyihalar","news.tagEvents":"Tadbirlar",
+        "news.readmore":"Batafsil / so‘rov","news.empty":"Natija topilmadi.",
+        "news.sub.t":"Obuna","news.sub.d":"Keyin email/RSS qo‘shish mumkin.","news.sub.cta":"So‘rov",
+        "contact.title":"Aloqa","contact.lead":"Pleysholderlarni rasmiy manzil va telefon bilan almashtiring.",
+        "contact.formTitle":"Tezkor xabar","contact.formNote":"GitHub Pages’da backend forma yo‘q. 1-bosqich mailto; keyin Formspree.",
+        "contact.send":"Yuborish",
+        "contact.privacy":"Yuborish orqali so‘rovingizga javob berish uchun ma’lumot qayta ishlanadi.",
+        "contact.details":"Rekvizitlar",
+        "contact.email":"Email","contact.phone":"Telefon","contact.addr":"Manzil","contact.addrValue":"Toshkent, O‘zbekiston (rasmiy manzilga almashtiring)",
+        "contact.hoursT":"Ish vaqti","contact.hoursD":"Du–Ju, 09:00–18:00 (Toshkent)",
+        "footer.line":"O‘zbekiston Respublikasi Ekologiya va iqlim o‘zgarishi qo‘mitasi huzurida",
+        "footer.top":"Yuqoriga","footer.privacy":"Maxfiylik"
+      }
+    };
+
+    function i18n(lang, key){ return (dict[lang] && dict[lang][key]) ? dict[lang][key] : key; }
+
+    function applyLang(lang) {
+      state.lang = lang;
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = i18n(lang, key);
+      });
+      // update search placeholder (not in dict to keep short)
+      newsSearch.placeholder = (lang === 'ru') ? 'Поиск…' : (lang === 'uz' ? 'Qidiruv…' : 'Search…');
+      renderNews();
+      document.documentElement.lang = lang;
+    }
+
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
+    });
+
+    // -----------------------------
+    //  mailto form
+    // -----------------------------
+    function sendMailto(e){
+      e.preventDefault();
+      const name = document.getElementById('fName').value.trim();
+      const email = document.getElementById('fEmail').value.trim();
+      const subject = document.getElementById('fSubject').value.trim();
+      const msg = document.getElementById('fMsg').value.trim();
+      const body = `Name: ${name}%0AEmail: ${email}%0A%0A${encodeURIComponent(msg)}`;
+      window.location.href = `mailto:info@nccc.uz?subject=${encodeURIComponent(subject)}&body=${body}`;
+      return false;
+    }
+    window.sendMailto = sendMailto;
+
+    // Init
+    document.getElementById('year').textContent = new Date().getFullYear();
+    applyLang(state.lang);
+    renderNews();
+  </script>
+</body>
+</html>
