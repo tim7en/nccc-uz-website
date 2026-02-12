@@ -292,7 +292,8 @@ var all=j.concat(c);
 $("scL").innerHTML=all.length?all.map(function(s){return'<li><div class="si2"><strong>'+h(s.title)+'</strong><a target="_blank" rel="noopener noreferrer" href="'+a(s.url)+'">'+h(s.url)+'</a></div>'+(s.custom&&adm?'<button class="bsm bd2" data-ds="'+a(s.id)+'">'+t("del")+'</button>':"")+"</li>"}).join(""):"<li>"+t("noSc")+"</li>"
 }
 
-function rPubs(){var list=gPu();$("puL").innerHTML=list.length?list.map(function(p){return pH(p,adm)}).join(""):"<div class='mu'>"+t("noPu")+"</div>"}
+function rPubs(){var list=gPu();$("puL").innerHTML=list.length?list.map(function(p){return pHC(p)}).join(""):"<div class='mu'>"+t("noPu")+"</div>"}
+function pHC(p){return'<article class="item"><div class="it" style="flex-wrap:nowrap"><div style="min-width:0"><h3 style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+h(p.title)+'</h3><time class="ms">'+fd((p.createdAt||"").slice(0,10))+'</time></div><div class="bg2" style="flex-shrink:0"><button class="bsm" data-pr="'+a(p.id)+'">'+t("pr")+'</button><button class="bsm bp2" data-ep="'+a(p.id)+'">'+t("edt")+'</button><button class="bsm bd2" data-dpu="'+a(p.id)+'">'+t("del")+'</button></div></div></article>'}
 function pH(p,cp){
 var im=(p.images||[]).map(function(i){return'<img src="'+a(i.url)+'" alt="'+a(i.name||"")+'">'}).join("");
 var btns="";if(cp){btns='<div class="bg2"><button class="bsm" data-pr="'+a(p.id)+'">'+t("pr")+'</button><button class="bsm bp2" data-ep="'+a(p.id)+'">'+t("edt")+'</button><button class="bsm bd2" data-dpu="'+a(p.id)+'">'+t("del")+'</button></div>'}
