@@ -1,216 +1,1251 @@
 <!doctype html>
-<html lang="uz">
+<html lang="uz" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0f6b4f">
+  <meta name="theme-color" content="#0d9488">
   <title>Iqlim o'zgarishi bo'yicha Milliy markaz</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#edf7f1;--c:#123627;--m:#4f6f63;--b:#c5ddd2;--w:#fff;--a:#0f6b4f;--a2:#0f618f}
-    *{box-sizing:border-box} body{margin:0;font-family:"Public Sans",sans-serif;color:var(--c);background:linear-gradient(180deg,#edf7f1,#dceee4)}
-    h1,h2,h3{font-family:"Sora",sans-serif;margin:0} p{margin:0;line-height:1.6} a{color:var(--a2);text-decoration:none} a:hover{text-decoration:underline}
-    .wrap{width:min(1080px,100% - 2rem);margin-inline:auto}
-    .top{position:sticky;top:0;background:#edf7f1e8;backdrop-filter:blur(8px);border-bottom:1px solid var(--b);z-index:20}
-    .top .wrap{display:flex;gap:1rem;justify-content:space-between;align-items:center;padding:.7rem 0}
-    .logo{display:flex;gap:.6rem;align-items:center}.mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#31a776,#0f618f);display:grid;place-items:center;color:#fff;font-weight:700}
-    .logo small{display:block;color:var(--m)} nav{display:flex;gap:.45rem;flex-wrap:wrap} nav a{padding:.35rem .55rem;border-radius:.5rem;font-size:.88rem;color:var(--c);font-weight:600}
-    nav a:hover{text-decoration:none;background:#d9ece2}
-    .hero{padding:2rem 0 1rem;display:grid;grid-template-columns:1.25fr .95fr;gap:.8rem}
-    .card{background:var(--w);border:1px solid var(--b);border-radius:14px;padding:1rem}
-    .pill{font-size:.74rem;background:#ddf4e9;border:1px solid #bde0cd;border-radius:999px;padding:.24rem .6rem;display:inline-block;font-weight:700;margin-bottom:.6rem}
-    .muted{color:var(--m);font-size:.9rem}
-    .meta{display:grid;gap:.45rem}.meta div{display:flex;justify-content:space-between;gap:.5rem;border:1px solid var(--b);border-radius:10px;padding:.5rem .6rem;background:#f8fdfb;font-size:.86rem}
-    section{margin-top:.8rem}
-    .head{display:flex;justify-content:space-between;align-items:end;gap:.6rem;margin-bottom:.7rem}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
-    .tile{border:1px solid var(--b);background:#f8fdfb;border-radius:12px;padding:.8rem}
-    .tile h3{font-size:.95rem;margin-bottom:.35rem}.tile p{font-size:.88rem;color:var(--m);margin-bottom:.4rem}
-    .timeline,.pubs{display:grid;gap:.55rem}
-    .item{border:1px solid var(--b);border-radius:12px;background:#fff;padding:.8rem}
-    .item-top{display:flex;justify-content:space-between;gap:.6rem;align-items:center;flex-wrap:wrap;margin-bottom:.35rem}
-    .badge{font-size:.72rem;padding:.18rem .5rem;border-radius:999px;border:1px solid #b9dced;background:#e9f5fb;color:#115b7e;font-weight:700}
-    .item p{font-size:.9rem;color:var(--m);margin:.35rem 0}
-    .tools{display:flex;gap:.5rem;flex-wrap:wrap}
-    input,select,textarea,button{font:inherit;border:1px solid #b9d6c8;border-radius:10px;background:#fff;color:var(--c);padding:.52rem .62rem}
-    input,select{min-height:2.25rem} textarea{min-height:92px;resize:vertical}
-    button{cursor:pointer;font-weight:600}
-    .pri{background:linear-gradient(135deg,var(--a),var(--a2));color:#fff;border-color:var(--a)}
-    .admin{display:grid;grid-template-columns:.95fr 1.05fr;gap:.65rem}
-    .field{display:grid;gap:.25rem;margin-bottom:.45rem}.field label{font-size:.8rem;color:var(--m);font-weight:600}
-    .status{font-size:.8rem;border:1px solid;border-radius:9px;padding:.45rem .55rem;margin-top:.5rem}
-    .ok{color:#1c7b47;background:#f3fbf6;border-color:#bde2cb}.warn{color:#9d5814;background:#fff8ef;border-color:#f0d3b4}.err{color:#a62a2a;background:#fff5f5;border-color:#f0c6c6}
-    .hidden{display:none!important}
-    .preview p{margin-bottom:.45rem;color:#2b4b3f}
-    .imgs{display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem;margin-top:.45rem}
-    .imgs img{width:100%;max-height:130px;object-fit:cover;border:1px solid #bcd8ca;border-radius:8px}
-    ul.src{list-style:none;padding:0;margin:0;display:grid;gap:.45rem}
-    ul.src li{border:1px solid var(--b);border-radius:10px;padding:.55rem .65rem;background:#f8fdfb;font-size:.88rem}
-    footer{border-top:1px solid var(--b);margin-top:1rem;padding:1rem 0 1.5rem;color:var(--m);font-size:.82rem}
-    @media (max-width:920px){.hero,.grid3,.admin,.imgs{grid-template-columns:1fr}.top .wrap{flex-direction:column;align-items:start}}
-    @media print{body *{visibility:hidden} #printArea,#printArea *{visibility:visible} #printArea{position:absolute;inset:0;background:#fff;color:#000;padding:16px}}
+    /* ── Theme Variables ── */
+    :root {
+      --bg: #f1f5f9;
+      --bg2: #e2e8f0;
+      --surface: #ffffff;
+      --surface2: #f8fafc;
+      --text: #0f172a;
+      --text2: #475569;
+      --text3: #94a3b8;
+      --border: #e2e8f0;
+      --border2: #cbd5e1;
+      --primary: #0d9488;
+      --primary-light: #ccfbf1;
+      --primary-dark: #0f766e;
+      --accent: #0891b2;
+      --accent-light: #cffafe;
+      --danger: #dc2626;
+      --danger-light: #fef2f2;
+      --warning: #d97706;
+      --warning-light: #fffbeb;
+      --success: #16a34a;
+      --success-light: #f0fdf4;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+      --shadow: 0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.04);
+      --shadow-md: 0 4px 6px rgba(0,0,0,.06), 0 2px 4px rgba(0,0,0,.04);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,.08), 0 4px 6px rgba(0,0,0,.04);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-xs: 6px;
+      --header-bg: rgba(241,245,249,.82);
+      --transition: .3s cubic-bezier(.4,0,.2,1);
+    }
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --bg2: #1e293b;
+      --surface: #1e293b;
+      --surface2: #334155;
+      --text: #f1f5f9;
+      --text2: #94a3b8;
+      --text3: #64748b;
+      --border: #334155;
+      --border2: #475569;
+      --primary: #14b8a6;
+      --primary-light: #042f2e;
+      --primary-dark: #2dd4bf;
+      --accent: #22d3ee;
+      --accent-light: #164e63;
+      --danger: #f87171;
+      --danger-light: #450a0a;
+      --warning: #fbbf24;
+      --warning-light: #451a03;
+      --success: #4ade80;
+      --success-light: #052e16;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.2);
+      --shadow: 0 1px 3px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.15);
+      --shadow-md: 0 4px 6px rgba(0,0,0,.2), 0 2px 4px rgba(0,0,0,.12);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,.25), 0 4px 6px rgba(0,0,0,.15);
+      --header-bg: rgba(15,23,42,.82);
+    }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      transition: background var(--transition), color var(--transition);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: "Sora", sans-serif; line-height: 1.3; }
+    a { color: var(--primary); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--primary-dark); text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ── Layout ── */
+    .wrap { width: min(1140px, 100% - 2rem); margin-inline: auto; }
+
+    /* ── Header ── */
+    .header {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--header-bg);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .header .wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .75rem 0; gap: 1rem;
+    }
+    .logo { display: flex; align-items: center; gap: .65rem; text-decoration: none; color: var(--text); flex-shrink: 0; }
+    .logo:hover { text-decoration: none; color: var(--text); }
+    .logo-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .logo-text { font-weight: 700; font-size: .95rem; line-height: 1.25; }
+    .logo-text small { font-weight: 400; font-size: .75rem; color: var(--text2); display: block; }
+
+    .header-right { display: flex; align-items: center; gap: .5rem; }
+
+    /* ── Navigation ── */
+    .nav { display: flex; align-items: center; gap: .15rem; flex-wrap: wrap; }
+    .nav a {
+      padding: .4rem .7rem; border-radius: var(--radius-xs); font-size: .875rem;
+      font-weight: 500; color: var(--text2); white-space: nowrap;
+      transition: background var(--transition), color var(--transition);
+    }
+    .nav a:hover, .nav a.active {
+      background: var(--primary-light); color: var(--primary); text-decoration: none;
+    }
+
+    /* ── Hamburger ── */
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: .4rem; color: var(--text); border-radius: var(--radius-xs);
+    }
+    .hamburger:hover { background: var(--bg2); }
+    .hamburger svg { width: 22px; height: 22px; }
+
+    /* ── Theme Toggle ── */
+    .theme-btn {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-xs); cursor: pointer; padding: .45rem;
+      color: var(--text2); display: grid; place-items: center;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .theme-btn:hover { background: var(--bg2); color: var(--text); }
+    .theme-btn svg { width: 18px; height: 18px; }
+    .theme-btn .icon-sun { display: none; }
+    .theme-btn .icon-moon { display: block; }
+    [data-theme="dark"] .theme-btn .icon-sun { display: block; }
+    [data-theme="dark"] .theme-btn .icon-moon { display: none; }
+
+    /* ── Sections ── */
+    .section { display: none; padding: 1.5rem 0; animation: fadeIn .35s ease; }
+    .section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .card:hover { box-shadow: var(--shadow); }
+    .card + .card { margin-top: .75rem; }
+
+    /* ── Hero ── */
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 1rem; }
+    .hero-card {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff; border: none; position: relative; overflow: hidden;
+    }
+    .hero-card::after {
+      content: ""; position: absolute; top: -50%; right: -30%; width: 200px; height: 200px;
+      background: rgba(255,255,255,.08); border-radius: 50%;
+    }
+    .hero-card h1 { font-size: 1.5rem; margin-bottom: .5rem; position: relative; z-index: 1; }
+    .hero-card p { opacity: .9; font-size: .95rem; position: relative; z-index: 1; }
+    .hero-status {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .8rem; padding: .3rem .7rem; border-radius: 999px;
+      margin-top: .75rem; position: relative; z-index: 1;
+    }
+    .hero-status.ok { background: rgba(255,255,255,.2); color: #fff; }
+    .hero-status.warn { background: rgba(255,200,50,.25); color: #fef3c7; }
+    .hero-status.err { background: rgba(255,80,80,.25); color: #fecaca; }
+    .stats-grid { display: grid; gap: .5rem; }
+    .stat-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .6rem .75rem; border: 1px solid var(--border);
+      border-radius: var(--radius-sm); background: var(--surface2);
+      font-size: .875rem; transition: background var(--transition), border-color var(--transition);
+    }
+    .stat-row strong { color: var(--text); }
+    .stat-row span { color: var(--text2); font-weight: 500; }
+
+    /* ── Section Headers ── */
+    .section-header { margin-bottom: 1rem; }
+    .section-header h2 { font-size: 1.25rem; margin-bottom: .2rem; }
+    .section-header p { color: var(--text2); font-size: .9rem; }
+    .section-header-flex {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;
+    }
+
+    /* ── Grid layouts ── */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+
+    /* ── Tiles ── */
+    .tile {
+      border: 1px solid var(--border); background: var(--surface2);
+      border-radius: var(--radius-sm); padding: 1rem;
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .tile:hover { box-shadow: var(--shadow); }
+    .tile h3 { font-size: .95rem; margin-bottom: .4rem; }
+    .tile p { font-size: .875rem; color: var(--text2); margin-bottom: .5rem; }
+
+    /* ── Timeline Items ── */
+    .items { display: grid; gap: .6rem; }
+    .item {
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--surface); padding: 1rem;
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .item:hover { box-shadow: var(--shadow); }
+    .item-top {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: .5rem; flex-wrap: wrap; margin-bottom: .4rem;
+    }
+    .item h3 { font-size: .975rem; }
+    .item p { font-size: .875rem; color: var(--text2); margin: .35rem 0; }
+
+    /* ── Badges & Pills ── */
+    .badge {
+      display: inline-block; font-size: .72rem; font-weight: 600;
+      padding: .15rem .5rem; border-radius: 999px;
+      background: var(--primary-light); color: var(--primary);
+      border: 1px solid var(--primary); border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+    }
+    .badge-accent {
+      background: var(--accent-light); color: var(--accent);
+      border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+    }
+    .pill {
+      display: inline-block; font-size: .75rem; font-weight: 600;
+      padding: .25rem .65rem; border-radius: 999px;
+      background: var(--primary-light); color: var(--primary);
+    }
+
+    /* ── Forms ── */
+    input, select, textarea, button { font: inherit; }
+    input, select, textarea {
+      width: 100%; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--surface); color: var(--text); padding: .55rem .7rem;
+      font-size: .875rem;
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none; border-color: var(--primary);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 15%, transparent);
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    .field { display: grid; gap: .3rem; margin-bottom: .6rem; }
+    .field label { font-size: .8rem; font-weight: 600; color: var(--text2); }
+
+    /* ── Buttons ── */
+    button {
+      cursor: pointer; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--surface); color: var(--text); padding: .55rem 1rem;
+      font-weight: 600; font-size: .875rem;
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition), color var(--transition);
+    }
+    button:hover { background: var(--bg2); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff; border-color: var(--primary);
+    }
+    .btn-primary:hover { opacity: .9; background: linear-gradient(135deg, var(--primary), var(--accent)); }
+    .btn-danger { background: var(--danger-light); color: var(--danger); border-color: var(--danger); }
+    .btn-danger:hover { background: var(--danger); color: #fff; }
+    .btn-sm { padding: .35rem .65rem; font-size: .8rem; }
+    .btn-group { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+    /* ── Status Messages ── */
+    .status {
+      font-size: .8rem; border-radius: var(--radius-sm);
+      padding: .5rem .7rem; margin-top: .5rem;
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .status.ok { background: var(--success-light); color: var(--success); border: 1px solid color-mix(in srgb, var(--success) 25%, transparent); }
+    .status.warn { background: var(--warning-light); color: var(--warning); border: 1px solid color-mix(in srgb, var(--warning) 25%, transparent); }
+    .status.err { background: var(--danger-light); color: var(--danger); border: 1px solid color-mix(in srgb, var(--danger) 25%, transparent); }
+
+    /* ── Tabs ── */
+    .tabs { display: flex; gap: .25rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .tab-btn {
+      border: none; background: none; padding: .6rem 1rem; font-weight: 600;
+      color: var(--text2); border-bottom: 2px solid transparent;
+      border-radius: 0; cursor: pointer; font-size: .875rem;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .tab-btn:hover { color: var(--text); background: none; }
+    .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Admin Grid ── */
+    .admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+
+    /* ── Preview Content ── */
+    .preview-content { color: var(--text); line-height: 1.7; }
+    .preview-content p { margin-bottom: .6rem; }
+    .preview-content img { max-width: 100%; height: auto; border-radius: var(--radius-sm); margin: .5rem 0; }
+    .preview-content table { width: 100%; border-collapse: collapse; margin: .5rem 0; }
+    .preview-content td, .preview-content th { border: 1px solid var(--border); padding: .4rem .6rem; font-size: .875rem; }
+
+    /* ── Image Grid ── */
+    .img-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: .5rem; margin-top: .6rem;
+    }
+    .img-grid img {
+      width: 100%; height: 160px; object-fit: cover;
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      transition: transform .2s;
+    }
+    .img-grid img:hover { transform: scale(1.02); }
+
+    /* ── Sources List ── */
+    .source-list { list-style: none; display: grid; gap: .5rem; }
+    .source-list li {
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: .7rem .85rem; background: var(--surface2); font-size: .875rem;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .source-list li strong { display: block; margin-bottom: .2rem; }
+
+    /* ── Page View ── */
+    .page-header { margin-bottom: 1.25rem; }
+    .page-header h1 { font-size: 1.5rem; margin-bottom: .35rem; }
+    .page-meta { color: var(--text2); font-size: .85rem; display: flex; gap: 1rem; align-items: center; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .875rem; font-weight: 500; margin-bottom: 1rem;
+    }
+    .page-body { line-height: 1.8; font-size: .95rem; }
+    .page-body p { margin-bottom: .75rem; }
+    .page-body img { max-width: 100%; height: auto; border-radius: var(--radius-sm); margin: .75rem 0; }
+    .page-body table { width: 100%; border-collapse: collapse; margin: .5rem 0; }
+    .page-body td, .page-body th { border: 1px solid var(--border); padding: .5rem .7rem; }
+
+    /* ── Pages List ── */
+    .page-card {
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 1rem; background: var(--surface);
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .page-card:hover { box-shadow: var(--shadow); }
+    .page-card h3 { font-size: 1rem; margin-bottom: .3rem; }
+    .page-card .slug { font-size: .8rem; color: var(--text3); font-family: monospace; }
+    .page-card time { font-size: .8rem; color: var(--text2); }
+    .page-card-actions { display: flex; gap: .4rem; margin-top: .6rem; }
+
+    /* ── Filter Tools ── */
+    .filter-tools { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .filter-tools input, .filter-tools select { width: auto; min-width: 160px; }
+
+    /* ── Muted Text ── */
+    .muted { color: var(--text2); font-size: .9rem; }
+    .muted-sm { color: var(--text3); font-size: .82rem; }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid var(--border); margin-top: 2rem;
+      padding: 1.25rem 0 1.5rem; color: var(--text3); font-size: .82rem;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .footer a { color: var(--text2); }
+
+    /* ── Toast ── */
+    .toast-container { position: fixed; top: 1rem; right: 1rem; z-index: 100; display: grid; gap: .4rem; }
+    .toast {
+      padding: .6rem 1rem; border-radius: var(--radius-sm); font-size: .85rem;
+      font-weight: 500; box-shadow: var(--shadow-lg); animation: toastIn .3s ease;
+      color: #fff;
+    }
+    .toast.ok { background: var(--success); }
+    .toast.err { background: var(--danger); }
+    .toast.warn { background: var(--warning); color: #000; }
+    @keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+
+    .hidden { display: none !important; }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .hero-grid, .grid-3, .admin-grid { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .header .wrap { flex-wrap: wrap; }
+      .nav { display: none; position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--surface); border-bottom: 1px solid var(--border);
+        flex-direction: column; padding: .5rem; box-shadow: var(--shadow-md);
+      }
+      .nav.open { display: flex; }
+      .nav a { padding: .6rem .8rem; border-radius: var(--radius-xs); }
+      .hamburger { display: block; }
+      .section { padding: 1rem 0; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      body * { visibility: hidden; }
+      #printArea, #printArea * { visibility: visible; }
+      #printArea { position: absolute; inset: 0; background: #fff; color: #000; padding: 20px; }
+      #printArea img { max-width: 100%; height: auto; }
+    }
   </style>
 </head>
 <body>
-  <header class="top">
+  <!-- Toast Container -->
+  <div class="toast-container" id="toasts"></div>
+
+  <!-- Header -->
+  <header class="header">
     <div class="wrap">
-      <div class="logo"><div class="mark">N</div><div><strong>Iqlim o'zgarishi bo'yicha Milliy markaz</strong><small>National Center for Climate Change</small></div></div>
-      <nav>
-        <a href="#markaz">Markaz</a><a href="#qaror">Qarorlar</a><a href="#news">Yangiliklar</a><a href="#admin">Admin</a><a href="#src">Manbalar</a>
-      </nav>
+      <a href="#home" class="logo">
+        <div class="logo-icon">N</div>
+        <div class="logo-text">
+          Milliy markaz
+          <small>Iqlim o'zgarishi bo'yicha</small>
+        </div>
+      </a>
+      <div class="header-right">
+        <nav class="nav" id="nav">
+          <a href="#home" data-route="home">Bosh sahifa</a>
+          <a href="#about" data-route="about">Markaz</a>
+          <a href="#decisions" data-route="decisions">Qarorlar</a>
+          <a href="#news" data-route="news">Yangiliklar</a>
+          <a href="#pages" data-route="pages">Sahifalar</a>
+          <a href="#sources" data-route="sources">Manbalar</a>
+          <a href="#admin" data-route="admin">Admin</a>
+        </nav>
+        <button class="theme-btn" id="themeToggle" title="Mavzuni almashtirish">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="hamburger" id="menuBtn" aria-label="Menyu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="hero">
-      <article class="card">
-        <span class="pill">Internet manbalari bilan to'ldirildi</span>
-        <h1>Iqlim va atmosfera bo'yicha yangilangan portal</h1>
-        <p id="desc" class="muted" style="margin-top:.6rem">Markaz bo'yicha ma'lumotlar, oxirgi qarorlar, va Farrux Sattarov haqidagi yangiliklar jamlandi.</p>
-        <div id="dataStatus" class="status warn">Ma'lumotlar yuklanmoqda...</div>
-      </article>
-      <aside class="card">
-        <h3 style="font-size:1rem;margin-bottom:.55rem">Asosiy ko'rsatkichlar</h3>
-        <div class="meta">
-          <div><strong>Oxirgi update</strong><span id="updated">-</span></div>
-          <div><strong>Qarorlar</strong><span id="dcount">-</span></div>
-          <div><strong>Yangiliklar</strong><span id="ncount">-</span></div>
-          <div><strong>Admin login</strong><span><code>uzncc</code></span></div>
+    <!-- ══ HOME ══ -->
+    <section id="sec-home" class="section">
+      <div class="hero-grid">
+        <div class="card hero-card">
+          <h1>Iqlim o'zgarishi bo'yicha Milliy markaz</h1>
+          <p id="heroDesc">Markaz bo'yicha ma'lumotlar, oxirgi qarorlar va yangiliklar jamlandi.</p>
+          <div id="dataStatus" class="hero-status warn">Ma'lumotlar yuklanmoqda...</div>
         </div>
-      </aside>
-    </section>
-
-    <section id="markaz" class="card">
-      <div class="head"><div><h2>Milliy markaz haqida</h2><p id="org" class="muted"></p></div></div>
-      <div id="highlights" class="grid3"></div>
-    </section>
-
-    <section id="qaror" class="card">
-      <div class="head"><div><h2>So'nggi iqlim va atmosfera qarorlari</h2><p class="muted">Aniq sanalar bo'yicha tartiblangan.</p></div></div>
-      <div id="decisions" class="timeline"></div>
-    </section>
-
-    <section id="news" class="card">
-      <div class="head">
-        <div><h2>Yangiliklar (Farrux Sattarov misoli bilan)</h2><p class="muted">Qidiruv va teg filter qo'shildi.</p></div>
-        <div class="tools">
-          <input id="q" type="search" placeholder="Qidiruv...">
-          <select id="tag"><option value="all">Barcha teglar</option><option value="kadr">Kadr</option><option value="institut">Institut</option><option value="atmosfera">Atmosfera</option><option value="reyting">Reyting</option></select>
+        <div class="card">
+          <h3 style="font-size:1rem;margin-bottom:.65rem">Asosiy ko'rsatkichlar</h3>
+          <div class="stats-grid">
+            <div class="stat-row"><strong>Oxirgi yangilanish</strong><span id="statUpdated">-</span></div>
+            <div class="stat-row"><strong>Qarorlar</strong><span id="statDecisions">-</span></div>
+            <div class="stat-row"><strong>Yangiliklar</strong><span id="statNews">-</span></div>
+            <div class="stat-row"><strong>Sahifalar</strong><span id="statPages">-</span></div>
+          </div>
         </div>
       </div>
-      <div id="newsList" class="timeline"></div>
+      <div class="card" style="margin-top:.75rem">
+        <div class="section-header">
+          <h2>Asosiy yo'nalishlar</h2>
+          <p id="heroOrg" class="muted"></p>
+        </div>
+        <div id="highlights" class="grid-3"></div>
+      </div>
     </section>
 
-    <section id="admin" class="card">
-      <div class="head"><div><h2>Administrator nashr markazi</h2><p class="muted">Word + rasm yuklash, nashr qilish va chop etish (faqat admin).</p></div></div>
-      <div class="admin">
-        <div id="gate" class="item">
-          <h3 style="font-size:1rem;margin-bottom:.55rem">Admin kirishi</h3>
-          <form id="loginForm">
-            <div class="field"><label for="u">Login</label><input id="u" required autocomplete="username"></div>
-            <div class="field"><label for="p">Parol</label><input id="p" type="password" required autocomplete="current-password"></div>
-            <button class="pri" type="submit">Kirish</button>
-          </form>
-          <p class="muted" style="margin-top:.5rem">Login: <code>uzncc</code>, Parol: <code>bunyodkor7a</code></p>
-          <div id="msg" class="status warn">Admin holati yopiq.</div>
+    <!-- ══ ABOUT ══ -->
+    <section id="sec-about" class="section">
+      <div class="card">
+        <div class="section-header">
+          <h2>Milliy markaz haqida</h2>
+          <p id="aboutOrg" class="muted"></p>
         </div>
-        <div id="panel" class="item hidden">
-          <h3 style="font-size:1rem;margin-bottom:.55rem">Word hujjatdan nashr</h3>
-          <form id="docForm">
-            <div class="field"><label for="title">Sarlavha</label><input id="title" required></div>
-            <div class="field"><label for="doc">Word (.docx) yoki txt (.txt)</label><input id="doc" type="file" accept=".docx,.txt,.doc"></div>
-            <div class="field"><label for="imgs">Rasmlar</label><input id="imgs" type="file" accept="image/*" multiple></div>
-            <div class="field"><label for="note">Qo'shimcha izoh</label><textarea id="note"></textarea></div>
-            <div class="tools">
-              <button id="previewBtn" type="button">Preview</button>
-              <button class="pri" type="submit">Nashrni saqlash</button>
-              <button id="logout" type="button">Chiqish</button>
+        <p id="aboutDesc" class="muted" style="margin-bottom:1rem"></p>
+        <div id="aboutHighlights" class="grid-3"></div>
+      </div>
+    </section>
+
+    <!-- ══ DECISIONS ══ -->
+    <section id="sec-decisions" class="section">
+      <div class="card">
+        <div class="section-header">
+          <h2>So'nggi iqlim va atmosfera qarorlari</h2>
+          <p class="muted">Aniq sanalar bo'yicha tartiblangan.</p>
+        </div>
+        <div id="decisionsList" class="items"></div>
+      </div>
+    </section>
+
+    <!-- ══ NEWS ══ -->
+    <section id="sec-news" class="section">
+      <div class="card">
+        <div class="section-header-flex">
+          <div>
+            <h2>Yangiliklar</h2>
+            <p class="muted">Qidiruv va teg filter.</p>
+          </div>
+          <div class="filter-tools">
+            <input id="searchInput" type="search" placeholder="Qidiruv...">
+            <select id="tagFilter">
+              <option value="all">Barcha teglar</option>
+              <option value="kadr">Kadr</option>
+              <option value="institut">Institut</option>
+              <option value="atmosfera">Atmosfera</option>
+              <option value="reyting">Reyting</option>
+            </select>
+          </div>
+        </div>
+        <div id="newsList" class="items"></div>
+      </div>
+    </section>
+
+    <!-- ══ PAGES LIST ══ -->
+    <section id="sec-pages" class="section">
+      <div class="card">
+        <div class="section-header">
+          <h2>Sahifalar</h2>
+          <p class="muted">Administrator tomonidan yaratilgan sahifalar.</p>
+        </div>
+        <div id="pagesList" class="items"></div>
+      </div>
+    </section>
+
+    <!-- ══ PAGE VIEW ══ -->
+    <section id="sec-page-view" class="section">
+      <div class="card">
+        <a href="#pages" class="back-link">&larr; Barcha sahifalar</a>
+        <div class="page-header">
+          <h1 id="pageTitle"></h1>
+          <div class="page-meta">
+            <time id="pageDate"></time>
+            <span id="pageSlug" class="muted-sm"></span>
+          </div>
+        </div>
+        <div id="pageBody" class="page-body"></div>
+        <div id="pageImages" class="img-grid"></div>
+      </div>
+    </section>
+
+    <!-- ══ ADMIN ══ -->
+    <section id="sec-admin" class="section">
+      <div class="card">
+        <div class="section-header">
+          <h2>Administrator paneli</h2>
+          <p class="muted">Nashr qilish, sahifa yaratish va boshqarish.</p>
+        </div>
+
+        <!-- Login -->
+        <div id="adminGate" class="admin-grid" style="margin-top:.75rem">
+          <div class="item">
+            <h3 style="font-size:1rem;margin-bottom:.6rem">Admin kirishi</h3>
+            <form id="loginForm">
+              <div class="field"><label for="loginUser">Login</label><input id="loginUser" required autocomplete="username"></div>
+              <div class="field"><label for="loginPass">Parol</label><input id="loginPass" type="password" required autocomplete="current-password"></div>
+              <button class="btn-primary" type="submit">Kirish</button>
+            </form>
+            <div id="loginMsg" class="status warn" style="margin-top:.6rem">Admin holati yopiq.</div>
+          </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="adminPanel" class="hidden" style="margin-top:.75rem">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="pubTab">Nashr qilish</button>
+            <button class="tab-btn" data-tab="pageTab">Sahifa yaratish</button>
+          </div>
+
+          <div class="admin-grid">
+            <!-- Publication Tab -->
+            <div id="pubTab" class="tab-panel active">
+              <h3 style="font-size:1rem;margin-bottom:.6rem">Word hujjatdan nashr</h3>
+              <form id="pubForm">
+                <div class="field"><label for="pubTitle">Sarlavha</label><input id="pubTitle" required></div>
+                <div class="field"><label for="pubDoc">Word (.docx) yoki txt (.txt)</label><input id="pubDoc" type="file" accept=".docx,.txt,.doc"></div>
+                <div class="field"><label for="pubImgs">Rasmlar</label><input id="pubImgs" type="file" accept="image/*" multiple></div>
+                <div class="field"><label for="pubNote">Qo'shimcha izoh</label><textarea id="pubNote"></textarea></div>
+                <div class="btn-group">
+                  <button id="pubPreviewBtn" type="button">Preview</button>
+                  <button class="btn-primary" type="submit">Nashrni saqlash</button>
+                  <button id="logoutBtn" type="button">Chiqish</button>
+                </div>
+              </form>
+              <p class="muted-sm" style="margin-top:.5rem">.doc format brauzerda o'qilmaydi, .docx tavsiya etiladi.</p>
             </div>
-          </form>
-          <p class="muted" style="margin-top:.45rem">.doc format brauzerda to'g'ridan o'qilmaydi, .docx tavsiya etiladi.</p>
+
+            <!-- Page Creation Tab -->
+            <div id="pageTab" class="tab-panel">
+              <h3 style="font-size:1rem;margin-bottom:.6rem">Yangi sahifa yaratish</h3>
+              <form id="pageForm">
+                <div class="field"><label for="pgTitle">Sarlavha</label><input id="pgTitle" required></div>
+                <div class="field"><label for="pgSlug">Slug (URL)</label><input id="pgSlug" required placeholder="masalan: yangilik-sahifasi"></div>
+                <div class="field"><label for="pgDoc">Matn fayli (.docx / .txt)</label><input id="pgDoc" type="file" accept=".docx,.txt,.doc"></div>
+                <div class="field"><label for="pgImgs">Rasmlar</label><input id="pgImgs" type="file" accept="image/*" multiple></div>
+                <div class="field"><label for="pgNote">Qo'shimcha izoh</label><textarea id="pgNote"></textarea></div>
+                <div class="btn-group">
+                  <button id="pgPreviewBtn" type="button">Preview</button>
+                  <button class="btn-primary" type="submit">Sahifani saqlash</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Preview Pane -->
+            <div>
+              <h3 style="font-size:1rem;margin-bottom:.6rem">Preview</h3>
+              <div id="previewPane" class="preview-content muted">Preview hali tayyorlanmagan.</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="item" style="margin-top:.6rem">
-        <h3 style="font-size:1rem;margin-bottom:.45rem">Nashr preview</h3>
-        <div id="preview" class="muted">Preview hali tayyorlanmagan.</div>
+
+      <!-- Publications List -->
+      <div class="card" style="margin-top:.75rem">
+        <div class="section-header">
+          <h2>Nashrlar</h2>
+          <p class="muted">localStorage da saqlangan nashrlar.</p>
+        </div>
+        <div id="pubsList" class="items"></div>
       </div>
     </section>
 
-    <section class="card">
-      <div class="head"><div><h2>Administrator nashrlari</h2><p class="muted">Saqlash joyi localStorage. Chop etish faqat admin holatida chiqadi.</p></div></div>
-      <div id="pubs" class="pubs"></div>
-    </section>
-
-    <section id="src" class="card">
-      <div class="head"><div><h2>Ishlatilgan manbalar</h2><p class="muted">Saytdagi faktlar quyidagi havolalardan olindi.</p></div></div>
-      <ul id="sources" class="src"></ul>
+    <!-- ══ SOURCES ══ -->
+    <section id="sec-sources" class="section">
+      <div class="card">
+        <div class="section-header">
+          <h2>Ishlatilgan manbalar</h2>
+          <p class="muted">Saytdagi faktlar quyidagi havolalardan olindi.</p>
+        </div>
+        <ul id="sourcesList" class="source-list"></ul>
+      </div>
     </section>
   </main>
 
   <div id="printArea" class="hidden"></div>
-  <footer><div class="wrap">Xavfsizlik eslatmasi: bu statik demo. Real loyiha uchun admin autentifikatsiyasi server tomonda bo'lishi shart.</div></footer>
+
+  <footer class="footer">
+    <div class="wrap">
+      Iqlim o'zgarishi bo'yicha Milliy markaz &mdash; O'zbekiston Respublikasi.
+      Xavfsizlik eslatmasi: bu statik demo. Real loyiha uchun admin autentifikatsiyasi server tomonda bo'lishi shart.
+    </div>
+  </footer>
 
   <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
   <script>
-    const D={lastUpdated:"2026-02-12",center:{description:"assets/data/site-content.json yuklanadi.",parentOrg:"",highlights:[]},decisions:[],news:[],sources:[]};
-    const USER="uzncc",PASS="bunyodkor7a",SK="nccc_admin_session_v1",PK="nccc_admin_publications_v1";
-    let data=D,admin=localStorage.getItem(SK)==="1";
-    const $=(i)=>document.getElementById(i),E={status:$("dataStatus"),updated:$("updated"),dcount:$("dcount"),ncount:$("ncount"),desc:$("desc"),org:$("org"),high:$("highlights"),dec:$("decisions"),q:$("q"),tag:$("tag"),news:$("newsList"),src:$("sources"),gate:$("gate"),panel:$("panel"),msg:$("msg"),login:$("loginForm"),logout:$("logout"),docForm:$("docForm"),title:$("title"),doc:$("doc"),imgs:$("imgs"),note:$("note"),previewBtn:$("previewBtn"),preview:$("preview"),pubs:$("pubs"),print:$("printArea")};
-    document.addEventListener("DOMContentLoaded",init);
-    async function init(){await load();renderTop();renderNews();renderSources();bind();adminState();renderPubs()}
-    async function load(){
-      try{
-        const r=await fetch("assets/data/site-content.json",{cache:"no-store"}); if(!r.ok) throw new Error("HTTP "+r.status);
-        data=await r.json(); E.status.textContent="assets/data/site-content.json yuklandi."; E.status.className="status ok";
-      }catch(e){data=D; E.status.textContent="JSON yuklanmadi, fallback ishlatilmoqda: "+e.message; E.status.className="status warn";}
+  (function() {
+    "use strict";
+
+    /* ── Config ── */
+    const USER = "uzncc", PASS = "bunyodkor7a";
+    const SK = "nccc_admin_session_v1";
+    const PK = "nccc_admin_publications_v1";
+    const PAGES_KEY = "nccc_pages_v1";
+    const THEME_KEY = "nccc_theme_v1";
+
+    /* ── Default Data ── */
+    const DEFAULT_DATA = {
+      lastUpdated: "2026-02-12",
+      center: { description: "", parentOrg: "", highlights: [] },
+      decisions: [], news: [], sources: []
+    };
+
+    /* ── State ── */
+    let data = DEFAULT_DATA;
+    let admin = localStorage.getItem(SK) === "1";
+    let currentRoute = "home";
+
+    /* ── DOM Refs ── */
+    const $ = id => document.getElementById(id);
+    const el = {
+      toasts: $("toasts"),
+      nav: $("nav"),
+      menuBtn: $("menuBtn"),
+      themeToggle: $("themeToggle"),
+      /* Home */
+      heroDesc: $("heroDesc"),
+      dataStatus: $("dataStatus"),
+      statUpdated: $("statUpdated"),
+      statDecisions: $("statDecisions"),
+      statNews: $("statNews"),
+      statPages: $("statPages"),
+      heroOrg: $("heroOrg"),
+      highlights: $("highlights"),
+      /* About */
+      aboutOrg: $("aboutOrg"),
+      aboutDesc: $("aboutDesc"),
+      aboutHighlights: $("aboutHighlights"),
+      /* Decisions */
+      decisionsList: $("decisionsList"),
+      /* News */
+      searchInput: $("searchInput"),
+      tagFilter: $("tagFilter"),
+      newsList: $("newsList"),
+      /* Pages */
+      pagesList: $("pagesList"),
+      /* Page View */
+      pageTitle: $("pageTitle"),
+      pageDate: $("pageDate"),
+      pageSlug: $("pageSlug"),
+      pageBody: $("pageBody"),
+      pageImages: $("pageImages"),
+      /* Admin */
+      adminGate: $("adminGate"),
+      adminPanel: $("adminPanel"),
+      loginForm: $("loginForm"),
+      loginUser: $("loginUser"),
+      loginPass: $("loginPass"),
+      loginMsg: $("loginMsg"),
+      logoutBtn: $("logoutBtn"),
+      /* Pub form */
+      pubForm: $("pubForm"),
+      pubTitle: $("pubTitle"),
+      pubDoc: $("pubDoc"),
+      pubImgs: $("pubImgs"),
+      pubNote: $("pubNote"),
+      pubPreviewBtn: $("pubPreviewBtn"),
+      /* Page form */
+      pageForm: $("pageForm"),
+      pgTitle: $("pgTitle"),
+      pgSlug: $("pgSlug"),
+      pgDoc: $("pgDoc"),
+      pgImgs: $("pgImgs"),
+      pgNote: $("pgNote"),
+      pgPreviewBtn: $("pgPreviewBtn"),
+      /* Shared */
+      previewPane: $("previewPane"),
+      pubsList: $("pubsList"),
+      sourcesList: $("sourcesList"),
+      printArea: $("printArea"),
+    };
+
+    /* ── Init ── */
+    document.addEventListener("DOMContentLoaded", init);
+
+    async function init() {
+      initTheme();
+      await loadData();
+      renderHome();
+      renderAbout();
+      renderDecisions();
+      renderNews();
+      renderSources();
+      renderPubs();
+      renderPagesList();
+      bindEvents();
+      adminState();
+      handleRoute();
+      window.addEventListener("hashchange", handleRoute);
     }
-    function renderTop(){
-      E.updated.textContent=f(data.lastUpdated); E.dcount.textContent=String((data.decisions||[]).length); E.ncount.textContent=String((data.news||[]).length);
-      E.desc.textContent=data.center.description||""; E.org.textContent=data.center.parentOrg||"";
-      E.high.innerHTML=(data.center.highlights||[]).map(x=>`<article class="tile"><h3>${h(x.title)}</h3><p>${h(x.detail)}</p><a target="_blank" rel="noopener noreferrer" href="${a(x.source)}">Manba</a></article>`).join("")||"<p class='muted'>Highlight topilmadi.</p>";
-      E.dec.innerHTML=[...(data.decisions||[])].sort((x,y)=>y.date.localeCompare(x.date)).map(x=>`<article class="item"><div class="item-top"><span class="badge">${h(x.category||"Qaror")}</span><time>${f(x.date)}</time></div><h3 style="font-size:1rem">${h(x.title)}</h3><p>${h(x.summary)}</p><a target="_blank" rel="noopener noreferrer" href="${a(x.source)}">Manba</a></article>`).join("")||"<p class='muted'>Qarorlar topilmadi.</p>";
+
+    /* ── Theme ── */
+    function initTheme() {
+      const saved = localStorage.getItem(THEME_KEY);
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = saved || (prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
     }
-    function renderNews(){
-      const q=(E.q.value||"").trim().toLowerCase(),t=E.tag.value||"all";
-      const list=[...(data.news||[])].sort((x,y)=>y.date.localeCompare(x.date)).filter(x=>t==="all"?1:x.tag===t).filter(x=>q?(x.title+" "+x.summary+" "+x.tag).toLowerCase().includes(q):1);
-      E.news.innerHTML=list.map(x=>`<article class="item"><div class="item-top"><time>${f(x.date)}</time><span class="badge">${h(x.tag)}</span></div><h3 style="font-size:1rem">${h(x.title)}</h3><p>${h(x.summary)}</p><a target="_blank" rel="noopener noreferrer" href="${a(x.source)}">Manba</a></article>`).join("")||"<div class='muted'>Natija topilmadi.</div>";
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem(THEME_KEY, next);
     }
-    function renderSources(){E.src.innerHTML=(data.sources||[]).map(s=>`<li><strong>${h(s.title)}</strong><br><a target="_blank" rel="noopener noreferrer" href="${a(s.url)}">${h(s.url)}</a></li>`).join("")||"<li>Manbalar bo'sh.</li>"}
-    function bind(){
-      E.q.addEventListener("input",renderNews); E.tag.addEventListener("change",renderNews);
-      E.login.addEventListener("submit",(e)=>{e.preventDefault(); const u=$("u").value.trim(),p=$("p").value; if(u===USER&&p===PASS){admin=true;localStorage.setItem(SK,"1");setMsg("Admin kirishi muvaffaqiyatli.","ok")}else{admin=false;localStorage.removeItem(SK);setMsg("Login yoki parol xato.","err")} adminState()});
-      E.logout.addEventListener("click",()=>{admin=false;localStorage.removeItem(SK);setMsg("Admin sessiyasi yopildi.","warn");adminState()});
-      E.previewBtn.addEventListener("click",async()=>{try{const d=await buildDraft();E.preview.innerHTML=pubHtml(d,false);setMsg("Preview tayyorlandi.","ok")}catch(e){setMsg(e.message,"err")}});
-      E.docForm.addEventListener("submit",async(e)=>{e.preventDefault(); if(!admin){setMsg("Nashr saqlash faqat admin uchun.","err");return;} try{const p=await buildDraft(); if(!p.bodyHtml.trim()) throw new Error("Nashr matni bo'sh."); const list=pubs(); list.unshift(p); localStorage.setItem(PK,JSON.stringify(list)); E.docForm.reset(); E.preview.innerHTML="<div class='muted'>Preview hali tayyorlanmagan.</div>"; setMsg("Nashr saqlandi.","ok"); renderPubs();}catch(err){setMsg(err.message,"err")}});
-      E.pubs.addEventListener("click",(e)=>{const t=e.target; if(!(t instanceof HTMLElement))return; const id=t.getAttribute("data-print"); if(id) printPub(id);});
-    }
-    function adminState(){admin?(E.gate.classList.add("hidden"),E.panel.classList.remove("hidden")):(E.gate.classList.remove("hidden"),E.panel.classList.add("hidden")); renderPubs()}
-    function setMsg(m,c){E.msg.textContent=m; E.msg.className="status "+c}
-    async function buildDraft(){
-      const title=(E.title.value||"").trim(); if(!title) throw new Error("Sarlavha majburiy.");
-      let body=""; const file=E.doc.files[0];
-      if(file){const n=file.name.toLowerCase();
-        if(n.endsWith(".docx")){if(!window.mammoth) throw new Error("DOCX parser yuklanmadi."); const r=await window.mammoth.convertToHtml({arrayBuffer:await file.arrayBuffer()}); body=safe(r.value||"");}
-        else if(n.endsWith(".txt")) body=toP(await file.text());
-        else if(n.endsWith(".doc")) throw new Error(".doc ni .docx ga aylantiring.");
-        else throw new Error("Faqat .docx yoki .txt.");
+
+    /* ── Router ── */
+    function handleRoute() {
+      const hash = (location.hash || "#home").slice(1);
+      const parts = hash.split("/");
+      const route = parts[0] || "home";
+
+      /* Hide all sections */
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+
+      /* Show target */
+      if (route === "page" && parts[1]) {
+        showPageView(parts[1]);
+        currentRoute = "page";
+      } else {
+        const secId = "sec-" + (route || "home");
+        const sec = document.getElementById(secId);
+        if (sec) {
+          sec.classList.add("active");
+          currentRoute = route;
+        } else {
+          $("sec-home").classList.add("active");
+          currentRoute = "home";
+        }
       }
-      const note=(E.note.value||"").trim(); if(note) body+=toP(note); const imgs=await readImgs(E.imgs.files);
-      return{id:id(),title,createdAt:new Date().toISOString(),bodyHtml:safe(body),images:imgs};
+
+      /* Update nav active state */
+      document.querySelectorAll(".nav a").forEach(a => {
+        const r = a.getAttribute("data-route");
+        a.classList.toggle("active", r === currentRoute || (currentRoute === "page" && r === "pages"));
+      });
+
+      /* Close mobile menu */
+      el.nav.classList.remove("open");
     }
-    function renderPubs(){const list=pubs(); E.pubs.innerHTML=list.length?list.map(p=>pubHtml(p,admin)).join(""):"<div class='muted'>Hozircha nashr yo'q.</div>"}
-    function pubHtml(p,canPrint){const im=(p.images||[]).map(i=>`<img src="${a(i.url)}" alt="${a(i.name||"rasm")}">`).join(""); return `<article class="item"><div class="item-top"><div><h3 style="font-size:1rem">${h(p.title)}</h3><time>${f((p.createdAt||"").slice(0,10))}</time></div>${canPrint?`<button data-print="${a(p.id)}">Chop etish</button>`:""}</div><div class="preview">${p.bodyHtml||"<p>Matn yo'q.</p>"}</div>${im?`<div class="imgs">${im}</div>`:""}</article>`}
-    function printPub(idv){if(!admin){alert("Chop etish faqat admin uchun.");return;} const p=pubs().find(x=>x.id===idv); if(!p){alert("Nashr topilmadi.");return;} E.print.innerHTML=pubHtml(p,false); E.print.classList.remove("hidden"); window.print(); E.print.classList.add("hidden"); E.print.innerHTML=""}
-    function pubs(){try{const x=JSON.parse(localStorage.getItem(PK)||"[]"); return Array.isArray(x)?x:[]}catch{return[]}}
-    function readImgs(fs){return Promise.all(Array.from(fs||[]).map(fm=>new Promise((ok,bad)=>{const r=new FileReader(); r.onload=()=>ok({name:fm.name,url:String(r.result||"")}); r.onerror=()=>bad(new Error("Rasm o'qilmadi: "+fm.name)); r.readAsDataURL(fm)})))}
-    function toP(t){const n=String(t||"").replace(/\r\n/g,"\n").trim(); return n?"<p>"+h(n).split(/\n{2,}/).map(s=>s.replace(/\n/g,"<br>")).join("</p><p>")+"</p>":""}
-    function safe(x){return String(x||"").replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi,"").replace(/\son\w+="[^"]*"/gi,"")}
-    function f(d){if(!d)return"-"; const x=new Date(d+"T00:00:00"); return Number.isNaN(x.getTime())?d:x.toLocaleDateString("uz-UZ",{year:"numeric",month:"long",day:"2-digit"})}
-    function id(){return"pub_"+Date.now()+"_"+Math.random().toString(16).slice(2,8)}
-    function h(v){return String(v||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
-    function a(v){return h(v).replace(/`/g,"")}
+
+    /* ── Data Loading ── */
+    async function loadData() {
+      try {
+        const r = await fetch("assets/data/site-content.json", { cache: "no-store" });
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        data = await r.json();
+        el.dataStatus.textContent = "Ma'lumotlar muvaffaqiyatli yuklandi.";
+        el.dataStatus.className = "hero-status ok";
+      } catch (e) {
+        data = DEFAULT_DATA;
+        el.dataStatus.textContent = "JSON yuklanmadi: " + e.message;
+        el.dataStatus.className = "hero-status err";
+      }
+    }
+
+    /* ── Render: Home ── */
+    function renderHome() {
+      el.heroDesc.textContent = data.center.description || "";
+      el.heroOrg.textContent = data.center.parentOrg || "";
+      el.statUpdated.textContent = formatDate(data.lastUpdated);
+      el.statDecisions.textContent = String((data.decisions || []).length);
+      el.statNews.textContent = String((data.news || []).length);
+      el.statPages.textContent = String(getPages().length);
+      renderHighlights(el.highlights, data.center.highlights);
+    }
+
+    /* ── Render: About ── */
+    function renderAbout() {
+      el.aboutOrg.textContent = data.center.parentOrg || "";
+      el.aboutDesc.textContent = data.center.description || "";
+      renderHighlights(el.aboutHighlights, data.center.highlights);
+    }
+
+    function renderHighlights(container, list) {
+      container.innerHTML = (list || []).map(x => `
+        <article class="tile">
+          <h3>${esc(x.title)}</h3>
+          <p>${esc(x.detail)}</p>
+          <a target="_blank" rel="noopener noreferrer" href="${escAttr(x.source)}">Manba &rarr;</a>
+        </article>
+      `).join("") || "<p class='muted'>Highlight topilmadi.</p>";
+    }
+
+    /* ── Render: Decisions ── */
+    function renderDecisions() {
+      const sorted = [...(data.decisions || [])].sort((a, b) => b.date.localeCompare(a.date));
+      el.decisionsList.innerHTML = sorted.map(x => `
+        <article class="item">
+          <div class="item-top">
+            <span class="badge">${esc(x.category || "Qaror")}</span>
+            <time>${formatDate(x.date)}</time>
+          </div>
+          <h3>${esc(x.title)}</h3>
+          <p>${esc(x.summary)}</p>
+          <a target="_blank" rel="noopener noreferrer" href="${escAttr(x.source)}">Manba &rarr;</a>
+        </article>
+      `).join("") || "<p class='muted'>Qarorlar topilmadi.</p>";
+    }
+
+    /* ── Render: News ── */
+    function renderNews() {
+      const q = (el.searchInput.value || "").trim().toLowerCase();
+      const tag = el.tagFilter.value || "all";
+      const list = [...(data.news || [])]
+        .sort((a, b) => b.date.localeCompare(a.date))
+        .filter(x => tag === "all" || x.tag === tag)
+        .filter(x => !q || (x.title + " " + x.summary + " " + x.tag).toLowerCase().includes(q));
+
+      el.newsList.innerHTML = list.map(x => `
+        <article class="item">
+          <div class="item-top">
+            <time>${formatDate(x.date)}</time>
+            <span class="badge badge-accent">${esc(x.tag)}</span>
+          </div>
+          <h3>${esc(x.title)}</h3>
+          <p>${esc(x.summary)}</p>
+          <a target="_blank" rel="noopener noreferrer" href="${escAttr(x.source)}">Manba &rarr;</a>
+        </article>
+      `).join("") || "<div class='muted'>Natija topilmadi.</div>";
+    }
+
+    /* ── Render: Sources ── */
+    function renderSources() {
+      el.sourcesList.innerHTML = (data.sources || []).map(s => `
+        <li><strong>${esc(s.title)}</strong><a target="_blank" rel="noopener noreferrer" href="${escAttr(s.url)}">${esc(s.url)}</a></li>
+      `).join("") || "<li>Manbalar bo'sh.</li>";
+    }
+
+    /* ── Render: Publications ── */
+    function renderPubs() {
+      const list = getPubs();
+      el.pubsList.innerHTML = list.length ? list.map(p => pubHTML(p, admin)).join("")
+        : "<div class='muted'>Hozircha nashr yo'q.</div>";
+    }
+
+    function pubHTML(p, canPrint) {
+      const imgs = (p.images || []).map(i =>
+        `<img src="${escAttr(i.url)}" alt="${escAttr(i.name || "rasm")}">`
+      ).join("");
+      return `
+        <article class="item">
+          <div class="item-top">
+            <div>
+              <h3>${esc(p.title)}</h3>
+              <time class="muted-sm">${formatDate((p.createdAt || "").slice(0, 10))}</time>
+            </div>
+            ${canPrint ? `<button class="btn-sm" data-print="${escAttr(p.id)}">Chop etish</button>` : ""}
+          </div>
+          <div class="preview-content">${p.bodyHtml || "<p>Matn yo'q.</p>"}</div>
+          ${imgs ? `<div class="img-grid">${imgs}</div>` : ""}
+        </article>`;
+    }
+
+    /* ── Render: Pages List ── */
+    function renderPagesList() {
+      const pages = getPages();
+      el.statPages.textContent = String(pages.length);
+      el.pagesList.innerHTML = pages.length ? pages.map(p => `
+        <article class="page-card">
+          <h3><a href="#page/${escAttr(p.slug)}">${esc(p.title)}</a></h3>
+          <div class="slug">#page/${esc(p.slug)}</div>
+          <time>${formatDate((p.createdAt || "").slice(0, 10))}</time>
+          ${admin ? `<div class="page-card-actions"><a href="#page/${escAttr(p.slug)}" class="btn-sm" style="text-decoration:none">Ochish</a><button class="btn-sm btn-danger" data-delete-page="${escAttr(p.id)}">O'chirish</button></div>` : `<div style="margin-top:.4rem"><a href="#page/${escAttr(p.slug)}">Ochish &rarr;</a></div>`}
+        </article>
+      `).join("") : "<div class='muted'>Hozircha sahifa yo'q. Admin paneldan yangi sahifa yarating.</div>";
+    }
+
+    /* ── Show Single Page ── */
+    function showPageView(slug) {
+      const pages = getPages();
+      const page = pages.find(p => p.slug === slug);
+      if (!page) {
+        $("sec-home").classList.add("active");
+        toast("Sahifa topilmadi: " + slug, "err");
+        return;
+      }
+      el.pageTitle.textContent = page.title;
+      el.pageDate.textContent = formatDate((page.createdAt || "").slice(0, 10));
+      el.pageSlug.textContent = "slug: " + page.slug;
+      el.pageBody.innerHTML = page.bodyHtml || "<p>Matn yo'q.</p>";
+      el.pageImages.innerHTML = (page.images || []).map(i =>
+        `<img src="${escAttr(i.url)}" alt="${escAttr(i.name || "rasm")}">`
+      ).join("");
+      $("sec-page-view").classList.add("active");
+    }
+
+    /* ── Event Binding ── */
+    function bindEvents() {
+      /* Theme */
+      el.themeToggle.addEventListener("click", toggleTheme);
+
+      /* Mobile menu */
+      el.menuBtn.addEventListener("click", () => el.nav.classList.toggle("open"));
+
+      /* News filter */
+      el.searchInput.addEventListener("input", renderNews);
+      el.tagFilter.addEventListener("change", renderNews);
+
+      /* Login */
+      el.loginForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const u = el.loginUser.value.trim();
+        const p = el.loginPass.value;
+        if (u === USER && p === PASS) {
+          admin = true;
+          localStorage.setItem(SK, "1");
+          setLoginMsg("Admin kirishi muvaffaqiyatli.", "ok");
+          toast("Admin tizimiga kirildi.", "ok");
+        } else {
+          admin = false;
+          localStorage.removeItem(SK);
+          setLoginMsg("Login yoki parol xato.", "err");
+        }
+        adminState();
+      });
+
+      /* Logout */
+      el.logoutBtn.addEventListener("click", () => {
+        admin = false;
+        localStorage.removeItem(SK);
+        setLoginMsg("Admin sessiyasi yopildi.", "warn");
+        toast("Tizimdan chiqildi.", "warn");
+        adminState();
+      });
+
+      /* Tabs */
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+          document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+          btn.classList.add("active");
+          $(btn.getAttribute("data-tab")).classList.add("active");
+        });
+      });
+
+      /* Pub Preview */
+      el.pubPreviewBtn.addEventListener("click", async () => {
+        try {
+          const draft = await buildDraft("pub");
+          el.previewPane.innerHTML = pubHTML(draft, false);
+          toast("Preview tayyorlandi.", "ok");
+        } catch (e) { toast(e.message, "err"); }
+      });
+
+      /* Pub Save */
+      el.pubForm.addEventListener("submit", async e => {
+        e.preventDefault();
+        if (!admin) { toast("Nashr saqlash faqat admin uchun.", "err"); return; }
+        try {
+          const draft = await buildDraft("pub");
+          if (!draft.bodyHtml.trim()) throw new Error("Nashr matni bo'sh.");
+          const list = getPubs();
+          list.unshift(draft);
+          localStorage.setItem(PK, JSON.stringify(list));
+          el.pubForm.reset();
+          el.previewPane.innerHTML = "<span class='muted'>Preview hali tayyorlanmagan.</span>";
+          toast("Nashr saqlandi.", "ok");
+          renderPubs();
+        } catch (err) { toast(err.message, "err"); }
+      });
+
+      /* Page slug auto-generation */
+      el.pgTitle.addEventListener("input", () => {
+        if (!el.pgSlug.dataset.manual) {
+          el.pgSlug.value = generateSlug(el.pgTitle.value);
+        }
+      });
+      el.pgSlug.addEventListener("input", () => {
+        el.pgSlug.dataset.manual = "1";
+        el.pgSlug.value = generateSlug(el.pgSlug.value);
+      });
+      el.pgSlug.addEventListener("blur", () => {
+        if (!el.pgSlug.value.trim()) delete el.pgSlug.dataset.manual;
+      });
+
+      /* Page Preview */
+      el.pgPreviewBtn.addEventListener("click", async () => {
+        try {
+          const draft = await buildDraft("page");
+          el.previewPane.innerHTML = `<h3>${esc(draft.title)}</h3><div class="muted-sm">slug: ${esc(draft.slug)}</div><hr style="margin:.5rem 0;border-color:var(--border)"><div class="preview-content">${draft.bodyHtml}</div>`;
+          toast("Preview tayyorlandi.", "ok");
+        } catch (e) { toast(e.message, "err"); }
+      });
+
+      /* Page Save */
+      el.pageForm.addEventListener("submit", async e => {
+        e.preventDefault();
+        if (!admin) { toast("Sahifa yaratish faqat admin uchun.", "err"); return; }
+        try {
+          const draft = await buildDraft("page");
+          if (!draft.slug) throw new Error("Slug majburiy.");
+          const pages = getPages();
+          if (pages.some(p => p.slug === draft.slug)) throw new Error("Bu slug allaqachon ishlatilgan: " + draft.slug);
+          pages.unshift(draft);
+          localStorage.setItem(PAGES_KEY, JSON.stringify(pages));
+          el.pageForm.reset();
+          delete el.pgSlug.dataset.manual;
+          el.previewPane.innerHTML = "<span class='muted'>Preview hali tayyorlanmagan.</span>";
+          toast("Sahifa saqlandi: #page/" + draft.slug, "ok");
+          renderPagesList();
+        } catch (err) { toast(err.message, "err"); }
+      });
+
+      /* Print pub */
+      el.pubsList.addEventListener("click", e => {
+        const t = e.target;
+        if (!(t instanceof HTMLElement)) return;
+        const printId = t.getAttribute("data-print");
+        if (printId) printPub(printId);
+      });
+
+      /* Delete page */
+      el.pagesList.addEventListener("click", e => {
+        const t = e.target;
+        if (!(t instanceof HTMLElement)) return;
+        const delId = t.getAttribute("data-delete-page");
+        if (delId && admin) {
+          if (!confirm("Bu sahifani o'chirishni xohlaysizmi?")) return;
+          const pages = getPages().filter(p => p.id !== delId);
+          localStorage.setItem(PAGES_KEY, JSON.stringify(pages));
+          toast("Sahifa o'chirildi.", "warn");
+          renderPagesList();
+        }
+      });
+    }
+
+    /* ── Admin State ── */
+    function adminState() {
+      if (admin) {
+        el.adminGate.classList.add("hidden");
+        el.adminPanel.classList.remove("hidden");
+      } else {
+        el.adminGate.classList.remove("hidden");
+        el.adminPanel.classList.add("hidden");
+      }
+      renderPubs();
+      renderPagesList();
+    }
+
+    function setLoginMsg(msg, type) {
+      el.loginMsg.textContent = msg;
+      el.loginMsg.className = "status " + type;
+    }
+
+    /* ── Build Draft ── */
+    async function buildDraft(mode) {
+      const isPub = mode === "pub";
+      const titleEl = isPub ? el.pubTitle : el.pgTitle;
+      const docEl = isPub ? el.pubDoc : el.pgDoc;
+      const imgsEl = isPub ? el.pubImgs : el.pgImgs;
+      const noteEl = isPub ? el.pubNote : el.pgNote;
+
+      const title = (titleEl.value || "").trim();
+      if (!title) throw new Error("Sarlavha majburiy.");
+
+      let body = "";
+      const file = docEl.files[0];
+      if (file) {
+        const name = file.name.toLowerCase();
+        if (name.endsWith(".docx")) {
+          if (!window.mammoth) throw new Error("DOCX parser yuklanmadi.");
+          const result = await window.mammoth.convertToHtml({ arrayBuffer: await file.arrayBuffer() });
+          body = sanitize(result.value || "");
+        } else if (name.endsWith(".txt")) {
+          body = textToParagraphs(await file.text());
+        } else if (name.endsWith(".doc")) {
+          throw new Error(".doc ni .docx ga aylantiring.");
+        } else {
+          throw new Error("Faqat .docx yoki .txt qabul qilinadi.");
+        }
+      }
+
+      const note = (noteEl.value || "").trim();
+      if (note) body += textToParagraphs(note);
+      const images = await readImages(imgsEl.files);
+
+      const draft = {
+        id: generateId(),
+        title,
+        createdAt: new Date().toISOString(),
+        bodyHtml: sanitize(body),
+        images
+      };
+
+      if (!isPub) {
+        draft.slug = el.pgSlug.value.trim() || generateSlug(title);
+      }
+
+      return draft;
+    }
+
+    /* ── Print ── */
+    function printPub(id) {
+      if (!admin) { alert("Chop etish faqat admin uchun."); return; }
+      const pub = getPubs().find(x => x.id === id);
+      if (!pub) { alert("Nashr topilmadi."); return; }
+      el.printArea.innerHTML = pubHTML(pub, false);
+      el.printArea.classList.remove("hidden");
+      window.print();
+      el.printArea.classList.add("hidden");
+      el.printArea.innerHTML = "";
+    }
+
+    /* ── Storage Helpers ── */
+    function getPubs() {
+      try { const x = JSON.parse(localStorage.getItem(PK) || "[]"); return Array.isArray(x) ? x : []; }
+      catch { return []; }
+    }
+
+    function getPages() {
+      try { const x = JSON.parse(localStorage.getItem(PAGES_KEY) || "[]"); return Array.isArray(x) ? x : []; }
+      catch { return []; }
+    }
+
+    /* ── File Helpers ── */
+    function readImages(files) {
+      return Promise.all(Array.from(files || []).map(f =>
+        new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve({ name: f.name, url: String(reader.result || "") });
+          reader.onerror = () => reject(new Error("Rasm o'qilmadi: " + f.name));
+          reader.readAsDataURL(f);
+        })
+      ));
+    }
+
+    /* ── Slug Generator ── */
+    function generateSlug(text) {
+      return String(text || "")
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/[\s_]+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "")
+        .slice(0, 80);
+    }
+
+    /* ── Toast ── */
+    function toast(msg, type) {
+      const t = document.createElement("div");
+      t.className = "toast " + (type || "ok");
+      t.textContent = msg;
+      el.toasts.appendChild(t);
+      setTimeout(() => { t.style.opacity = "0"; t.style.transition = "opacity .3s"; setTimeout(() => t.remove(), 300); }, 3000);
+    }
+
+    /* ── Utility ── */
+    function textToParagraphs(text) {
+      const clean = String(text || "").replace(/\r\n/g, "\n").trim();
+      if (!clean) return "";
+      return "<p>" + esc(clean).split(/\n{2,}/).map(s => s.replace(/\n/g, "<br>")).join("</p><p>") + "</p>";
+    }
+
+    function sanitize(html) {
+      return String(html || "")
+        .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
+        .replace(/\son\w+="[^"]*"/gi, "");
+    }
+
+    function formatDate(d) {
+      if (!d) return "-";
+      const date = new Date(d + "T00:00:00");
+      return isNaN(date.getTime()) ? d : date.toLocaleDateString("uz-UZ", { year: "numeric", month: "long", day: "2-digit" });
+    }
+
+    function generateId() {
+      return "id_" + Date.now() + "_" + Math.random().toString(16).slice(2, 8);
+    }
+
+    function esc(v) {
+      return String(v || "").replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+    }
+
+    function escAttr(v) {
+      return esc(v).replace(/`/g, "");
+    }
+
+  })();
   </script>
 </body>
 </html>
