@@ -267,7 +267,7 @@
       </div>
       <div class="section-shell reveal">
         <div class="section-header"><div class="section-copy"><p class="section-kicker">${escape(ui().team)}</p><h2 class="section-title">${escape(ui().team)}</h2></div></div>
-        <div class="team-grid">${state.content.team.map((person) => `<article class="team-card"><div class="team-card__media"><img src="${attr(person.photo)}" alt="${attr(pick(person.name))}"></div><div class="team-card__body"><h3>${escape(pick(person.name))}</h3><div class="team-card__role">${escape(pick(person.role))}</div></div></article>`).join("")}</div>
+        <div class="team-grid">${state.content.team.map((person) => `<article class="team-card"><div class="team-card__media"><img src="${attr(person.photo)}" alt="${attr(pick(person.name))}" loading="lazy"></div><div class="team-card__body"><h3>${escape(pick(person.name))}</h3><div class="team-card__role">${escape(pick(person.role))}</div></div></article>`).join("")}</div>
       </div>
     `;
   }
@@ -343,7 +343,7 @@
     dom.mediaContent.innerHTML = `
       <div class="section-shell reveal">
         <div class="section-header"><div class="section-copy"><p class="section-kicker">${escape(ui().mediaKicker)}</p><h2 class="section-title">${escape(ui().nav.media)}</h2><p class="section-summary">${escape(ui().mediaSummary)}</p></div></div>
-        <div class="gallery-grid">${state.content.media.map((item) => `<article class="gallery-card"><div class="gallery-card__media gallery-card__media--theme-${attr(item.theme)}"><img src="${attr(item.image)}" alt="${attr(pick(item.title))}"></div><h3>${escape(pick(item.title))}</h3><p>${escape(pick(item.summary))}</p></article>`).join("")}</div>
+        <div class="gallery-grid">${state.content.media.map((item) => `<article class="gallery-card"><div class="gallery-card__media gallery-card__media--theme-${attr(item.theme)}"><img src="${attr(item.image)}" alt="${attr(pick(item.title))}" loading="lazy"></div><h3>${escape(pick(item.title))}</h3><p>${escape(pick(item.summary))}</p></article>`).join("")}</div>
       </div>
       <div class="section-shell reveal">
         <div class="section-header"><div class="section-copy"><h2 class="section-title">${escape(ui().videos)}</h2></div></div>
@@ -388,11 +388,17 @@
 
   function renderFooter() {
     const org = state.content.organization;
+    const supportLinks = [
+      { href: "site-map.html", label: ui().siteMap },
+      { href: "privacy.html", label: ui().privacyPolicy },
+      { href: "terms.html", label: ui().termsOfUse }
+    ];
     dom.footerContent.innerHTML = `
       <div class="footer-shell">
         <div class="footer-grid">
           <div><h3 class="section-title" style="font-size:1.5rem">${escape(pick(org.name))}</h3><p class="section-summary">${escape(pick(org.description))}</p></div>
           <div><h3>${escape(ui().nav.home)}</h3><nav class="footer-nav">${NAV_ITEMS.map((item) => `<a href="#${item}">${escape(ui().nav[item])}</a>`).join("")}</nav></div>
+          <div><h3>${escape(ui().supportLinks)}</h3><nav class="footer-nav">${supportLinks.map((item) => `<a href="${attr(item.href)}">${escape(item.label)}</a>`).join("")}</nav></div>
           <div><h3>${escape(ui().contactsKicker)}</h3><p class="meta">${escape(pick(org.address))}</p><p class="meta">${escape(org.phone)}</p><p class="meta">${escape(org.email)}</p></div>
         </div>
         <div class="footer-bottom"><span>© ${new Date().getFullYear()} ${escape(pick(org.name))}</span><span>${escape(ui().footerNote)}</span></div>

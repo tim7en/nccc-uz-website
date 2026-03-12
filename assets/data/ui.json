@@ -73,6 +73,10 @@
     "formError": "Maydonlarni to'liq va to'g'ri to'ldiring.",
     "formCaptchaError": "Tasdiqlash javobi noto'g'ri.",
     "footerNote": "Statik portal asosi. Keyingi bosqich: CMS va himoyalangan backend.",
+    "supportLinks": "Yordamchi sahifalar",
+    "privacyPolicy": "Maxfiylik siyosati",
+    "termsOfUse": "Foydalanish shartlari",
+    "siteMap": "Sayt xaritasi",
     "openSource": "Manbani ochish",
     "category": {
       "national": "Milliy",
@@ -200,6 +204,10 @@
     "formError": "Заполните поля корректно и полностью.",
     "formCaptchaError": "Неверный ответ подтверждения.",
     "footerNote": "Статическая основа портала. Следующий этап: CMS и защищённый backend.",
+    "supportLinks": "Служебные страницы",
+    "privacyPolicy": "Политика конфиденциальности",
+    "termsOfUse": "Условия использования",
+    "siteMap": "Карта сайта",
     "openSource": "Открыть источник",
     "category": {
       "national": "Национальное",
@@ -327,6 +335,10 @@
     "formError": "Fill in the fields correctly and completely.",
     "formCaptchaError": "The verification answer is incorrect.",
     "footerNote": "Static portal foundation. Next phase: CMS and secured backend.",
+    "supportLinks": "Support pages",
+    "privacyPolicy": "Privacy policy",
+    "termsOfUse": "Terms of use",
+    "siteMap": "Site map",
     "openSource": "Open source",
     "category": {
       "national": "National",
