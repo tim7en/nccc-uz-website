@@ -413,7 +413,7 @@
   }
 
   function renderProgramCard(item) {
-    return `<article class="feature-card" id="program-${attr(item.id)}"><div class="feature-card__icon">${icon(item.id)}</div><h3>${escape(pick(item.title))}</h3><p>${escape(pick(item.summary))}</p><a class="feature-card__link" href="${attr(item.url)}"${item.url.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : ""}>${escape(ui().openSource)}</a></article>`;
+    return `<article class="feature-card"><div class="feature-card__icon">${icon(item.id)}</div><h3>${escape(pick(item.title))}</h3><p>${escape(pick(item.summary))}</p><a class="feature-card__link" href="${attr(item.url)}"${item.url.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : ""}>${escape(ui().openSource)}</a></article>`;
   }
 
   function renderStack(title, items, type) {
@@ -427,3 +427,222 @@
   function renderNewsCard(item) {
     return `<article class="news-card" id="${attr(item.id)}"><div class="news-card__meta">${badge(ui().newsTags[item.tag], item.tag)}<span>${escape(formatDate(item.date))}</span></div><h3>${escape(pick(item.title))}</h3><p class="news-card__summary">${escape(pick(item.summary))}</p><a class="news-card__link" href="${attr(item.url)}" target="_blank" rel="noopener noreferrer">${escape(ui().openSource)}</a></article>`;
   }
+
+  function renderAirCard() {
+    if (!state.live.air) return `<article class="live-card"><h3>${escape(ui().liveAir)}</h3><p>${escape(ui().searchHint)}</p></article>`;
+    return `<article class="live-card"><div class="live-card__icon">AQ</div><h3>${escape(ui().liveAir)}</h3><div class="live-value"><strong>${escape(String(state.live.air.aqi))}</strong><span>${escape(ui().aqi)}</span></div><div class="live-meta"><span>PM2.5: ${escape(String(state.live.air.pm25))}</span><span>PM10: ${escape(String(state.live.air.pm10))}</span></div><p>${escape(state.live.air.label)}</p></article>`;
+  }
+
+  function renderWeatherCard() {
+    if (!state.live.weather) return `<article class="live-card"><h3>${escape(ui().liveWeather)}</h3><p>${escape(ui().searchHint)}</p></article>`;
+    return `<article class="live-card"><div class="live-card__icon">${escape(state.live.weather.icon)}</div><h3>${escape(ui().liveWeather)}</h3><div class="live-value"><strong>${escape(String(state.live.weather.temp))}</strong><span>°C</span></div><div class="live-meta"><span>${escape(state.live.weather.label)}</span><span>${escape(ui().weatherMeta)}</span></div><div class="forecast-strip">${state.live.weather.forecast.map((item) => `<div class="forecast-card"><div>${escape(item.day)}</div><strong>${escape(String(item.max))}°</strong><div>${escape(item.icon)}</div></div>`).join("")}</div></article>`;
+  }
+
+  function renderWorldBankCards() {
+    if (!state.live.worldBank.length) return `<div class="indicator-card"><strong>...</strong><span>${escape(ui().searchHint)}</span></div>`;
+    return state.live.worldBank.map((item) => `<div class="indicator-card"><strong>${escape(item.value)}</strong><span>${escape(ui().worldBank[item.key])}</span><span class="meta">${escape(item.year)}</span></div>`).join("");
+  }
+
+  async function loadLiveData() {
+    const [air, weather, world] = await Promise.allSettled([loadAir(), loadWeather(), loadWorldBank()]);
+    if (air.status === "fulfilled") state.live.air = air.value;
+    if (weather.status === "fulfilled") state.live.weather = weather.value;
+    if (world.status === "fulfilled") state.live.worldBank = world.value;
+    renderAnalytics();
+    reveal();
+  }
+
+  async function loadAir() {
+    const data = await fetchJson("https://api.waqi.info/feed/tashkent/?token=demo");
+    if (data.status !== "ok") throw new Error("AQI");
+    const aqi = Number(data.data.aqi) || 0;
+    return { aqi, pm25: data.data.iaqi?.pm25?.v ?? "-", pm10: data.data.iaqi?.pm10?.v ?? "-", label: airLabel(aqi) };
+  }
+
+  async function loadWeather() {
+    const url = "https://api.open-meteo.com/v1/forecast?latitude=41.2995&longitude=69.2401&current=temperature_2m,weather_code&daily=temperature_2m_max,weather_code&timezone=Asia%2FTashkent&forecast_days=5";
+    const data = await fetchJson(url);
+    return {
+      temp: Math.round(data.current.temperature_2m),
+      icon: weatherIcon(data.current.weather_code),
+      label: weatherLabel(data.current.weather_code),
+      forecast: data.daily.time.map((date, index) => ({
+        day: new Date(date).toLocaleDateString(locale(), { weekday: "short" }),
+        max: Math.round(data.daily.temperature_2m_max[index]),
+        icon: weatherIcon(data.daily.weather_code[index])
+      }))
+    };
+  }
+
+  async function loadWorldBank() {
+    return Promise.all(WORLD_BANK.map(async (item) => {
+      const data = await fetchJson(`https://api.worldbank.org/v2/country/UZB/indicator/${item.id}?format=json&per_page=8`);
+      const latest = (data[1] || []).find((entry) => entry.value !== null);
+      return { key: item.key, year: latest?.date || "", value: formatIndicator(latest?.value, item.unit) };
+    }));
+  }
+
+  function buildSearchIndex() {
+    return []
+      .concat(state.content.programs.map((item) => ({ type: "program", title: pick(item.title), summary: pick(item.summary), section: item.url.startsWith("#") ? item.url.slice(1) : "activities", cardId: "" })))
+      .concat(state.content.decisions.map((item) => ({ type: "decision", title: pick(item.title), summary: pick(item.summary), section: "home", cardId: item.id })))
+      .concat(state.content.documents.map((item) => ({ type: "document", title: pick(item.title), summary: pick(item.summary), section: "documents", cardId: item.id })))
+      .concat(state.content.news.map((item) => ({ type: "news", title: pick(item.title), summary: pick(item.summary), section: "news", cardId: item.id })))
+      .concat(state.content.sources.map((item) => ({ type: "source", title: item.title, summary: item.org, section: "analytics", cardId: "" })));
+  }
+
+  function updateMeta() {
+    document.title = `${pick(state.content.organization.name)} | ${ui().brandShort}`;
+    document.querySelector('meta[name="description"]').setAttribute("content", pick(state.content.organization.description));
+    document.getElementById("orgSchema").textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: pick(state.content.organization.name),
+      url: "https://uznccc.uz/",
+      email: state.content.organization.email,
+      telephone: state.content.organization.phone,
+      address: pick(state.content.organization.address)
+    });
+  }
+
+  function openSearch() {
+    dom.searchDialog.hidden = false;
+    dom.globalSearchInput.focus();
+    renderSearchResults();
+  }
+
+  function closeSearch() {
+    dom.searchDialog.hidden = true;
+  }
+
+  function observeSections() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll("[data-nav-link]").forEach((link) => {
+            link.classList.toggle("is-active", link.dataset.navLink === entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: "-30% 0px -55% 0px", threshold: 0.1 });
+    NAV_ITEMS.forEach((item) => observer.observe(document.getElementById(item)));
+  }
+
+  function syncActiveLinks() {
+    const current = (location.hash || "#home").slice(1);
+    document.querySelectorAll("[data-nav-link]").forEach((link) => {
+      link.classList.toggle("is-active", link.dataset.navLink === current);
+    });
+    dom.mobilePanel.hidden = true;
+    dom.menuToggle.setAttribute("aria-expanded", "false");
+  }
+
+  function jumpTo(sectionId, cardId) {
+    const section = document.getElementById(sectionId);
+    if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!cardId) return;
+    setTimeout(() => {
+      const card = document.getElementById(cardId);
+      if (!card) return;
+      card.classList.add("is-highlighted");
+      setTimeout(() => card.classList.remove("is-highlighted"), 1800);
+    }, 240);
+  }
+
+  function reveal() {
+    document.querySelectorAll(".hero-shell, .section-shell").forEach((element) => {
+      element.classList.add("reveal", "is-visible");
+    });
+  }
+
+  function registerServiceWorker() {
+    if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+  }
+
+  function fetchJson(url) {
+    return fetch(url).then((res) => {
+      if (!res.ok) throw new Error(String(res.status));
+      return res.json();
+    });
+  }
+
+  function showAlert(message) {
+    dom.pageAlert.hidden = false;
+    dom.pageAlert.textContent = message;
+  }
+
+  function toast(message, type) {
+    const item = document.createElement("div");
+    item.className = `toast toast--${type}`;
+    item.textContent = message;
+    dom.toastStack.appendChild(item);
+    setTimeout(() => item.remove(), 3200);
+  }
+
+  function ui() {
+    return state.ui[state.lang] || state.ui.uz;
+  }
+
+  function pick(value) {
+    return typeof value === "string" ? value : value?.[state.lang] || value?.uz || value?.ru || value?.en || "";
+  }
+
+  function badge(label, tone) {
+    const toneClass = tone === "official" || tone === "national" ? "brand" : tone === "report" || tone === "monitoring" || tone === "institution" ? "blue" : tone === "publication" || tone === "policy" || tone === "leadership" ? "gold" : "red";
+    return `<span class="badge badge--${toneClass}">${escape(label || "")}</span>`;
+  }
+
+  function icon(key) {
+    return { policy: "◍", monitoring: "◴", documents: "▣", "green-cities": "◎" }[key] || "◌";
+  }
+
+  function formatDate(value) {
+    return new Date(`${value}T00:00:00`).toLocaleDateString(locale(), { year: "numeric", month: "short", day: "2-digit" });
+  }
+
+  function locale() {
+    return state.lang === "ru" ? "ru-RU" : state.lang === "en" ? "en-US" : "uz-UZ";
+  }
+
+  function formatIndicator(value, unit) {
+    if (value == null) return "—";
+    return `${Number(value).toFixed(1)} ${unit}`;
+  }
+
+  function airLabel(aqi) {
+    if (state.lang === "ru") return aqi <= 50 ? "Хорошо" : aqi <= 100 ? "Умеренно" : "Вредно";
+    if (state.lang === "en") return aqi <= 50 ? "Good" : aqi <= 100 ? "Moderate" : "Unhealthy";
+    return aqi <= 50 ? "Yaxshi" : aqi <= 100 ? "O'rtacha" : "Zararli";
+  }
+
+  function weatherIcon(code) {
+    if (code === 0) return "☀";
+    if (code <= 3) return "⛅";
+    if (code <= 67) return "☂";
+    return "☁";
+  }
+
+  function weatherLabel(code) {
+    if (state.lang === "ru") return code === 0 ? "Ясно" : code <= 3 ? "Переменная облачность" : "Осадки";
+    if (state.lang === "en") return code === 0 ? "Clear" : code <= 3 ? "Partly cloudy" : "Precipitation";
+    return code === 0 ? "Ochiq" : code <= 3 ? "Qisman bulutli" : "Yog'ingarchilik";
+  }
+
+  function makeCaptcha() {
+    const a = Math.floor(Math.random() * 7) + 2;
+    const b = Math.floor(Math.random() * 7) + 2;
+    return { a, b, answer: a + b };
+  }
+
+  function systemTheme() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function escape(value) {
+    return String(value || "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+  }
+
+  function attr(value) {
+    return escape(value).replace(/`/g, "");
+  }
+})();
