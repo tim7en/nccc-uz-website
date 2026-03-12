@@ -88,9 +88,9 @@ body {
   min-width: 320px;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(36, 160, 139, 0.1), transparent 28%),
-    radial-gradient(circle at top right, rgba(12, 93, 140, 0.07), transparent 24%),
-    linear-gradient(180deg, var(--bg) 0%, #fbfdfc 100%);
+    radial-gradient(ellipse 80% 50% at 0% 0%, rgba(26, 143, 124, 0.09), transparent),
+    radial-gradient(ellipse 50% 40% at 100% 0%, rgba(12, 93, 140, 0.07), transparent),
+    var(--bg);
   font-family: "Manrope", system-ui, sans-serif;
   line-height: 1.65;
   text-rendering: optimizeLegibility;
@@ -99,9 +99,9 @@ body {
 
 [data-theme="dark"] body {
   background:
-    radial-gradient(circle at top left, rgba(36, 160, 139, 0.08), transparent 28%),
-    radial-gradient(circle at top right, rgba(12, 93, 140, 0.06), transparent 24%),
-    linear-gradient(180deg, var(--bg) 0%, #081a19 100%);
+    radial-gradient(ellipse 80% 50% at 0% 0%, rgba(26, 143, 124, 0.07), transparent),
+    radial-gradient(ellipse 50% 40% at 100% 0%, rgba(12, 93, 140, 0.05), transparent),
+    var(--bg);
 }
 
 img {
@@ -241,11 +241,9 @@ textarea {
 .page-chroma__grid {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(11, 107, 103, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(11, 107, 103, 0.035) 1px, transparent 1px);
-  background-size: 54px 54px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.85), transparent);
+  background-image: radial-gradient(circle, rgba(11, 107, 103, 0.065) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent);
 }
 
 .site-header {
@@ -254,22 +252,22 @@ textarea {
   z-index: 60;
   border-top: 3px solid var(--brand);
   border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  background: rgba(244, 248, 246, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(245, 249, 247, 0.88);
   transition: background var(--transition), border-color var(--transition);
 }
 
 [data-theme="dark"] .site-header {
-  background: rgba(7, 21, 20, 0.88);
+  background: rgba(6, 16, 15, 0.92);
 }
 
 .site-header__inner {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  min-height: var(--header-height);
+  column-gap: 1rem;
+  padding: 0.8rem 0 0;
 }
 
 .brand {
@@ -285,15 +283,22 @@ textarea {
 }
 
 .brand__mark {
-  width: 3.1rem;
-  height: 3.1rem;
+  width: 3.2rem;
+  height: 3.2rem;
   display: grid;
   place-items: center;
-  border-radius: 1.05rem;
-  background: linear-gradient(145deg, var(--brand-soft), rgba(255, 255, 255, 0.65));
-  border: 1px solid var(--border-strong);
+  border-radius: 1.1rem;
+  background: linear-gradient(145deg, var(--brand-soft), rgba(255, 255, 255, 0.8));
+  border: 1.5px solid var(--border-strong);
   color: var(--brand);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(11, 107, 103, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.brand:hover .brand__mark {
+  box-shadow: 0 4px 14px rgba(11, 107, 103, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transform: scale(1.04);
 }
 
 .brand__mark svg {
@@ -309,7 +314,7 @@ textarea {
 
 .brand__copy strong {
   font-family: "Bitter", Georgia, serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.2;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -329,8 +334,24 @@ textarea {
 .mobile-nav {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.15rem;
   flex-wrap: wrap;
+}
+
+.site-nav {
+  flex: 0 0 100%;
+  order: 10;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-top: 1px solid var(--border);
+  margin-top: 0.55rem;
+  padding: 0.3rem 0 0.45rem;
+  gap: 0.1rem;
+}
+
+.site-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .site-nav a,
@@ -339,11 +360,11 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.5rem;
-  padding: 0 0.9rem;
+  min-height: 2.2rem;
+  padding: 0 0.8rem;
   border-radius: 999px;
   color: var(--text-soft);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 500;
   white-space: nowrap;
   transition: color var(--transition), background var(--transition), transform var(--transition);
@@ -363,26 +384,30 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
+  margin-left: auto;
 }
 
 .icon-button {
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--surface-strong);
   color: var(--text);
   border-radius: 999px;
-  min-height: 2.8rem;
-  min-width: 2.8rem;
-  padding: 0 0.95rem;
+  min-height: 2.6rem;
+  min-width: 2.6rem;
+  padding: 0 0.85rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
-  transition: transform var(--transition), border-color var(--transition), background var(--transition);
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
 }
 
 .icon-button:hover {
   transform: translateY(-1px);
   border-color: var(--border-strong);
+  box-shadow: 0 2px 8px rgba(13, 34, 33, 0.08);
 }
 
 .icon-button--wide {
@@ -403,20 +428,22 @@ textarea {
 
 .lang-switch {
   display: inline-flex;
-  padding: 0.22rem;
+  padding: 0.2rem;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: var(--surface);
+  background: var(--surface-strong);
 }
 
 .lang-switch__button {
   border: 0;
   background: transparent;
   color: var(--text-soft);
-  min-width: 3.1rem;
-  min-height: 2.3rem;
+  min-width: 2.8rem;
+  min-height: 2.15rem;
   border-radius: 999px;
-  padding: 0 0.85rem;
+  padding: 0 0.75rem;
+  font-size: 0.84rem;
+  font-weight: 600;
 }
 
 .lang-switch__button.is-active {
@@ -457,27 +484,37 @@ textarea {
 }
 
 .section {
-  padding: 2.4rem 0;
+  padding: 3rem 0;
   scroll-margin-top: calc(var(--header-height) + 1rem);
 }
 
 .section--hero {
-  padding-top: 2rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .section-shell {
   position: relative;
-  padding: 1.5rem;
+  padding: 1.75rem;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.72) 100%);
-  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 4px 8px rgba(13, 34, 33, 0.04),
+    0 12px 32px rgba(13, 34, 33, 0.07);
   overflow: hidden;
 }
 
 [data-theme="dark"] .section-shell {
-  background: linear-gradient(180deg, rgba(16, 37, 36, 0.96) 0%, rgba(16, 37, 36, 0.86) 100%);
+  background: rgba(11, 27, 26, 0.84);
+  border-color: rgba(95, 198, 178, 0.1);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.03) inset,
+    0 4px 8px rgba(0, 0, 0, 0.14),
+    0 12px 32px rgba(0, 0, 0, 0.22);
 }
 
 .section-shell::before {
@@ -497,7 +534,7 @@ textarea {
   align-items: end;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
 
@@ -533,15 +570,15 @@ textarea {
 .hero-title {
   margin: 0;
   font-family: "Bitter", Georgia, serif;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   overflow-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
 }
 
 .section-title {
-  font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.6rem);
+  font-size: clamp(1.8rem, 1.2rem + 2vw, 2.8rem);
 }
 
 .hero-title {
@@ -565,14 +602,13 @@ textarea {
 }
 
 .hero-shell {
-  padding: 2rem;
-  border-radius: calc(var(--radius-lg) + 0.4rem);
-  border: 1px solid var(--border);
+  padding: 2.25rem;
+  border-radius: calc(var(--radius-lg) + 0.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background:
-    linear-gradient(120deg, rgba(7, 87, 81, 0.96), rgba(15, 116, 98, 0.92) 44%, rgba(13, 93, 125, 0.92)),
-    linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.08));
+    linear-gradient(128deg, rgba(6, 78, 74, 0.97) 0%, rgba(10, 104, 88, 0.94) 40%, rgba(10, 80, 110, 0.93) 100%);
   color: #f7fffd;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
   overflow: hidden;
   position: relative;
 }
@@ -650,18 +686,20 @@ textarea {
 .button-primary {
   background: #fff;
   color: var(--brand-strong);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 3px 8px rgba(0, 0, 0, 0.08);
 }
 
 .button-secondary {
-  background: var(--brand-soft);
-  color: var(--brand);
-  border-color: rgba(11, 107, 103, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(247, 255, 253, 0.92);
+  border-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
 }
 
 .hero-shell .button-secondary {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.24);
 }
 
 .status-strip,
@@ -684,11 +722,13 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.65rem 0.9rem;
+  padding: 0.55rem 0.9rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(247, 255, 253, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 0.875rem;
+  backdrop-filter: blur(4px);
 }
 
 .status-pill strong {
@@ -756,12 +796,11 @@ textarea {
 .source-item {
   position: relative;
   display: grid;
-  gap: 0.75rem;
-  padding: 1.1rem;
+  gap: 0.8rem;
+  padding: 1.25rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  background: var(--surface);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset;
+  background: var(--surface-strong);
   transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
 }
 
@@ -772,8 +811,29 @@ textarea {
 .gallery-card:hover,
 .team-card:hover {
   border-color: var(--border-strong);
-  box-shadow: var(--shadow-sm), 0 1px 0 rgba(255, 255, 255, 0.18) inset;
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-3px);
+}
+
+.feature-card {
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 280ms ease;
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
 }
 
 .gallery-card:hover .gallery-card__media img,
@@ -782,9 +842,9 @@ textarea {
 }
 
 .metric-card {
-  gap: 0.35rem;
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.18);
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.2);
   min-height: 9rem;
 }
 
@@ -812,14 +872,22 @@ textarea {
 .feature-card__icon,
 .contact-card__icon,
 .live-card__icon {
-  width: 2.8rem;
-  height: 2.8rem;
-  border-radius: 0.95rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1rem;
   display: grid;
   place-items: center;
-  background: var(--brand-soft);
+  background: linear-gradient(145deg, var(--brand-soft), rgba(255, 255, 255, 0.9));
+  border: 1px solid var(--border-strong);
   color: var(--brand);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .feature-card__icon,
+[data-theme="dark"] .contact-card__icon,
+[data-theme="dark"] .live-card__icon {
+  background: linear-gradient(145deg, var(--brand-soft), rgba(95, 198, 178, 0.04));
 }
 
 .feature-card h3,
@@ -832,6 +900,7 @@ textarea {
 .live-card h3 {
   margin: 0;
   font-size: 1.05rem;
+  font-weight: 700;
   overflow-wrap: break-word;
   word-break: break-word;
 }
@@ -842,12 +911,18 @@ textarea {
 .video-card__link,
 .gallery-card__link {
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   letter-spacing: 0.01em;
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .list-card {
-  gap: 0.45rem;
+  gap: 0.5rem;
+  background: var(--surface-muted);
+  border-color: transparent;
 }
 
 .stack-list {
@@ -925,10 +1000,14 @@ textarea {
 
 .timeline__item {
   position: relative;
-  padding: 0.95rem 1rem 0.95rem 1.2rem;
+  padding: 1rem 1.1rem 1rem 1.3rem;
   border-left: 3px solid var(--brand);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  background: var(--surface-muted);
+  background: var(--surface-strong);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(13, 34, 33, 0.04);
 }
 
 .timeline__item h3 {
@@ -1025,9 +1104,14 @@ textarea {
 }
 
 .news-card,
-.gallery-card,
-.video-card {
-  min-height: 100%;
+.resource-card {
+  border-top: 3px solid var(--border);
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.news-card:hover,
+.resource-card:hover {
+  border-top-color: var(--brand);
 }
 
 .gallery-card__media {
@@ -1107,12 +1191,20 @@ textarea {
 
 .forecast-card,
 .indicator-card {
-  padding: 0.85rem;
+  padding: 0.9rem;
   border-radius: var(--radius-sm);
-  background: var(--surface-muted);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   text-align: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+[data-theme="dark"] .forecast-card,
+[data-theme="dark"] .indicator-card {
+  background: rgba(15, 38, 36, 0.7);
+  border-color: rgba(95, 198, 178, 0.1);
 }
 
 .forecast-card:hover,
@@ -1397,8 +1489,13 @@ textarea {
 }
 
 @media (max-width: 1080px) {
+  :root {
+    --header-height: 72px;
+  }
+
   .site-header__inner {
-    grid-template-columns: auto auto;
+    padding: 0;
+    min-height: var(--header-height);
   }
 
   .site-nav {
