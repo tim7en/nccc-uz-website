@@ -38,7 +38,13 @@ Public portal and local CMS backend for the National Climate Change Center of Uz
    npm start
    ```
 
-3. Open:
+3. Run the backend smoke test:
+
+   ```bash
+   npm run smoke
+   ```
+
+4. Open:
 
    - Public portal: `http://127.0.0.1:3000/`
    - Admin CMS: `http://127.0.0.1:3000/admin/`

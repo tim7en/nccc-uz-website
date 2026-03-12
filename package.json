@@ -5,7 +5,8 @@
   "description": "National Center for Climate Change portal with public site and local CMS backend",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "smoke": "node scripts/smoke-test.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
