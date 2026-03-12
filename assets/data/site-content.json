@@ -1,172 +1,740 @@
 {
-  "lastUpdated": "2026-02-12",
-  "center": {
-    "name": "Iqlim o'zgarishi bo'yicha Milliy markaz",
-    "parentOrg": "O'zbekiston Respublikasi Ekologiya va iqlim o'zgarishi milliy qo'mitasi tizimi",
-    "description": "Milliy markaz iqlim siyosati, shaharlar ekologik reytingi, iqlimga moslashuv va tarmoqlar kesimidagi tahliliy ishlarni olib boradi. Quyidagi bloklar internet manbalariga tayangan holda yangilandi.",
-    "highlights": [
+  "generatedAt": "2026-03-12",
+  "organization": {
+    "name": {
+      "uz": "Iqlim o'zgarishi bo'yicha Milliy markaz",
+      "ru": "Национальный центр по изменению климата",
+      "en": "National Climate Change Center"
+    },
+    "subtitle": {
+      "uz": "O'zbekiston Respublikasi Ekologiya va iqlim o'zgarishi milliy qo'mitasi tizimida",
+      "ru": "В системе Национального комитета по экологии и изменению климата Республики Узбекистан",
+      "en": "Within the National Committee on Ecology and Climate Change of the Republic of Uzbekistan"
+    },
+    "mission": {
+      "uz": "Milliy iqlim siyosati va ekologik monitoringni aniq, ochiq va xalqaro darajada tushunarli ko'rsatish.",
+      "ru": "Показывать национальную климатическую политику и экологический мониторинг ясно, открыто и международно-понятно.",
+      "en": "Present national climate policy and environmental monitoring clearly, openly and credibly."
+    },
+    "description": {
+      "uz": "Portal NDC, hujjatlar, yangiliklar, monitoring va xalqaro hamkorlik materiallarini uch tilda birlashtiradi.",
+      "ru": "Портал объединяет ОНУВ, документы, новости, мониторинг и международное сотрудничество на трёх языках.",
+      "en": "The portal combines NDC, documents, news, monitoring and international cooperation content in three languages."
+    },
+    "address": {
+      "uz": "Toshkent shahri, Chilonzor tumani",
+      "ru": "г. Ташкент, Чиланзарский район",
+      "en": "Chilanzar district, Tashkent"
+    },
+    "hours": {
+      "uz": "Dushanba-Juma, 09:00-18:00",
+      "ru": "Понедельник-Пятница, 09:00-18:00",
+      "en": "Monday-Friday, 09:00-18:00"
+    },
+    "phone": "+998 71 207-03-70",
+    "email": "info@uznccc.uz",
+    "mapEmbed": "https://www.openstreetmap.org/export/embed.html?bbox=69.1890%2C41.2560%2C69.2790%2C41.3220&layer=mapnik&marker=41.2895%2C69.2342"
+  },
+  "hero": {
+    "kicker": {
+      "uz": "Rasmiy portal",
+      "ru": "Официальный портал",
+      "en": "Official portal"
+    },
+    "title": {
+      "uz": "Iqlim siyosati, monitoring va hujjatlar uchun yagona davlat interfeysi",
+      "ru": "Единый государственный интерфейс для климатической политики, мониторинга и документов",
+      "en": "A unified public interface for climate policy, monitoring and documents"
+    },
+    "summary": {
+      "uz": "TЗdagi asosiy yo'nalishlar: NDC, Green Cities, hujjatlar, yangiliklar, data vidjetlari va aloqalar.",
+      "ru": "Основные направления ТЗ: ОНУВ, Green Cities, документы, новости, data-виджеты и контакты.",
+      "en": "Core streams from the technical brief: NDC, Green Cities, documents, news, live data widgets and contacts."
+    },
+    "primaryCta": {
+      "uz": "Hujjatlarni ko'rish",
+      "ru": "Смотреть документы",
+      "en": "View documents"
+    },
+    "secondaryCta": {
+      "uz": "Bog'lanish",
+      "ru": "Связаться",
+      "en": "Contact"
+    },
+    "status": [
       {
-        "title": "Green Cities Rating taqdimoti",
-        "detail": "2024-07-13 kuni 14 ta ma'muriy markaz uchun ekologik barqarorlik reytingi e'lon qilingan.",
-        "source": "https://uza.uz/oz/posts/ozbekistonning-14-ta-mamuriy-markazi-ekologik-barqarorlik-reytingi-taqdim-etildi_615830"
+        "value": "3",
+        "label": {
+          "uz": "interfeys tili",
+          "ru": "языка интерфейса",
+          "en": "interface languages"
+        }
       },
       {
-        "title": "Ekologik master-rejalar",
-        "detail": "Buxoro va Samarqand uchun dastlabki ekologik master-rejalar ishlab chiqilgan.",
-        "source": "https://uza.uz/oz/posts/ozbekistonning-14-ta-mamuriy-markazi-ekologik-barqarorlik-reytingi-taqdim-etildi_615830"
+        "value": "WCAG AA",
+        "label": {
+          "uz": "kirish maqsadi",
+          "ru": "цель доступности",
+          "en": "accessibility target"
+        }
       },
       {
-        "title": "Rasmiy boshqaruv tizimi yangilandi",
-        "detail": "2025-11-19 qarori bilan yangi institutsional model va monitoring talablari belgilandi.",
-        "source": "https://president.uz/oz/lists/view/8690"
+        "value": "HTTPS",
+        "label": {
+          "uz": "davlat portali standarti",
+          "ru": "стандарт гос-портала",
+          "en": "public portal baseline"
+        }
+      }
+    ],
+    "metrics": [
+      {
+        "value": "2026",
+        "label": {
+          "uz": "ishga tushirish bosqichi",
+          "ru": "этап запуска",
+          "en": "delivery phase"
+        },
+        "detail": {
+          "uz": "yagona platforma",
+          "ru": "единая платформа",
+          "en": "unified platform"
+        }
+      },
+      {
+        "value": "500+",
+        "label": {
+          "uz": "bir vaqtdagi foydalanuvchi",
+          "ru": "одновременных пользователей",
+          "en": "concurrent users"
+        },
+        "detail": {
+          "uz": "TЗ yuklama talabi",
+          "ru": "нагрузочное требование",
+          "en": "load target"
+        }
+      },
+      {
+        "value": "85 / 92",
+        "label": {
+          "uz": "PageSpeed maqsadi",
+          "ru": "цель PageSpeed",
+          "en": "PageSpeed target"
+        },
+        "detail": {
+          "uz": "mobile / desktop",
+          "ru": "mobile / desktop",
+          "en": "mobile / desktop"
+        }
+      },
+      {
+        "value": "NDC 3.0",
+        "label": {
+          "uz": "amaldagi paket",
+          "ru": "актуальный пакет",
+          "en": "current package"
+        },
+        "detail": {
+          "uz": "UNFCCC materiallari",
+          "ru": "материалы РКИК ООН",
+          "en": "UNFCCC materials"
+        }
       }
     ]
   },
+  "programs": [
+    {
+      "id": "policy",
+      "title": {
+        "uz": "Klimat siyosati va NDC",
+        "ru": "Климатическая политика и ОНУВ",
+        "en": "Climate policy and NDC"
+      },
+      "summary": {
+        "uz": "Milliy iqlim maqsadlari, NDC 1.0-3.0 va sektoral choralar.",
+        "ru": "Национальные климатические цели, ОНУВ 1.0-3.0 и секторальные меры.",
+        "en": "National climate targets, NDC 1.0-3.0 and sector measures."
+      },
+      "url": "#activities"
+    },
+    {
+      "id": "monitoring",
+      "title": {
+        "uz": "Ekologik monitoring",
+        "ru": "Экологический мониторинг",
+        "en": "Environmental monitoring"
+      },
+      "summary": {
+        "uz": "Toshkent havo sifati, ob-havo va xalqaro indikatorlar.",
+        "ru": "Качество воздуха в Ташкенте, погода и международные индикаторы.",
+        "en": "Tashkent air quality, weather and international indicators."
+      },
+      "url": "#analytics"
+    },
+    {
+      "id": "documents",
+      "title": {
+        "uz": "Rasmiy hujjatlar",
+        "ru": "Официальные документы",
+        "en": "Official documents"
+      },
+      "summary": {
+        "uz": "Qarorlar, dokladlar, strategiyalar va taqdimotlar.",
+        "ru": "Решения, доклады, стратегии и презентации.",
+        "en": "Decisions, reports, strategies and presentations."
+      },
+      "url": "#documents"
+    },
+    {
+      "id": "green-cities",
+      "title": {
+        "uz": "Green Cities Rating",
+        "ru": "Green Cities Rating",
+        "en": "Green Cities Rating"
+      },
+      "summary": {
+        "uz": "14 ma'muriy markaz ekologik barqarorlik reytingi va shaharlar platformasi.",
+        "ru": "Рейтинг экологической устойчивости 14 административных центров и городская платформа.",
+        "en": "The environmental sustainability rating of 14 administrative centers and city platform."
+      },
+      "url": "https://greencities.uz"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2025-02-24",
+      "title": {
+        "uz": "Rahbariyat tayinlandi",
+        "ru": "Назначено руководство",
+        "en": "Leadership appointed"
+      },
+      "summary": {
+        "uz": "Farrux Sattarov markaz direktori etib tayinlandi.",
+        "ru": "Фаррух Саттаров назначен директором центра.",
+        "en": "Farrux Sattarov was appointed Director of the Center."
+      }
+    },
+    {
+      "date": "2025-11-19",
+      "title": {
+        "uz": "Yangi institutsional model",
+        "ru": "Новая институциональная модель",
+        "en": "New institutional model"
+      },
+      "summary": {
+        "uz": "Yagona ekologik platformani 2026 yil 1 sentabrgacha ishga tushirish vazifasi belgilandi.",
+        "ru": "Поставлена задача запустить единую экологическую платформу до 1 сентября 2026 года.",
+        "en": "The task of launching the unified environmental platform by September 1, 2026 was set."
+      }
+    },
+    {
+      "date": "2026-03-12",
+      "title": {
+        "uz": "Portal konsepsiyasi shakllandi",
+        "ru": "Сформирована концепция портала",
+        "en": "Portal concept formalized"
+      },
+      "summary": {
+        "uz": "TЗga mos, uch tilli va ma'lumotga boy portal arxitekturasi tayyorlandi.",
+        "ru": "Подготовлена трёхъязычная и насыщенная данными архитектура портала, соответствующая ТЗ.",
+        "en": "A trilingual, data-rich portal architecture aligned with the technical brief was prepared."
+      }
+    }
+  ],
+  "partners": [
+    {
+      "name": "UNDP",
+      "summary": {
+        "uz": "Moslashuv va institutsional rivojlanish bo'yicha hamkor.",
+        "ru": "Партнёр по адаптации и институциональному развитию.",
+        "en": "Partner on adaptation and institutional development."
+      },
+      "url": "https://www.undp.org/"
+    },
+    {
+      "name": "UNEP",
+      "summary": {
+        "uz": "Ekologik boshqaruv va havo sifati masalalari.",
+        "ru": "Вопросы экологического управления и качества воздуха.",
+        "en": "Environmental governance and air quality agenda."
+      },
+      "url": "https://www.unep.org/"
+    },
+    {
+      "name": "ADB",
+      "summary": {
+        "uz": "Yashil infratuzilma va investitsiya loyihalari.",
+        "ru": "Зелёная инфраструктура и инвестиционные проекты.",
+        "en": "Green infrastructure and investment projects."
+      },
+      "url": "https://www.adb.org/"
+    },
+    {
+      "name": "GIZ",
+      "summary": {
+        "uz": "Texnik ko'mak va boshqaruv mexanizmlari.",
+        "ru": "Техническая помощь и механизмы управления.",
+        "en": "Technical assistance and governance mechanisms."
+      },
+      "url": "https://www.giz.de/"
+    }
+  ],
   "decisions": [
     {
+      "id": "dec_01",
       "date": "2025-11-19",
-      "category": "Milliy qaror",
-      "title": "Ekologiya va iqlim o'zgarishi milliy qo'mitasi faoliyatini tashkil etish",
-      "summary": "Prezident qarori bilan qo'mita faoliyati yo'lga qo'yildi, Ekologik monitoring milliy markazi tashkil etildi, 2026-09-01 gacha yagona ekologik onlayn platformani ishga tushirish vazifasi belgilandi.",
-      "source": "https://president.uz/oz/lists/view/8690"
+      "category": "national",
+      "title": {
+        "uz": "Milliy qo'mita faoliyatini tashkil etish",
+        "ru": "Об организации деятельности Национального комитета",
+        "en": "On organizing the National Committee"
+      },
+      "summary": {
+        "uz": "Yagona ekologik platforma va monitoring markazini yo'lga qo'yuvchi asosiy qaror.",
+        "ru": "Ключевое решение по запуску единой экологической платформы и центра мониторинга.",
+        "en": "Key decision enabling the unified environmental platform and monitoring center."
+      },
+      "url": "https://president.uz/oz/lists/view/8690"
     },
     {
+      "id": "dec_02",
       "date": "2025-11-19",
-      "category": "Atmosfera nazorati",
-      "title": "Sanoat korxonalari uchun fon monitoring stansiyalari talabi",
-      "summary": "I va II toifadagi korxonalar 2026-03-01 gacha monitoring stansiyalarini o'rnatib, milliy markazga integratsiya qilishi shartligi ko'rsatildi.",
-      "source": "https://president.uz/oz/lists/view/8690"
+      "category": "monitoring",
+      "title": {
+        "uz": "Sanoat monitoring stansiyalari talabi",
+        "ru": "Требование по промышленным станциям мониторинга",
+        "en": "Requirement for industrial monitoring stations"
+      },
+      "summary": {
+        "uz": "Korxonalarning monitoring tizimini milliy markazga integratsiya qilish belgilandi.",
+        "ru": "Определена интеграция корпоративных систем мониторинга с национальным центром.",
+        "en": "Integration of enterprise monitoring systems with the national center was mandated."
+      },
+      "url": "https://president.uz/oz/lists/view/8690"
     },
     {
+      "id": "dec_03",
       "date": "2025-11-11",
-      "category": "Siyosiy muhokama",
-      "title": "Atrof-muhit va shahar havosi bo'yicha loyihalarni yagona tizimda yuritish takliflari",
-      "summary": "Ekologiya loyihalarini moliyalashtirish va amalga oshirishni bitta boshqaruv tizimiga birlashtirish, shaharlarda atmosfera havosi holatini yaxshilashga qaratilgan takliflar ko'rib chiqildi.",
-      "source": "https://president.uz/en/lists/view/8645"
+      "category": "policy",
+      "title": {
+        "uz": "Ekologiya loyihalarini yagona tizimda yuritish takliflari",
+        "ru": "Предложения по единой системе экологических проектов",
+        "en": "Proposals for a unified environmental project system"
+      },
+      "summary": {
+        "uz": "Moliyalashtirish, monitoring va ijro intizomini yagona konturga birlashtirish ko'rib chiqildi.",
+        "ru": "Рассмотрено объединение финансирования, мониторинга и исполнительской дисциплины в едином контуре.",
+        "en": "A unified contour for financing, monitoring and execution was reviewed."
+      },
+      "url": "https://president.uz/en/lists/view/8645"
     },
     {
+      "id": "dec_04",
       "date": "2025-04-04",
-      "category": "Xalqaro hamkorlik",
-      "title": "Samarqand iqlim forumi doirasidagi muloqot",
-      "summary": "UNECE bilan uchrashuvda O'zbekistonning Aarhus konvensiyasiga qo'shilgani va Air Convention hamda sanoat avariyalari bo'yicha konvensiyalarga qo'shilish ishlari ketayotgani qayd etildi.",
-      "source": "https://president.uz/en/lists/view/8028"
+      "category": "international",
+      "title": {
+        "uz": "UNECE bilan iqlim bo'yicha muloqot",
+        "ru": "Диалог с ЕЭК ООН по климату",
+        "en": "Climate dialogue with UNECE"
+      },
+      "summary": {
+        "uz": "Aarhus va havo konvensiyalari bo'yicha ishlar muhokama qilindi.",
+        "ru": "Обсуждены шаги по Орхусской и воздушным конвенциям.",
+        "en": "Work on the Aarhus and air conventions was discussed."
+      },
+      "url": "https://president.uz/en/lists/view/8028"
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc_01",
+      "type": "official",
+      "year": 2025,
+      "title": {
+        "uz": "Prezident qarori: Milliy qo'mita faoliyatini tashkil etish",
+        "ru": "Решение Президента: об организации деятельности Комитета",
+        "en": "Presidential decision on organizing the Committee"
+      },
+      "summary": {
+        "uz": "Platforma, monitoring markazi va yangi boshqaruv modelining asosiy hujjati.",
+        "ru": "Базовый документ по платформе, центру мониторинга и новой модели управления.",
+        "en": "Foundational document for the platform, monitoring center and governance model."
+      },
+      "url": "https://president.uz/oz/lists/view/8690"
     },
     {
-      "date": "2024-09-19",
-      "category": "Atmosfera dasturi",
-      "title": "Chang bo'ronlariga qarshi 2024-2030 milliy dastur va Toshkent havosi dasturi",
-      "summary": "Euro-4 dan past yoqilg'ilarni bosqichma-bosqich cheklash, hamda 5 yil ichida poytaxt va tutash hududlarda 441 gektar yashil belbog' va bog'lar barpo etish yo'nalishlari taqdim etildi.",
-      "source": "https://president.uz/en/lists/view/7560"
+      "id": "doc_02",
+      "type": "report",
+      "year": 2024,
+      "title": {
+        "uz": "To'rtinchi milliy axborot (NC4)",
+        "ru": "Четвёртое национальное сообщение (NC4)",
+        "en": "Fourth National Communication (NC4)"
+      },
+      "summary": {
+        "uz": "UNFCCC uchun milliy hisobot: emissiyalar, moslashuv va choralar.",
+        "ru": "Национальный отчёт для РКИК ООН: выбросы, адаптация и меры.",
+        "en": "National report to the UNFCCC on emissions, adaptation and measures."
+      },
+      "url": "https://unfccc.int/documents/635498"
     },
     {
-      "date": "2024-11-24",
-      "category": "Global iqlim qarori",
-      "title": "COP29 yakuni: NCQG bo'yicha moliyaviy maqsadlar",
-      "summary": "UNFCCC bayonotida rivojlanayotgan mamlakatlar uchun iqlim moliyasini 2035 yilga borib yiliga 300 mlrd AQSh dollariga yetkazish va umumiy oqimni 1.3 trln dollarga oshirish kelishuvi qayd etildi.",
-      "source": "https://unfccc.int/zh/node/644517"
+      "id": "doc_03",
+      "type": "report",
+      "year": 2024,
+      "title": {
+        "uz": "BTR1",
+        "ru": "BTR1",
+        "en": "BTR1"
+      },
+      "summary": {
+        "uz": "Shaffoflik va ma'lumot sifati bo'yicha asosiy xalqaro hisoboti.",
+        "ru": "Ключевой международный отчёт по прозрачности и качеству данных.",
+        "en": "Core international report on transparency and data quality."
+      },
+      "url": "https://unfccc.int/documents/635497"
     },
     {
-      "date": "2025-11-24",
-      "category": "Global iqlim qarori",
-      "title": "COP30 yakuni: moliyaviy mobilizatsiya va moslashuvni kuchaytirish",
-      "summary": "UN tizimidagi sharhga ko'ra COP30 yakunida 2035 yilgacha yiliga 1.3 trln dollar mobilizatsiya qilish, moslashuv moliyasini kengaytirish va transition bo'yicha keyingi yo'l xaritalarini ishlab chiqish yo'nalishi belgilandi.",
-      "source": "https://social.desa.un.org/world-summit-2025/blog/belem-cop30-delivers-climate-finance-boost-and-a-pledge-to-plan-fossil-fuel"
+      "id": "doc_04",
+      "type": "publication",
+      "year": 2025,
+      "title": {
+        "uz": "O'zbekistonning uchinchi NDC hujjati",
+        "ru": "Третий документ ОНУВ Узбекистана",
+        "en": "Uzbekistan third NDC submission"
+      },
+      "summary": {
+        "uz": "2030-2035 iqlim maqsadlari va sektoral choralarning amaldagi paketi.",
+        "ru": "Актуальный пакет климатических целей 2030-2035 и секторальных мер.",
+        "en": "Current package of 2030-2035 climate targets and sector measures."
+      },
+      "url": "https://unfccc.int/sites/default/files/2025-11/Uzbekistan%20Third%20NDC.pdf"
+    },
+    {
+      "id": "doc_05",
+      "type": "presentation",
+      "year": 2024,
+      "title": {
+        "uz": "Green Cities Rating taqdimoti",
+        "ru": "Презентация Green Cities Rating",
+        "en": "Green Cities Rating presentation"
+      },
+      "summary": {
+        "uz": "14 ma'muriy markaz ekologik barqarorlik reytingi taqdimoti.",
+        "ru": "Презентация рейтинга экологической устойчивости 14 административных центров.",
+        "en": "Presentation of the sustainability rating for 14 administrative centers."
+      },
+      "url": "https://uza.uz/oz/posts/ozbekistonning-14-ta-mamuriy-markazi-ekologik-barqarorlik-reytingi-taqdim-etildi_615830"
     }
   ],
   "news": [
     {
-      "date": "2025-02-24",
-      "tag": "kadr",
-      "title": "Farrux Sattarov Iqlim o'zgarishi milliy markazi direktori etib tayinlandi",
-      "summary": "Sattarov Farrux Qo'chqor o'g'li tegishli buyruq asosida markaz direktori lavozimiga tayinlangani e'lon qilindi.",
-      "source": "https://kun.uz/news/2025/02/24/iqlim-ozgarishi-milliy-markaziga-direktor-tayinlandi"
-    },
-    {
+      "id": "news_01",
       "date": "2025-11-20",
-      "tag": "institut",
-      "title": "Ekologik monitoring milliy markazi tashkil etilishi bo'yicha yangilik",
-      "summary": "Prezident qarori asosida ixtisoslashtirilgan tahliliy nazorat markazi negizida yangi milliy monitoring markazi tashkil etilishi ochiqlangan.",
-      "source": "https://uza.uz/oz/posts/ekologik-monitoring-milliy-markazi-tashkil-etiladi_785751"
+      "tag": "institution",
+      "title": {
+        "uz": "Ekologik monitoring milliy markazi tashkil etiladi",
+        "ru": "Будет создан Национальный центр экологического мониторинга",
+        "en": "National environmental monitoring center to be established"
+      },
+      "summary": {
+        "uz": "Monitoring infratuzilmasini yagona markazga birlashtirish bosqichi e'lon qilindi.",
+        "ru": "Объявлен этап объединения мониторинговой инфраструктуры в единый центр.",
+        "en": "A phase to consolidate monitoring infrastructure into a single center was announced."
+      },
+      "url": "https://uza.uz/oz/posts/ekologik-monitoring-milliy-markazi-tashkil-etiladi_785751"
     },
     {
+      "id": "news_02",
+      "date": "2025-02-24",
+      "tag": "leadership",
+      "title": {
+        "uz": "Farrux Sattarov markaz direktori etib tayinlandi",
+        "ru": "Фаррух Саттаров назначен директором центра",
+        "en": "Farrux Sattarov appointed as Director of the Center"
+      },
+      "summary": {
+        "uz": "Milliy markaz rahbariyati bo'yicha yangi tayinlov e'lon qilindi.",
+        "ru": "Объявлено о новом назначении в руководстве центра.",
+        "en": "A new leadership appointment at the Center was announced."
+      },
+      "url": "https://kun.uz/news/2025/02/24/iqlim-ozgarishi-milliy-markaziga-direktor-tayinlandi"
+    },
+    {
+      "id": "news_03",
       "date": "2025-02-17",
-      "tag": "atmosfera",
-      "title": "Atmosfera havosi: milliy standartlar va Air Monitoring Tashkent",
-      "summary": "2024 yilda O'zbekiston uchun yillik 35 mkg/m3 va sutkalik 60 mkg/m3 mezonlari ishlab chiqilgani, 2023-2024 yillarda Air Monitoring Tashkent platformasi yaratilgani yoritildi.",
-      "source": "https://uza.uz/oz/posts/havoni-ifloslantiruvchi-omillar_689206"
+      "tag": "monitoring",
+      "title": {
+        "uz": "Atmosfera havosi bo'yicha milliy standartlar yoritildi",
+        "ru": "Освещены национальные стандарты по атмосферному воздуху",
+        "en": "National atmospheric air standards highlighted"
+      },
+      "summary": {
+        "uz": "PM2.5 mezonlari va Air Monitoring Tashkent platformasi bo'yicha sharh berildi.",
+        "ru": "Дан обзор критериев PM2.5 и платформы Air Monitoring Tashkent.",
+        "en": "An overview of PM2.5 benchmarks and the Air Monitoring Tashkent platform was published."
+      },
+      "url": "https://uza.uz/oz/posts/havoni-ifloslantiruvchi-omillar_689206"
     },
     {
+      "id": "news_04",
       "date": "2024-07-13",
-      "tag": "reyting",
-      "title": "14 ta ma'muriy markazning ekologik barqarorlik reytingi taqdim etildi",
-      "summary": "Iqlim o'zgarishi milliy markazi matbuot anjumanida Green Cities Rating natijalari e'lon qilindi.",
-      "source": "https://uza.uz/oz/posts/ozbekistonning-14-ta-mamuriy-markazi-ekologik-barqarorlik-reytingi-taqdim-etildi_615830"
+      "tag": "green-cities",
+      "title": {
+        "uz": "14 markazning ekologik barqarorlik reytingi taqdim etildi",
+        "ru": "Представлен рейтинг экологической устойчивости 14 центров",
+        "en": "Environmental sustainability rating for 14 centers presented"
+      },
+      "summary": {
+        "uz": "Green Cities Rating natijalari milliy matbuot anjumanida e'lon qilindi.",
+        "ru": "Результаты Green Cities Rating объявлены на национальной пресс-конференции.",
+        "en": "Green Cities Rating results were announced at a national press conference."
+      },
+      "url": "https://uza.uz/oz/posts/ozbekistonning-14-ta-mamuriy-markazi-ekologik-barqarorlik-reytingi-taqdim-etildi_615830"
+    },
+    {
+      "id": "news_05",
+      "date": "2025-04-04",
+      "tag": "partnership",
+      "title": {
+        "uz": "UNECE bilan uchrashuvda konvensiyalar bo'yicha ishlar muhokama qilindi",
+        "ru": "На встрече с ЕЭК ООН обсуждены шаги по конвенциям",
+        "en": "Meeting with UNECE reviewed convention work"
+      },
+      "summary": {
+        "uz": "Aarhus va Air Convention yo'nalishlari bo'yicha hamkorlik masalalari ko'tarildi.",
+        "ru": "Подняты вопросы сотрудничества по Орхусской и Air Convention.",
+        "en": "Cooperation under the Aarhus and Air Convention tracks was discussed."
+      },
+      "url": "https://president.uz/en/lists/view/8028"
+    }
+  ],
+  "media": [
+    {
+      "id": "gallery_01",
+      "theme": "one",
+      "image": "assets/team/staff-01.jpg",
+      "title": {
+        "uz": "Rahbariyat portreti",
+        "ru": "Портрет руководства",
+        "en": "Leadership portrait"
+      },
+      "summary": {
+        "uz": "Rasmiy chiqishlar va mediamateriallar uchun asosiy vizual qatlam.",
+        "ru": "Базовый визуальный слой для официальных публикаций и медиаматериалов.",
+        "en": "Primary visual layer for official releases and media materials."
+      }
+    },
+    {
+      "id": "gallery_02",
+      "theme": "two",
+      "image": "assets/team/staff-05.jpg",
+      "title": {
+        "uz": "Ekspert bloklari",
+        "ru": "Экспертные блоки",
+        "en": "Expert blocks"
+      },
+      "summary": {
+        "uz": "Monitoring, siyosat va loyiha yo'nalishlari uchun media ishlatmalar.",
+        "ru": "Медиаматериалы для направлений мониторинга, политики и проектов.",
+        "en": "Media-ready assets for monitoring, policy and project streams."
+      }
+    },
+    {
+      "id": "gallery_03",
+      "theme": "three",
+      "image": "assets/team/staff-09.jpg",
+      "title": {
+        "uz": "Jamoa profillari",
+        "ru": "Профили команды",
+        "en": "Team profiles"
+      },
+      "summary": {
+        "uz": "Yagona portret uslubi va press-kit ko'rinishi.",
+        "ru": "Единый портретный стиль и press-kit подача.",
+        "en": "Unified portrait style and press-kit presentation."
+      }
+    }
+  ],
+  "videos": [
+    {
+      "title": {
+        "uz": "Green Cities Rating media chiqishi",
+        "ru": "Медийный выход Green Cities Rating",
+        "en": "Green Cities Rating media release"
+      },
+      "summary": {
+        "uz": "Shahar ekologik barqarorligi natijalari bo'yicha ommaviy material.",
+        "ru": "Публичный материал по результатам городской экологической устойчивости.",
+        "en": "Public-facing material on urban environmental sustainability results."
+      },
+      "source": "UZA",
+      "url": "https://uza.uz/oz/posts/ozbekistonning-14-ta-mamuriy-markazi-ekologik-barqarorlik-reytingi-taqdim-etildi_615830"
+    },
+    {
+      "title": {
+        "uz": "Iqlim siyosati bo'yicha xalqaro muloqotlar",
+        "ru": "Международные диалоги по климатической политике",
+        "en": "International climate policy dialogues"
+      },
+      "summary": {
+        "uz": "Prezident va xalqaro tashkilotlar uchrashuvlari uchun manba havolalari.",
+        "ru": "Ссылки-источники на встречи с международными организациями.",
+        "en": "Reference links for meetings with international organizations."
+      },
+      "source": "President.uz",
+      "url": "https://president.uz/en/lists/view/8028"
     }
   ],
   "sources": [
     {
-      "title": "Prezident qarori (19.11.2025): Ekologiya va iqlim o'zgarishi milliy qo'mitasi",
+      "title": "President.uz: decision on the National Committee",
+      "org": "President.uz",
       "url": "https://president.uz/oz/lists/view/8690"
     },
     {
-      "title": "Prezident.uz (11.11.2025): ekologiya boshqaruvi samaradorligi muhokamasi",
-      "url": "https://president.uz/en/lists/view/8645"
-    },
-    {
-      "title": "Prezident.uz (04.04.2025): UNECE bilan uchrashuv, konvensiyalar bo'yicha ishlar",
-      "url": "https://president.uz/en/lists/view/8028"
-    },
-    {
-      "title": "Prezident.uz (19.09.2024): chang bo'ronlari dasturi va Toshkent havosi bo'yicha takliflar",
-      "url": "https://president.uz/en/lists/view/7560"
-    },
-    {
-      "title": "UNFCCC (24.11.2024): COP29 finance outcome",
-      "url": "https://unfccc.int/zh/node/644517"
-    },
-    {
-      "title": "UN DESA blog (24.11.2025): COP30 outcome sharhi",
-      "url": "https://social.desa.un.org/world-summit-2025/blog/belem-cop30-delivers-climate-finance-boost-and-a-pledge-to-plan-fossil-fuel"
-    },
-    {
-      "title": "UZA (13.07.2024): Green Cities Rating",
-      "url": "https://uza.uz/oz/posts/ozbekistonning-14-ta-mamuriy-markazi-ekologik-barqarorlik-reytingi-taqdim-etildi_615830"
-    },
-    {
-      "title": "UZA (20.11.2025): Ekologik monitoring milliy markazi",
-      "url": "https://uza.uz/oz/posts/ekologik-monitoring-milliy-markazi-tashkil-etiladi_785751"
-    },
-    {
-      "title": "UZA (17.02.2025): Havoni ifloslantiruvchi omillar",
-      "url": "https://uza.uz/oz/posts/havoni-ifloslantiruvchi-omillar_689206"
-    },
-    {
-      "title": "Kun.uz (24.02.2025): Farrux Sattarov tayinlovi",
-      "url": "https://kun.uz/news/2025/02/24/iqlim-ozgarishi-milliy-markaziga-direktor-tayinlandi"
-    },
-    {
-      "title": "UNFCCC: O'zbekiston NDC 1.0 (INDC, 2017)",
-      "url": "https://unfccc.int/sites/default/files/NDC/2022-06/INDC%20Uzbekistan%2018-04-2017_Eng.pdf"
-    },
-    {
-      "title": "UNFCCC: O'zbekiston NDC 2.0 (2021)",
-      "url": "https://unfccc.int/sites/default/files/NDC/2022-06/Uzbekistan_Updated%20NDC_2021_EN.pdf"
-    },
-    {
-      "title": "UNFCCC: O'zbekiston NDC 3.0 (2025)",
+      "title": "UNFCCC: Uzbekistan third NDC submission",
+      "org": "UNFCCC",
       "url": "https://unfccc.int/sites/default/files/2025-11/Uzbekistan%20Third%20NDC.pdf"
     },
     {
-      "title": "UNFCCC: NC4 — To'rtinchi milliy axborot (2024)",
+      "title": "UNFCCC: NC4",
+      "org": "UNFCCC",
       "url": "https://unfccc.int/documents/635498"
     },
     {
-      "title": "UNFCCC: BTR1 — Birinchi shaffoflik hisoboti (2024)",
+      "title": "UNFCCC: BTR1",
+      "org": "UNFCCC",
       "url": "https://unfccc.int/documents/635497"
     },
     {
-      "title": "UNFCCC: LT-LEDS — Uzoq muddatli strategiya (2021)",
-      "url": "https://unfccc.int/sites/default/files/resource/Uzbekistan_LTS_ENG.pdf"
+      "title": "World Bank Data API",
+      "org": "World Bank",
+      "url": "https://api.worldbank.org/"
+    },
+    {
+      "title": "Open-Meteo forecast API",
+      "org": "Open-Meteo",
+      "url": "https://open-meteo.com/"
+    },
+    {
+      "title": "WAQI Tashkent feed",
+      "org": "WAQI",
+      "url": "https://aqicn.org/"
+    }
+  ],
+  "team": [
+    {
+      "id": "team_01",
+      "name": {
+        "uz": "Sattarov Farrux Quchqar o'g'li",
+        "ru": "Саттаров Фаррух Қучқар ўғли",
+        "en": "Sattarov Farrux Quchqar o'g'li"
+      },
+      "role": {
+        "uz": "Markaz direktori",
+        "ru": "Директор центра",
+        "en": "Center Director"
+      },
+      "photo": "assets/team/staff-01.jpg"
+    },
+    {
+      "id": "team_02",
+      "name": {
+        "uz": "Kurbanova Umida Xamraevna",
+        "ru": "Курбанова Умида Хамраевна",
+        "en": "Kurbanova Umida Xamraevna"
+      },
+      "role": {
+        "uz": "Inson resurslari bo'yicha bosh mutaxassis",
+        "ru": "Главный специалист по управлению человеческими ресурсами",
+        "en": "Chief Human Resources Specialist"
+      },
+      "photo": "assets/team/staff-02.jpg"
+    },
+    {
+      "id": "team_03",
+      "name": {
+        "uz": "Alibekov Iskandar To'ramurod o'g'li",
+        "ru": "Алибеков Искандар Тўрамурод ўғли",
+        "en": "Alibekov Iskandar To'ramurod o'g'li"
+      },
+      "role": {
+        "uz": "Ijro intizomi bo'yicha bosh mutaxassis",
+        "ru": "Главный специалист по исполнительской дисциплине",
+        "en": "Chief Specialist for Executive Discipline"
+      },
+      "photo": "assets/team/staff-03.png"
+    },
+    {
+      "id": "team_04",
+      "name": {
+        "uz": "Reymbaev Anvar Madiyarovich",
+        "ru": "Реймбаев Анвар Мадиярович",
+        "en": "Reymbaev Anvar Madiyarovich"
+      },
+      "role": {
+        "uz": "Bosh hisobchi",
+        "ru": "Главный бухгалтер",
+        "en": "Chief Accountant"
+      },
+      "photo": "assets/team/staff-04.jpg"
+    },
+    {
+      "id": "team_05",
+      "name": {
+        "uz": "Xurshudyan Anait Eduardovna",
+        "ru": "Хуршудян Анаит Эдуардовна",
+        "en": "Xurshudyan Anait Eduardovna"
+      },
+      "role": {
+        "uz": "Bo'lim boshlig'i",
+        "ru": "Начальник отдела",
+        "en": "Head of Department"
+      },
+      "photo": "assets/team/staff-05.jpg"
+    },
+    {
+      "id": "team_06",
+      "name": {
+        "uz": "Xajex Nassiriy Parisa Said",
+        "ru": "Хажех Нассирий Париса Саид",
+        "en": "Xajex Nassiriy Parisa Said"
+      },
+      "role": {
+        "uz": "Bosh mutaxassis",
+        "ru": "Главный специалист",
+        "en": "Chief Specialist"
+      },
+      "photo": "assets/team/staff-06.jpg"
+    },
+    {
+      "id": "team_07",
+      "name": {
+        "uz": "Inatov Ibratillo Jaxongir o'g'li",
+        "ru": "Инатов Ибратилло Жахонгир ўғли",
+        "en": "Inatov Ibratillo Jaxongir o'g'li"
+      },
+      "role": {
+        "uz": "Bosh mutaxassis",
+        "ru": "Главный специалист",
+        "en": "Chief Specialist"
+      },
+      "photo": "assets/team/staff-07.jpg"
+    },
+    {
+      "id": "team_08",
+      "name": {
+        "uz": "Abdullaeva Sayyora Xamidullaevna",
+        "ru": "Абдуллаева Сайёра Хамидуллаевна",
+        "en": "Abdullaeva Sayyora Xamidullaevna"
+      },
+      "role": {
+        "uz": "Bo'lim boshlig'i",
+        "ru": "Начальник отдела",
+        "en": "Head of Department"
+      },
+      "photo": "assets/team/staff-09.jpg"
     }
   ]
 }
