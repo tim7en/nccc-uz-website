@@ -237,11 +237,11 @@
         </div>
       </div>
       <div class="photo-strip" aria-hidden="true">
-        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Arid Zones</span></div>
-        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Air Quality</span></div>
+        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Arid Zones</span></div>
+        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Air Quality</span></div>
         <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Satellite Data</span></div>
-        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1467803738586-46b7eb7b16a1?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Halophytes</span></div>
-        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1611048268330-53de574cae3b?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Renewables</span></div>
+        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Halophytes</span></div>
+        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1580982324076-d95230549339?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Renewables</span></div>
       </div>
       <div class="section-shell reveal">
         <div class="section-header"><div class="section-copy"><p class="section-kicker">${escape(ui().homeKicker)}</p><h2 class="section-title">${escape(ui().homeTitle)}</h2><p class="section-summary">${escape(ui().homeSummary)}</p></div></div>
@@ -261,6 +261,7 @@
   function renderAbout() {
     const org = state.content.organization;
     dom.aboutContent.innerHTML = `
+      <div class="section-banner reveal"><img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?auto=format&fit=crop&w=1400&q=80" alt="" loading="lazy"></div>
       <div class="section-shell reveal">
         <div class="section-header"><div class="section-copy"><p class="section-kicker">${escape(ui().aboutKicker)}</p><h2 class="section-title">${escape(ui().nav.about)}</h2><p class="section-summary">${escape(ui().aboutSummary)}</p></div></div>
         <div class="split-grid">
@@ -282,6 +283,7 @@
   function renderActivities() {
     const ndc = ui().ndc;
     dom.activitiesContent.innerHTML = `
+      <div class="section-banner reveal"><img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=1400&q=80" alt="" loading="lazy"></div>
       <div class="section-shell reveal">
         <div class="section-header"><div class="section-copy"><p class="section-kicker">${escape(ui().activitiesKicker)}</p><h2 class="section-title">${escape(ui().nav.activities)}</h2><p class="section-summary">${escape(ui().activitiesSummary)}</p></div></div>
         <div class="card-grid card-grid--4">${state.content.programs.map(renderProgramCard).join("")}</div>
@@ -335,6 +337,7 @@
 
   function renderAnalytics() {
     dom.analyticsContent.innerHTML = `
+      <div class="section-banner reveal"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1400&q=80" alt="" loading="lazy"></div>
       <div class="section-shell reveal">
         <div class="section-header"><div class="section-copy"><p class="section-kicker">${escape(ui().analyticsKicker)}</p><h2 class="section-title">${escape(ui().nav.analytics)}</h2><p class="section-summary">${escape(ui().analyticsSummary)}</p></div></div>
         <div class="dashboard-grid">${renderAirCard()}${renderWeatherCard()}</div>
