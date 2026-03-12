@@ -1,26 +1,66 @@
 # NCCC Uzbekistan Portal
 
-Static public portal for the National Climate Change Center of Uzbekistan.
+Public portal and local CMS backend for the National Climate Change Center of Uzbekistan.
 
 ## Stack
 
-- `index.html` as the deployment entry point
-- `assets/css/styles.css` for the design system and responsive layout
-- `assets/js/app.js` for multilingual rendering, filters, search, theme and live widgets
-- `assets/data/site-content.json` for portal content
-- `assets/data/ui.json` for interface translations and NDC labels
+- Public site: `index.html`, `assets/css/styles.css`, `assets/js/app.js`
+- Content files: `assets/data/site-content.json`, `assets/data/ui.json`
+- Backend: `server.js` with Express, sessions, bcrypt, rate limiting, and TOTP support
+- Admin UI: `admin/index.html`, `assets/css/admin.css`, `assets/js/admin.js`
+- Runtime storage: `server-data/` for users, contact messages, and activity logs
 
-## Features
+## What Works Now
 
-- Uzbek, Russian and English interface switching without reload
-- Light and dark theme
-- Public sections for about, activities, documents, news, analytics, media and contacts
-- Live integrations for Tashkent air quality, weather and World Bank indicators
-- Client-side search across key portal content
-- Static deployment files: `404.html`, `robots.txt`, `sitemap.xml`, `site.webmanifest`, `sw.js`
+- Public portal served by the Node backend
+- Admin login with server-side sessions
+- Password hashing with `bcryptjs`
+- Role-based access (`admin`, `moderator`)
+- Admin JSON editor for `site-content.json`
+- Admin-only JSON editor for `ui.json`
+- Admin user creation and password reset
+- Activity log for auth and CMS actions
+- Public contact form persistence through `/api/public/contact`
+- Admin message review and status updates
+- TOTP setup flow for admin accounts
+
+## Run Locally
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Start the backend:
+
+   ```bash
+   npm start
+   ```
+
+3. Open:
+
+   - Public portal: `http://127.0.0.1:3000/`
+   - Admin CMS: `http://127.0.0.1:3000/admin/`
+
+## Initial Admin Account
+
+On first startup, the backend seeds one local admin user if `server-data/users.json` does not exist.
+
+- Username: `admin`
+- Password: `ChangeMe123!`
+
+You can override this on first run with environment variables:
+
+- `NCCC_ADMIN_USERNAME`
+- `NCCC_ADMIN_PASSWORD`
+- `SESSION_SECRET`
+- `PORT`
+
+After first login, enable TOTP from the Security tab.
 
 ## Notes
 
-- This repository now represents the public-facing portal foundation.
-- The previous browser-side demo admin flow is removed from the main site because it was not production-safe.
-- CMS, authentication, protected uploads and contact-form backend should be delivered in a separate backend phase.
+- This backend writes portal edits back into the existing JSON files so the public frontend continues to work without a rebuild step.
+- `server-data/` is intentionally ignored by Git because it contains local runtime state.
+- This is a practical local backend phase. It is not yet the final production architecture from the technical specification: there is still no PostgreSQL/MySQL database, no production mail pipeline, no file upload pipeline, and no full granular content model.

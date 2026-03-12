@@ -136,7 +136,7 @@
     }
   }
 
-  function onSubmit(event) {
+  async function onSubmit(event) {
     if (event.target.id !== "contactForm") return;
     event.preventDefault();
     const form = event.target;
@@ -148,13 +148,30 @@
     if (!name || !email || !topic || !message) return toast(ui().formError, "error");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return toast(ui().formError, "error");
     if (captcha !== String(state.captcha.answer)) return toast(ui().formCaptchaError, "error");
-    const subject = encodeURIComponent(`[NCCC] ${topic}`);
-    const body = encodeURIComponent(`${name}\n${email}\n\n${message}`);
-    window.location.href = `mailto:${state.content.organization.email}?subject=${subject}&body=${body}`;
-    form.reset();
-    state.captcha = makeCaptcha();
-    renderContacts();
-    toast(ui().formSuccess, "success");
+    try {
+      const response = await fetch("/api/public/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({ name, email, topic, message })
+      });
+      if (!response.ok) throw new Error(String(response.status));
+      form.reset();
+      state.captcha = makeCaptcha();
+      renderContacts();
+      toast(ui().formSuccessServer || ui().formSuccess, "success");
+      return;
+    } catch {
+      const subject = encodeURIComponent(`[NCCC] ${topic}`);
+      const body = encodeURIComponent(`${name}\n${email}\n\n${message}`);
+      window.location.href = `mailto:${state.content.organization.email}?subject=${subject}&body=${body}`;
+      form.reset();
+      state.captcha = makeCaptcha();
+      renderContacts();
+      toast(ui().formSuccess, "success");
+    }
   }
 
   function onKeydown(event) {

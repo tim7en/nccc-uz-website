@@ -5,30 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0b6b67">
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Restricted administration area.">
-<title>Restricted Area</title>
+<meta name="description" content="Protected CMS for the National Center for Climate Change portal.">
+<title>NCCC CMS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/admin.css">
+<script defer src="/assets/js/admin.js"></script>
 </head>
 <body>
-<main class="section">
-  <div class="container">
-    <div class="section-shell" style="max-width: 52rem; margin: 4rem auto;">
-      <p class="section-kicker">Admin</p>
-      <h1 class="section-title">Restricted Area</h1>
-      <p class="section-summary">The protected CMS specified in the technical requirements is not part of the current static public release.</p>
-      <div class="prose">
-        <p>This route is reserved for the future authenticated administration panel with role-based access, 2FA, audit logging, and secure content workflows.</p>
-        <p>Until that backend phase is deployed, the public portal should be treated as a content-facing launch only.</p>
-      </div>
-      <div class="hero-actions" style="margin-top: 1rem;">
-        <a class="button button-primary" href="/">Return to homepage</a>
-      </div>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="page-chroma" aria-hidden="true">
+  <div class="page-chroma__orb page-chroma__orb--one"></div>
+  <div class="page-chroma__orb page-chroma__orb--two"></div>
+  <div class="page-chroma__grid"></div>
+</div>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="National Climate Change Center">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" role="presentation">
+          <path d="M32 6C19.297 6 9 16.297 9 29c0 12.703 10.297 23 23 23 12.703 0 23-10.297 23-23C55 16.297 44.703 6 32 6Z" fill="currentColor" opacity=".18"/>
+          <path d="M32 12c-9.389 0-17 7.611-17 17 0 9.389 7.611 17 17 17 9.389 0 17-7.611 17-17 0-9.389-7.611-17-17-17Z" stroke="currentColor" stroke-width="3"/>
+          <path d="M20 34c4-8 8-12 12-12s8 4 12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <path d="M32 16v12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="32" cy="36" r="4" fill="currentColor"/>
+        </svg>
+      </span>
+      <span class="brand__copy">
+        <strong>NCCC CMS</strong>
+        <span>Protected content operations</span>
+      </span>
+    </a>
+
+    <div class="site-header__actions">
+      <a class="button button-secondary" href="/">Public portal</a>
     </div>
   </div>
+</header>
+
+<main id="main" class="section">
+  <div class="container admin-shell">
+    <div class="page-alert" id="adminAlert" hidden></div>
+    <section class="section-shell admin-auth" id="authView"></section>
+    <section class="admin-app" id="appView" hidden>
+      <div class="section-shell admin-hero" id="adminHero"></div>
+      <div class="admin-tabs" id="adminTabs" role="tablist" aria-label="Admin navigation"></div>
+      <div class="admin-panels" id="adminPanels"></div>
+    </section>
+  </div>
 </main>
+
+<noscript>
+  <div class="noscript-banner">JavaScript is required to use the CMS.</div>
+</noscript>
 </body>
 </html>

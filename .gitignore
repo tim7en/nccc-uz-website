@@ -1,0 +1,7 @@
+node_modules/
+server-data/
+local-server.log
+local-server.err.log
+backend-server.log
+backend-server.err.log
+.env
