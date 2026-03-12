@@ -236,6 +236,13 @@
           </div>
         </div>
       </div>
+      <div class="photo-strip" aria-hidden="true">
+        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Arid Zones</span></div>
+        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Air Quality</span></div>
+        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Satellite Data</span></div>
+        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1467803738586-46b7eb7b16a1?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Halophytes</span></div>
+        <div class="photo-strip__item"><img src="https://images.unsplash.com/photo-1611048268330-53de574cae3b?auto=format&fit=crop&w=900&q=75" alt="" loading="lazy"><span class="photo-strip__label">Renewables</span></div>
+      </div>
       <div class="section-shell reveal">
         <div class="section-header"><div class="section-copy"><p class="section-kicker">${escape(ui().homeKicker)}</p><h2 class="section-title">${escape(ui().homeTitle)}</h2><p class="section-summary">${escape(ui().homeSummary)}</p></div></div>
         <div class="card-grid card-grid--4">${state.content.programs.map(renderProgramCard).join("")}</div>

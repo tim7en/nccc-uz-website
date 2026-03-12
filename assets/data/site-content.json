@@ -513,46 +513,91 @@
     {
       "id": "gallery_01",
       "theme": "one",
-      "image": "assets/team/staff-01.jpg",
+      "image": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1200&q=80",
       "title": {
-        "uz": "Rahbariyat portreti",
-        "ru": "Портрет руководства",
-        "en": "Leadership portrait"
+        "uz": "Havo sifati monitoringi",
+        "ru": "Мониторинг качества воздуха",
+        "en": "Air Quality Monitoring"
       },
       "summary": {
-        "uz": "Rasmiy chiqishlar va mediamateriallar uchun asosiy vizual qatlam.",
-        "ru": "Базовый визуальный слой для официальных публикаций и медиаматериалов.",
-        "en": "Primary visual layer for official releases and media materials."
+        "uz": "Shaharlardagi zaharli tuman va sanoat chiqindilari iqlim o'zgarishining ko'zga ko'rinadigan belgisi.",
+        "ru": "Токсичный смог и промышленные выбросы в городах — видимый признак изменения климата.",
+        "en": "Toxic smog and industrial emissions in urban areas are a visible indicator of climate change and a central target of air quality policy."
       }
     },
     {
       "id": "gallery_02",
       "theme": "two",
-      "image": "assets/team/staff-05.jpg",
+      "image": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=80",
       "title": {
-        "uz": "Ekspert bloklari",
-        "ru": "Экспертные блоки",
-        "en": "Expert blocks"
+        "uz": "Sun'iy yo'ldosh kuzatuvi",
+        "ru": "Спутниковое наблюдение Земли",
+        "en": "Satellite Earth Observation"
       },
       "summary": {
-        "uz": "Monitoring, siyosat va loyiha yo'nalishlari uchun media ishlatmalar.",
-        "ru": "Медиаматериалы для направлений мониторинга, политики и проектов.",
-        "en": "Media-ready assets for monitoring, policy and project streams."
+        "uz": "Kosmosdan olingan tasvirlar yer yuzasidagi o'zgarishlarni — qorning erishi, cho'llanish va yashil qoplamning pasayishini — real vaqtda kuzatish imkonini beradi.",
+        "ru": "Снимки из космоса позволяют отслеживать изменения земной поверхности — таяние снегов, опустынивание и сокращение зелёного покрова — в режиме реального времени.",
+        "en": "Orbital imagery enables real-time tracking of land surface changes including snow retreat, desertification and vegetation loss across Central Asia."
       }
     },
     {
       "id": "gallery_03",
       "theme": "three",
-      "image": "assets/team/staff-09.jpg",
+      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80",
       "title": {
-        "uz": "Jamoa profillari",
-        "ru": "Профили команды",
-        "en": "Team profiles"
+        "uz": "Cho'llanish va qumlilar",
+        "ru": "Опустынивание и песчаные массивы",
+        "en": "Desertification & Arid Zones"
       },
       "summary": {
-        "uz": "Yagona portret uslubi va press-kit ko'rinishi.",
-        "ru": "Единый портретный стиль и press-kit подача.",
-        "en": "Unified portrait style and press-kit presentation."
+        "uz": "O'zbekistondagi qumli cho'llar iqlim isishi tufayli kengayib, Orol dengizi havzasida jiddiy ekologik inqirozga olib kelmoqda.",
+        "ru": "Песчаные пустыни Узбекистана расширяются из-за потепления климата, что усугубляет экологический кризис в бассейне Аральского моря.",
+        "en": "Sandy deserts in Uzbekistan are expanding due to climate warming, intensifying the ecological crisis in the Aral Sea basin."
+      }
+    },
+    {
+      "id": "gallery_04",
+      "theme": "one",
+      "image": "https://images.unsplash.com/photo-1467803738586-46b7eb7b16a1?auto=format&fit=crop&w=1200&q=80",
+      "title": {
+        "uz": "Galofitlar va sho'r yerlar",
+        "ru": "Галофиты и засолённые земли",
+        "en": "Halophytes & Salt-Tolerant Flora"
+      },
+      "summary": {
+        "uz": "Sho'rga chidamli o'simliklar Orol dengizi atrofidagi degradatsiyalangan yerlarni biologik jihatdan tiklashning asosiy vositasi hisoblanadi.",
+        "ru": "Солеустойчивые растения являются ключевым инструментом биологической рекультивации деградированных земель Приаралья.",
+        "en": "Salt-tolerant plants are a key tool for biological rehabilitation of degraded soils around the exposed Aral Sea bed."
+      }
+    },
+    {
+      "id": "gallery_05",
+      "theme": "two",
+      "image": "https://images.unsplash.com/photo-1611048268330-53de574cae3b?auto=format&fit=crop&w=1200&q=80",
+      "title": {
+        "uz": "Qayta tiklanadigan energiya",
+        "ru": "Возобновляемая энергетика",
+        "en": "Renewable Energy Transition"
+      },
+      "summary": {
+        "uz": "NDC 3.0 doirasida O'zbekiston 2030 yilga qadar qayta tiklanadigan energiya ulushini 25% ga yetkazishni maqsad qilgan.",
+        "ru": "В рамках ОНУВ 3.0 Узбекистан планирует достичь доли ВИЭ в 25% к 2030 году.",
+        "en": "Under NDC 3.0, Uzbekistan targets a 25% renewable energy share by 2030, with wind and solar as priority technologies."
+      }
+    },
+    {
+      "id": "gallery_06",
+      "theme": "three",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80",
+      "title": {
+        "uz": "Iqlim modellari va prognozlar",
+        "ru": "Климатическое моделирование",
+        "en": "Climate Modelling & Projections"
+      },
+      "summary": {
+        "uz": "Hududiy iqlim modellari O'rta Osiyo uchun 2050–2100 yillarga mo'ljallangan harorat ko'tarilishi va yog'ingarchilik o'zgarishlari tendensiyalarini ko'rsatadi.",
+        "ru": "Региональные климатические модели прогнозируют рост температур и изменения осадков в Центральной Азии до 2100 года.",
+        "en": "Regional climate models project temperature rises of 2–4 °C and shifting precipitation patterns across Central Asia through 2100."
       }
     }
   ],
