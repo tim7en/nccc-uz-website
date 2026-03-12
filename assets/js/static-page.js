@@ -2,19 +2,19 @@
   const copy = {
     uz: {
       supportPages: "Yordamchi sahifalar",
-      home: "Portal",
+      home: "Bosh sahifa",
       backHome: "Portalga qaytish",
       theme: "Mavzuni almashtirish"
     },
     ru: {
       supportPages: "Служебные страницы",
-      home: "Портал",
+      home: "Главная",
       backHome: "Вернуться на портал",
       theme: "Сменить тему"
     },
     en: {
       supportPages: "Support pages",
-      home: "Portal",
+      home: "Home",
       backHome: "Back to portal",
       theme: "Toggle theme"
     }
