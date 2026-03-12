@@ -267,7 +267,7 @@ textarea {
   flex-wrap: wrap;
   align-items: center;
   column-gap: 1rem;
-  padding: 0.8rem 0 0;
+  padding: 0.8rem 0;
 }
 
 .brand {
@@ -345,8 +345,8 @@ textarea {
   overflow-x: auto;
   scrollbar-width: none;
   border-top: 1px solid var(--border);
-  margin-top: 0.55rem;
-  padding: 0.3rem 0 0.45rem;
+  margin-top: 0;
+  padding: 0.3rem 0;
   gap: 0.1rem;
 }
 
@@ -690,10 +690,9 @@ textarea {
 }
 
 .button-secondary {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(247, 255, 253, 0.92);
-  border-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(4px);
+  background: var(--brand-soft);
+  color: var(--brand);
+  border-color: rgba(11, 107, 103, 0.16);
 }
 
 .hero-shell .button-secondary {
@@ -1101,6 +1100,13 @@ textarea {
 .contact-card p,
 .live-card p {
   margin: 0;
+}
+
+.news-card,
+.gallery-card,
+.video-card,
+.live-card {
+  min-height: 100%;
 }
 
 .news-card,
@@ -1535,7 +1541,7 @@ textarea {
   }
 
   .section {
-    padding: 1.2rem 0;
+    padding: 1.75rem 0;
     scroll-margin-top: calc(var(--header-height) + 0.5rem);
   }
 
@@ -1547,7 +1553,7 @@ textarea {
   }
 
   .site-header__inner {
-    gap: 0.6rem;
+    column-gap: 0.6rem;
   }
 
   .site-header__actions {
